@@ -65,7 +65,14 @@
               <li><a href="#">Drop Down 5</a></li>
             </ul>
           </li>
+
           <li><a href="#contact">Contact</a></li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" data-toggle="modal" href="" data-target="#Register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" data-toggle="modal" href="" data-target="#SignIn">Sign In</a>
+            </li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
