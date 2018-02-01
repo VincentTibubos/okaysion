@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bootstrap!</title>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+	
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<!--<link href="css/bootstrap-theme.css" rel="stylesheet" />--> 
+	<link href="css/custom.css" rel="stylesheet" />
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row" id="header">
+		<h1>Bootstrap Training Grounds <small>Small things kahit ano!</small></h1>
+	</div>
+	<div class="row" id="menu">
+		<span>Menu</span>
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary">Apple</button>
+			<button type="button" class="btn btn-primary">Samsung</button>
+			<button type="button" class="btn btn-primary" data-toggle="dropdown">Sony<span class="caret"></span></button>
+		</div>
+
+
+
+	</div>	
+	<div class="row" id="workspace">
+		<div class="col-xs-4 col-sm-4 col-md-2">
+			<h3>TO DO!</h3>
+			<blockquote class="blockquote-reverse">
+				<p>Lagot ka sa akin Lago! The comeback is real... </p>
+				<footer>Rasmus</footer>
+			</blockquote>
+			
+			<a class="btn" href="#"  role="button">Link</a>
+			<button class="btn btn-danger">Button</button>
+			<input class="btn btn-success btn-lg" type="button" value="Input">
+			<input class="btn btn-info btn-xs" type="submit" value="Submit">
+			
+		</div>
+		<div class="col-xs-8 col-sm-8 col-md-8">
+			<h3>Content Display</h3>
+			<p class="lead">Hi Bootstrap! How are you?</p>
+			<p>This is a paragraph. A paragraph starts with P and ends with h.</p>
+			<h1 class="text-warning bg-success">Hi Soo how is your GF?</h1>
+			<h2 class="text-center">Hi Soo how is your GF?</h2>
+			<h3>Hi Soo how is your GF?</h3>
+			<h4 class="text-right">Hi Soo how is your GF?</h4>
+			<h5>Hi Soo how is your GF?</h5>
+			
+			<p class="text-warning bg-success">Hi <mark>content</mark> that is marked! However an <del>item</del> is deleted! I will insert <ins>Gelwin</ins>!</p>
+			
+			<table class="table table-striped table-condensed">
+			<thead>
+				<tr>
+					<th>Subject Code</th>
+					<th>Subject Description</th>
+					<th>Professor</th>
+					<th>Grade</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>CS 321</td>
+					<td>Web Prog</td>
+					<td>Butcher</td>
+					<td>1.0</td>
+				</tr>	
+				<tr>
+					<td>CS 321L</td>
+					<td>Web Prog Lab</td>
+					<td>Butcher</td>
+					<td>5.0</td>
+				</tr>
+				<tr>
+					<td>CS 322</td>
+					<td>Soft Engg</td>
+					<td>Renegade</td>
+					<td>3.0</td>
+				</tr>
+				<tr>
+					<td>CS 322L</td>
+					<td>Soft Engg</td>
+					<td>Renegade</td>
+					<td>5.0</td>
+				</tr>				
+			</tbody>
+			<tfoot>
+			</tfoot>
+			</table>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-2">
+			<h3 class="bg-primary text-danger">Notifications!</h3>
+			<code>Sample</code>
+			<kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>del</kbd>
+			<pre>&lt;p&gt;Sample text here&lt;/p&gt;</pre>
+			<var>z</var> = <var>x</var> + <var>y</var>
+			<samp>Sample output from a program</samp>
+			
+		</div>
+	</div>
+</div>
+</body>
+</html>
