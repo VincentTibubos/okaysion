@@ -67,12 +67,15 @@
           </li>
 
           <li><a href="#contact">Contact</a></li>
+          <li><a href="<?php echo base_url();?>register">Register</a></li>
+          <li><a href="<?php echo base_url();?>signin">SignIn</a></li>
+          <!--
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" data-toggle="modal" href="" data-target="#Register">Register</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" data-toggle="modal" href="" data-target="#SignIn">Sign In</a>
-            </li>
+            </li>-->
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>

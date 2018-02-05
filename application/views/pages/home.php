@@ -13,7 +13,7 @@
           <div class="carousel-container">
             <div class="carousel-content">
               <h2>A Multi-Tenant System</h2>
-              <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+              <a href="#<?php echo base_url();?>/copy" class="btn-get-started scrollto">Get Started</a>
             </div>
           </div>
         </div>

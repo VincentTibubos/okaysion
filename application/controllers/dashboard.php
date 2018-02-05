@@ -6,7 +6,14 @@
 
 		}
 		public function signin(){
-			echo "hi ".$_POST['email']." your password is ".$_POST['pass'];
+			$this->form_validation->set_rules('email','Email','trim|required');
+			$this->form_validation->set_rules('email','Email','trim|required|callback_checklogin');
+			if($this->form_validation->run()==false){
+				echo 'error';
+				$this->load->view('dashboard/login');
+			}else{
+				redirect(base_url('index.php/home'),'refresh');
+			}
 
 		}
 		public function view($page='index'){

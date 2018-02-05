@@ -83,7 +83,10 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <form action="<?php echo base_url(); ?>users/register" method="post">
+
+          <!--form register-->
+          
+            <form action="<?php echo base_url(); ?>register" method="post">
               <div class="form-group">
                 <label for="name">Company Name:</label>
                 <input type="text" class="form-control" id="Rname" name="name">
@@ -121,7 +124,18 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <form action="<?php echo base_url(); ?>users/signin" method="post">
+            <?php 
+              if(validation_errors()){
+                ?>
+                <div class="alert alert-danger-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong><?php echo validation_errors(); ?></strong>
+              <?php
+              }
+            ?>
+          <!--form signin-->
+          
+            <form action="<?php echo base_url(); ?>signin" method="post">
               <div class="form-group">
                 <label for="email">Email address:</label>
                 <input type="email" class="form-control" id="Semail" name="email">
