@@ -38,8 +38,17 @@
             <div class="container-fluid">
               <h2 class="no-margin-bottom">Hi Admin!</h2>
             </div>
+            
           </header>
 
+         <?php
+          if($this->session->flashdata('user_loggedin')): ?>
+          <?php echo "<p class='alert alert-success'>".$this->session->flashdata('user_loggedin')."</p>"?>
+         <?php endif;?>
+        <?php 
+          if($this->session->flashdata('user_registered')): ?>
+          <?php echo "<p class='alert alert-success'>".$this->session->flashdata('user_registered')."</p>"?>
+         <?php endif;?>
           <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
             <div class="container-fluid">
@@ -84,8 +93,4 @@
                   </div>
                 </div>
               </section>
-        <?php 
-          if($this->session->flashdata('user_registered')): ?>
-          <?php echo "<p class='alert alert-success'>".$this->session->flashdata('user_registered')."</p>"?>
-         <?php endif;?>
        

@@ -24,14 +24,19 @@ class User_model extends CI_Model{
     }
     //login
     public function login($lemail,$epass){
+   //     print_r($_POST);
+     //  echo 'wew '.$lemail." ".$epass;
+       // exit();
         $this->db->where('cemail',$lemail);
         $this->db->where('cpass',$epass);
 
+       // $query=$this->db->get_where('company_tbl',array('cemail'=>$lemail,'cpass'=>$epass));
         $result=$this->db->get('company_tbl');
-        echo $result->num_rows();
-        exit();
-        if($result->num_rows()==1){
-            return $result->row(0)->id;
+       // echo $result->num_rows();
+     //   exit();
+        $id=null;
+        if($result->num_rows()>0){
+            return true;
         }
         return false;
 

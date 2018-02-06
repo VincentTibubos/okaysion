@@ -41,6 +41,7 @@ class Users extends CI_Controller {
             //callback_ is use before the method specified for custom validation
             $this->form_validation->set_rules('lemail','Email','required');
             $this->form_validation->set_rules('lpassword','Password','required');
+
             if($this->form_validation->run()===FALSE){
                 $this->load->view('dashboard/login');
             }else{
@@ -49,10 +50,8 @@ class Users extends CI_Controller {
 
                 //login id
                 $cid=$this->user_model->login($lemail,$epass);
+            
                 if($cid){
-           print_r($_POST);
-           exit();
-                    die('success');
                     $this->session->set_flashdata('user_loggedin','You are now logged in');
                     redirect('dashboard');
                 }

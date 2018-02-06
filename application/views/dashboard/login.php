@@ -26,6 +26,15 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
+        <?php 
+          if($this->session->flashdata('login_failed')): ?>
+          <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('login_failed')."</p>"?>
+         <?php endif;?>
+
+         <?php
+          if($this->session->flashdata('user_loggedin')): ?>
+          <?php echo "<p class='alert alert-success'>".$this->session->flashdata('user_loggedin')."</p>"?>
+         <?php endif;?>
     <div class="page login-page">
       <div class="container d-flex align-items-center">
         <div class="form-holder has-shadow">
@@ -46,6 +55,7 @@
               <div class="form d-flex align-items-center">
                 <div class="content">
                   <?php echo validation_errors(); ?>
+
                   <form id="login-form" action="login" method="post">
                     <div class="form-group">
                       <input id="login-email" type="email" name="lemail" required class="input-material">
