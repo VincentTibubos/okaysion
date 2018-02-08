@@ -36,7 +36,7 @@ class User_model extends CI_Model{
      //   exit();
         $id=null;
         if($result->num_rows()>0){
-            return true;
+            return $result->row(0)->cid;
         }
         return false;
 
