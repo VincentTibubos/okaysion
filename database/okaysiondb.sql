@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2018 at 11:19 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Feb 09, 2018 at 07:21 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,86 +23,86 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `company_tbl`
+-- Table structure for table `bill`
 --
 
-CREATE TABLE `company_tbl` (
-  `cid` int(11) NOT NULL,
-  `cname` varchar(255) NOT NULL,
-  `cpass` varchar(255) NOT NULL,
-  `cemail` varchar(255) NOT NULL,
-  `caddress` varchar(255) NOT NULL,
-  `ccontact` varchar(255) NOT NULL
+CREATE TABLE `bill` (
+  `Bill_Code` varchar(15) NOT NULL,
+  `Date_Of_Bill` date NOT NULL,
+  `Amount_Of_Bill` int(20) NOT NULL,
+  `Bill_Desc` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `company_tbl`
---
-
-INSERT INTO `company_tbl` (`cid`, `cname`, `cpass`, `cemail`, `caddress`, `ccontact`) VALUES
-(1, 'you', '202cb962ac59075b964b07152d234b70', 'you@tube', 'sa kanto', 'wla po'),
-(11, 'joven', '202cb962ac59075b964b07152d234b70', 'kanta@gmail.com', '', ''),
-(12, 'hello', '202cb962ac59075b964b07152d234b70', 'jsdflkdfsajlfs@sfadjfs', '', ''),
-(13, 'klkkjkljlkk', '698d51a19d8a121ce581499d7b701668', 'adjaksddjkl#@hhkjahsd', '', ''),
-(14, 'vian corp', '202cb962ac59075b964b07152d234b70', 'vian@gmail.com', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `organizer_tbl`
+-- Table structure for table `customer`
 --
 
-CREATE TABLE `organizer_tbl` (
-  `oid` int(11) NOT NULL,
-  `ouser` varchar(255) NOT NULL,
-  `ofname` varchar(255) NOT NULL,
-  `olname` varchar(255) NOT NULL,
-  `opass` varchar(255) NOT NULL,
-  `ogender` enum('Male','Female') NOT NULL,
-  `oemail` varchar(255) NOT NULL,
-  `ocontact` varchar(20) NOT NULL,
-  `oaddress` varchar(255) NOT NULL
+CREATE TABLE `customer` (
+  `Cus_Id` varchar(15) NOT NULL,
+  `Cus_FName` char(30) NOT NULL,
+  `Cus_LName` char(30) NOT NULL,
+  `Cus_Birthdate` date NOT NULL,
+  `Cus_ContactNum` int(15) NOT NULL,
+  `Cus_Email.` varchar(30) NOT NULL,
+  `Cus_Address` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `organizer_tbl`
---
-
-INSERT INTO `organizer_tbl` (`oid`, `ouser`, `ofname`, `olname`, `opass`, `ogender`, `oemail`, `ocontact`, `oaddress`) VALUES
-(1, 'Vincent23', 'Vincent Joram', 'Tibubos', '123', 'Male', 'greenchay22@gmail.com', '09158150262', 'pampanga');
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Table structure for table `event`
 --
 
---
--- Indexes for table `company_tbl`
---
-ALTER TABLE `company_tbl`
-  ADD PRIMARY KEY (`cid`);
+CREATE TABLE `event` (
+  `Event_Id` varchar(15) NOT NULL,
+  `Event_Start_Date` date NOT NULL,
+  `Event_End_Date` date NOT NULL,
+  `Number_of_Guest` int(5) NOT NULL,
+  `Calculated_Cost` int(20) NOT NULL,
+  `Potential_Cost` int(20) NOT NULL,
+  `Balance` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Indexes for table `organizer_tbl`
---
-ALTER TABLE `organizer_tbl`
-  ADD PRIMARY KEY (`oid`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Table structure for table `event_status`
 --
 
---
--- AUTO_INCREMENT for table `company_tbl`
---
-ALTER TABLE `company_tbl`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+CREATE TABLE `event_status` (
+  `Event_Type_Code` varchar(15) NOT NULL,
+  `Event_Type` char(30) NOT NULL,
+  `Event_Type_Desc` char(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- AUTO_INCREMENT for table `organizer_tbl`
+-- Table structure for table `organizer`
 --
-ALTER TABLE `organizer_tbl`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
+
+CREATE TABLE `organizer` (
+  `Org_ID` varchar(15) NOT NULL,
+  `Org_FName` char(30) NOT NULL,
+  `Org_LName` char(30) NOT NULL,
+  `Org_Birthdate` date NOT NULL,
+  `Org_ContactNum` int(15) NOT NULL,
+  `Org_Email` varchar(30) NOT NULL,
+  `Org_Address` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_method`
+--
+
+CREATE TABLE `payment_method` (
+  `Payment_Id` varchar(15) NOT NULL,
+  `Payment_Type` char(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
