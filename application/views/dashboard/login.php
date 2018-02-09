@@ -31,9 +31,9 @@
           <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('login_failed')."</p>"?>
          <?php endif;?>
 
-         <?php
-          if($this->session->flashdata('user_loggedin')): ?>
-          <?php echo "<p class='alert alert-success'>".$this->session->flashdata('user_loggedin')."</p>"?>
+        <?php 
+          if($this->session->flashdata('logged_out')): ?>
+          <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('logged_outs')."</p>"?>
          <?php endif;?>
     <div class="page login-page">
       <div class="container d-flex align-items-center">

@@ -5,6 +5,10 @@
 class Users extends CI_Controller {
     
         public function register(){
+
+            if($this->session->userdata('logged_in')){
+                redirect();
+            }
             //callback_ is use before the method specified for custom validation
             $this->form_validation->set_rules('rcname','Name','required|callback_check_cname_exists');
             $this->form_validation->set_rules('remail','Email','required|callback_check_remail_exists');
@@ -38,6 +42,10 @@ class Users extends CI_Controller {
         }
     //login
         public function login(){
+
+            if($this->session->userdata('logged_in')){
+                redirect();
+            }
             //callback_ is use before the method specified for custom validation
             $this->form_validation->set_rules('lemail','Email','required');
             $this->form_validation->set_rules('lpassword','Password','required');
@@ -49,9 +57,16 @@ class Users extends CI_Controller {
                 $epass=md5($this->input->post('lpassword'));
 
                 //login id
-                $cid=$this->user_model->login($lemail,$epass);
-            
-                if($cid){
+                $comdata=$this->user_model->login($lemail,$epass);
+                if($comdata['checker']){
+                    //c means company
+
+                    $userdata=array(
+                        'cid'=>$comdata['cid'],
+                        'cname'=>$comdata['cname'],
+                        'logged_in'=>true
+                    );
+                    $this->session->set_userdata($userdata);
                     $this->session->set_flashdata('user_loggedin','You are now logged in');
                     redirect('dashboard');
                 }
@@ -61,5 +76,16 @@ class Users extends CI_Controller {
                 }
             }
 
+        }
+        public function logout(){
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+            $this->session->unset_userdata('cid');
+            $this->session->unset_userdata('cname');
+            $this->session->unset_userdata('logged_in');
+            $this->session->set_flashdata('user_loggedout','You are now logged out');
+
+                    redirect();
         }
 }

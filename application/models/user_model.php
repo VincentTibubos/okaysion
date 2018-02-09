@@ -36,9 +36,16 @@ class User_model extends CI_Model{
      //   exit();
         $id=null;
         if($result->num_rows()>0){
-            return true;
+            $comdata=array(
+                'cid'=>$result->row(0)->cid,
+                'cname'=>$result->row(0)->cname,
+                'checker'=>true
+            );
+            return $comdata;
         }
-        return false;
-
+            $comdata=array(
+                'checker'=>false
+            );
+            return $comdata;
     }
 }
