@@ -35,7 +35,6 @@
           if($this->session->flashdata('logged_out')): ?>
           <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('logged_outs')."</p>"?>
          <?php endif;?>
-
     <div class="page login-page">
       <div class="container d-flex align-items-center">
         <div class="form-holder has-shadow">
