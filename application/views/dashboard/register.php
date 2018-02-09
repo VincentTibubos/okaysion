@@ -48,20 +48,20 @@
                   <?php echo validation_errors(); ?>
                   <form id="register-form" action="register" method="post">
                     <div class="form-group">
-                      <input id="register-username" type="text" name="rcname" required class="input-material">
+                      <input id="rcname" type="text" name="rcname" required class="input-material">
                       <label for="rcname" class="label-material">Company Name</label>
                     </div>
                     <div class="form-group">
-                      <input id="register-email" type="email" name="remail" required class="input-material">
+                      <input id="remail" type="email" name="remail" required class="input-material">
                       <label for="remail" class="label-material">Email Address      </label>
                     </div>
                     <div class="form-group">
                       <input id="rpass" type="password" name="rpassword" required class="input-material">
-                      <label for="register-passowrd" class="label-material">Password </label>
+                      <label for="rpass" class="label-material">Password </label>
                     </div>
                     <div class="form-group">
                       <input id="rcpass" type="password" name="rcpassword" required class="input-material">
-                      <label for="register-passowrd2" class="label-material">Confirm Password </label>
+                      <label for="rcpass" class="label-material">Confirm Password </label>
                     </div>
                     <div class="form-group terms-conditions">
                       <input id="license" type="checkbox" class="checkbox-template">
