@@ -58,12 +58,12 @@
 
                   <form id="login-form" action="login" method="post">
                     <div class="form-group">
-                      <input id="login-email" type="email" name="lemail" required class="input-material">
+                      <input id="lemail" type="email" name="lemail" required class="input-material">
                       <label for="lemail" class="label-material">Email Address      </label>
                     </div>
                     <div class="form-group">
                       <input id="lpass" type="password" name="lpassword" required class="input-material">
-                      <label for="login-passowrd" class="label-material">Password </label>
+                      <label for="lpass" class="label-material">Password </label>
                     </div>
                     <input id="loginr" type="submit" value="Login" class="btn btn-primary">
                   </form><small>Doesn't have an account? </small><a href="<?php echo base_url();?>register" class="signup">Register</a>
