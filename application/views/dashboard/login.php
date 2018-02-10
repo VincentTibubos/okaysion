@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/dashboard/css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon
@@ -35,23 +36,32 @@
           if($this->session->flashdata('logged_out')): ?>
           <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('logged_outs')."</p>"?>
          <?php endif;?>
-    <div class="page login-page">
+		 
+		 
+<!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <div class="container-fluid">
+      <div id="logo" class="pull-left">
+        <h1><a href="<?php echo base_url();?>">OKAYsion</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+      </div>
+
+     </div>
+  </header><!-- #header -->    
+  
+  <!-- LOG IN -->
+  <div class="login-page">
       <div class="container d-flex align-items-center">
-        <div class="form-holder has-shadow">
+        <div class="form-holder">
           <div class="row">
-            <!-- Logo & Information Panel-->
-            <div class="col-lg-6">
-              <div class="info d-flex align-items-center">
-                <div class="content">
-                  <div class="logo">
-                    <h1>OKAYsion</h1>
-                  </div>
-                  <p>A Multi-tenant system that will help you have your own website.</p>
-                </div>
-              </div>
-            </div>
+            
             <!-- Form Panel    -->
-            <div class="col-lg-6 bg-white">
+            <div class="col-lg-7 ">
+			</div>
+            <div class="col-lg-5 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
                   <?php echo validation_errors(); ?>
