@@ -3,13 +3,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>BizPage Bootstrap Template</title>
+  <title>OKAYsion</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="<?php echo base_url();?>assets/img/favicon.png" rel="icon">
+  <link href="<?php echo base_url();?>assets/img/.png" rel="icon">
   <link href="<?php echo base_url();?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -51,22 +51,13 @@
       </div>
 
       <nav id="nav-menu-container">
-        <ul class="nav-menu">
+         <ul class="nav-menu">
           <li class="menu-active"><a href="#intro">Home</a></li>
           <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li class="menu-has-children"><a href="">Drop Down</a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
-            </ul>
-          </li>
+      
+          <li><a href="#contact">Contact Us</a></li>
 
-          <li><a href="#contact">Contact</a></li>
+
           <?php if(!$this->session->userdata('logged_in')): ?>
             <li><a href="<?php echo base_url();?>register">Register</a></li>
             <li><a href="<?php echo base_url();?>login">SignIn</a></li>

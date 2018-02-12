@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootstrap Material Admin by Bootstrapious.com</title>
+    <title>OKAYsion</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
@@ -20,48 +20,57 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/dashboard/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="<?php echo base_url();?>assets/dashboard/img/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo base_url();?>assets/dashboard/img/">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
+  		 
+<!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <div class="container-fluid ">
+      <div id="logo" class="pull-left">
+        <h1><a href="<?php echo base_url();?>">OKAYsion</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+      </div>
+
+     </div>
+  </header><!-- #header -->    
+  
+  
     <div class="page login-page">
-      <div class="container d-flex align-items-center">
-        <div class="form-holder has-shadow">
+      <div class="container  d-flex align-items-center ">
+        <div class="form-holder">
           <div class="row">
-            <!-- Logo & Information Panel-->
-            <div class="col-lg-6">
-              <div class="info d-flex align-items-center">
-                <div class="content">
-                  <div class="logo">
-                    <h1>OKAYsion</h1>
-                  </div>
-                  <p>A Multi-tenant system that will help you have your own website.</p>
-                </div>
-              </div>
-            </div>
+            
             <!-- Form Panel    -->
-            <div class="col-lg-6 bg-white">
+			
+            <div class="col-lg-7">
+			</div>
+            <div class="col-lg-5 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
                   <?php echo validation_errors(); ?>
                   <form id="register-form" action="register" method="post">
                     <div class="form-group">
-                      <input id="register-username" type="text" name="rcname" required class="input-material">
+                      <input id="rcname" type="text" name="rcname" required class="input-material">
                       <label for="rcname" class="label-material">Company Name</label>
                     </div>
                     <div class="form-group">
-                      <input id="register-email" type="email" name="remail" required class="input-material">
+                      <input id="remail" type="email" name="remail" required class="input-material">
                       <label for="remail" class="label-material">Email Address      </label>
                     </div>
                     <div class="form-group">
                       <input id="rpass" type="password" name="rpassword" required class="input-material">
-                      <label for="register-passowrd" class="label-material">Password </label>
+                      <label for="rpass" class="label-material">Password </label>
                     </div>
                     <div class="form-group">
                       <input id="rcpass" type="password" name="rcpassword" required class="input-material">
-                      <label for="register-passowrd2" class="label-material">Confirm Password </label>
+                      <label for="rcpass" class="label-material">Confirm Password </label>
                     </div>
                     <div class="form-group terms-conditions">
                       <input id="license" type="checkbox" class="checkbox-template">
