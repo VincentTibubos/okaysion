@@ -42,7 +42,7 @@
 <!--==========================
     Header
   ============================-->
-  <header id="header">
+  <header id="header" style="z-index:1000">
     <div class="container-fluid">
       <div id="logo" class="pull-left">
         <h1><a href="<?php echo base_url();?>">OKAYsion</a></h1>
@@ -56,13 +56,13 @@
   <!-- LOG IN -->
   <div class="login-page">
       <div class="container d-flex align-items-center">
-        <div class="form-holder">
+        <div class="form-holder"  style="margin-top: 150px;">
           <div class="row">
             
             <!-- Form Panel    -->
-            <div class="col-lg-7 ">
+            <div class="col-md-6 ">
 			</div>
-            <div class="col-lg-5 bg-white">
+            <div class="col-md-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
                   <?php echo validation_errors(); ?>
@@ -77,7 +77,8 @@
                       <label for="lpass" class="label-material">Password </label>
                     </div>
                     <input id="loginr" type="submit" value="Login" class="btn btn-primary">
-                  </form><small>Doesn't have an account? </small><a href="<?php echo base_url();?>register" class="signup">Register</a>
+                  </form>
+                  <small>Doesn't have an account? </small><a href="<?php echo base_url();?>register" class="signup">Register</a>
                 </div>
               </div>
             </div>
@@ -89,6 +90,18 @@
           <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
         
     </div>
+
+
+
+  <!-- JavaScript Libraries -->
+  <script src="<?php echo base_url();?>assets/lib/jquery/jquery.min.js"></script>
+  <script src="<?php echo base_url();?>assets/lib/superfish/superfish.min.js"></script>
+  <script src="<?php echo base_url();?>assets/lib/wow/wow.min.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="<?php echo base_url();?>assets/js/main.js"></script>
+
+
     <!-- Javascript files-->
     <script src="<?php echo base_url();?>assets/lib/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url();?>assets/dashboard/vendor/popper.js/umd/popper.min.js"> </script>
@@ -98,5 +111,11 @@
     <script src="<?php echo base_url();?>assets/dashboard/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="<?php echo base_url();?>assets/dashboard/js/front.js"></script>
+
+
+
+
+
+
   </body>
 </html>
