@@ -70,7 +70,7 @@
           <div class="sidebar-header d-flex align-items-center">
             <div class="avatar"><img src="<?php echo base_url();?>/assets/dashboard/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
-              <h1 class="h4">Mark Stephen</h1>
+              <h1 class="h4"><?php echo $this->session->userdata('cname');?></h1>
               <p>Web Designer</p>
             </div>
           </div>
