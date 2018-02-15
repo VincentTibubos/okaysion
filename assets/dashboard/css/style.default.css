@@ -1870,19 +1870,18 @@ select option {
 #header {
   padding: 30px 0;
   height: 92px;
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   right: 0;
-  transition: all 0.5s;
-  z-index: 997;
+  z-index: 2;
 }
 
 #header.header-scrolled {
   background: rgba(0, 0, 0, 0.9);
   padding: 20px 0;
   height: 72px;
-  transition: all 0.5s;
+
 }
 
 #header #logo {
@@ -1940,7 +1939,6 @@ select option {
   background-color: rgba(0, 0, 0, 0.7);
   background: url(../img/bg3.jpg);
   background-size: cover;
-  
   /*filter: blur(3px*/
   z-index: 1;
   position: absolute;
@@ -1950,16 +1948,16 @@ select option {
 
 .login-page .container {
   min-height: 100vh;
-  z-index: 999;
+  z-index: 1;
   padding: 20px;
   position: relative;
 }
 
 .login-page .form-holder {
   width: 100%;
-  border-radius: 5px;
+  border-radius: none;
   overflow: hidden;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .login-page .form-holder .info, .login-page .form-holder .form {
@@ -2008,6 +2006,10 @@ select option {
 .login-page .form-holder .form a.forgot-pass, .login-page .form-holder .form a.signup {
   font-size: 0.9em;
   color: #85b4f2;
+}
+
+.login-page .form-holder .form a.forgot-pass:hover, .login-page .form-holder .form a.signup:hover {
+  color: #0380ef;
 }
 
 .login-page .form-holder .form small {
@@ -2771,8 +2773,7 @@ a {
 }
 
 a:focus, a:hover {
-  color: #3b25e6;
-  text-decoration: underline;
+  color: #0380ef;
 }
 
 h1,

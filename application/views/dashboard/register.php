@@ -44,14 +44,14 @@
   
     <div class="page login-page">
       <div class="container  d-flex align-items-center ">
-        <div class="form-holder">
+        <div class="form-holder"style="margin-top:50px;">
           <div class="row">
             
             <!-- Form Panel    -->
 			
-            <div class="col-lg-7">
+            <div class="col-md-7">
 			</div>
-            <div class="col-lg-5 bg-white">
+            <div class="col-md-5 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
                   <?php echo validation_errors(); ?>
