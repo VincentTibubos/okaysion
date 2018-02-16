@@ -16,6 +16,11 @@ class Users extends CI_Controller {
             $this->form_validation->set_rules('rcpassword','Confirm Password','matches[rpassword]');
            
             if($this->form_validation->run()===FALSE){
+               //print_r(form_error('rcname'));
+               // print_r(form_error('remail'));
+               // print_r(form_error('rpassword'));
+               // print_r(form_error('rcpassword'));
+               // exit();
                 $this->load->view('dashboard/register');
             }else{//encrypt password
                 $epass=md5($this->input->post('rpassword'));

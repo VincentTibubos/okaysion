@@ -63,6 +63,7 @@
             <li><a href="<?php echo base_url();?>login">SignIn</a></li>
           <?php endif;?>
           <?php if($this->session->userdata('logged_in')): ?>
+            <li><a href="<?php echo base_url();?>dashboard">Dashboard</a></li>
             <li><a href="<?php echo base_url();?>logout">Logout</a></li>
           <?php endif;?>
           <!--
