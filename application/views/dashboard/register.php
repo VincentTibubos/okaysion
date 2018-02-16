@@ -73,10 +73,10 @@
                       <label for="rcpass" class="label-material">Confirm Password </label>
                     </div>
                     <div class="form-group terms-conditions">
-                      <input id="license" type="checkbox" class="checkbox-template">
-                      <label for="license"><a href=''>Agree the terms and policy</a></label>
+                      <input id="license" type="checkbox" class="checkbox-template" onclick="checker()">
+                      <label for="license"><a data-toggle="modal" href="" data-target="#modalAgree">Agree the terms and policy</a></label>
                     </div>
-                    <input id="register" type="submit" value="Register" class="btn btn-primary">
+                    <input id="register" type="submit" value="Register" class="btn btn-primary" disabled="true">
                   </form><small>Already have an account? </small><a href="<?php echo base_url();?>login" class="signup">Log in</a>
                 </div>
               </div>
@@ -90,6 +90,57 @@
         </p>
       </div>
     </div>-->
+     <div class="modal fade" id="modalAgree" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">OKAYsion Terms of Service</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+                    <h3>1. Terms</h3>
+                    <p>By accessing the website at <a href="<?php echo base_url()?>">http://okaysion.com</a>, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.</p>
+                    <h3>2. Use License</h3>
+                    <ol type="a">
+                       <li>Permission is granted to temporarily download one copy of the materials (information or software) on okaysion's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+                       <ol type="i">
+                           <li>modify or copy the materials;</li>
+                           <li>use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
+                           <li>attempt to decompile or reverse engineer any software contained on okaysion's website;</li>
+                           <li>remove any copyright or other proprietary notations from the materials; or</li>
+                           <li>transfer the materials to another person or "mirror" the materials on any other server.</li>
+                       </ol>
+                        </li>
+                       <li>This license shall automatically terminate if you violate any of these restrictions and may be terminated by okaysion at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.</li>
+                    </ol>
+                    <h3>3. Disclaimer</h3>
+                    <ol type="a">
+                       <li>The materials on okaysion's website are provided on an 'as is' basis. okaysion makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</li>
+                       <li>Further, okaysion does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.</li>
+                    </ol>
+                    <h3>4. Limitations</h3>
+                    <p>In no event shall okaysion or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on okaysion's website, even if okaysion or a okaysion authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
+                    <h3>5. Accuracy of materials</h3>
+                    <p>The materials appearing on okaysion website could include technical, typographical, or photographic errors. okaysion does not warrant that any of the materials on its website are accurate, complete or current. okaysion may make changes to the materials contained on its website at any time without notice. However okaysion does not make any commitment to update the materials.</p>
+                    <h3>6. Links</h3>
+                    <p>okaysion has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by okaysion of the site. Use of any such linked website is at the user's own risk.</p>
+                    <h3>7. Modifications</h3>
+                    <p>okaysion may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
+                    <h3>8. Governing Law</h3>
+                    <p>These terms and conditions are governed by and construed in accordance with the laws of technological university of the philippines and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
+        </div>
+        <div class="modal-footer">
+
+          <input id="areg" onclick="checker2()" type="submit" value="Agree" class="btn  btn-primary" data-dismiss="modal" >
+          <input id="creg" type="submit" value="Cancel" class="btn  btn-danger" data-dismiss="modal">
+          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+      </div>
+      </div>
+    </div>
+  </div>
 	
     <!-- Javascript files-->
     <script src="<?php echo base_url();?>assets/lib/jquery/jquery.min.js"></script>
@@ -100,5 +151,20 @@
     <script src="<?php echo base_url();?>assets/dashboard/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="<?php echo base_url();?>assets/dashboard/js/front.js"></script>
+    <script>
+      function checker() {
+        if(document.getElementById("license").checked == true){
+          
+          document.getElementById("register").disabled = false;
+          }else{
+          
+          document.getElementById("register").disabled = true;
+          }
+      }
+      function checker2() {
+        document.getElementById("license").checked = true;
+          document.getElementById("register").disabled = false;
+      }
+    </script>
   </body>
 </html>
