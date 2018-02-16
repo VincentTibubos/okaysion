@@ -1,5 +1,5 @@
 <?php
-class Okaysion_controller extends CI_Controller {
+class Company extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('templates/header');

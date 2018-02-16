@@ -2,8 +2,7 @@
 	class Createweb extends CI_Controller{
 		public function directory_copy()
 	    {
-
-	
+	    /*
 	$src='http://localhost/ci';
 	$dst='http://localhost/ci2';
 	$this->recurse_copy($src,$dst);
