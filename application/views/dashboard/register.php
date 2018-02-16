@@ -45,37 +45,43 @@
     <div class="page login-page">
       <div class="container  d-flex align-items-center ">
         <div class="form-holder"style="margin-top:50px;">
+
           <div class="row">
             
             <!-- Form Panel    -->
 			
             <div class="col-md-7">
-			</div>
+			     </div>
             <div class="col-md-5 bg-white">
               <div class="form d-flex align-items-center">
-                <div class="content">
-                  <?php echo validation_errors(); ?>
-                  <form id="register-form" action="register" method="post">
+                <div class="content">     
+                 <form id="register-form" action="register" method="post">
                     <div class="form-group">
                       <input id="rcname" type="text" name="rcname" required class="input-material">
                       <label for="rcname" class="label-material">Company Name</label>
+                      <small class="help-block text-danger"><?php echo form_error('rcname');?></small>
                     </div>
                     <div class="form-group">
                       <input id="remail" type="email" name="remail" required class="input-material">
-                      <label for="remail" class="label-material">Email Address      </label>
+                      <label for="remail" class="label-material">Email Address</label>
+                      <small class="help-block text-danger"><?php echo form_error('remail');?></small>
                     </div>
                     <div class="form-group">
                       <input id="rpass" type="password" name="rpassword" required class="input-material">
                       <label for="rpass" class="label-material">Password </label>
+                      <small class="help-block text-danger"><?php echo form_error('rpassword');?></small>
                     </div>
                     <div class="form-group">
                       <input id="rcpass" type="password" name="rcpassword" required class="input-material">
                       <label for="rcpass" class="label-material">Confirm Password </label>
+                      <small class="help-block text-danger"><?php echo form_error('rcpassword');?></small>
                     </div>
                     <div class="form-group terms-conditions">
                       <input id="license" type="checkbox" class="checkbox-template" onclick="checker()">
                       <label for="license"><a data-toggle="modal" href="" data-target="#modalAgree">Agree the terms and policy</a></label>
                     </div>
+
+
                     <input id="register" type="submit" value="Register" class="btn btn-primary" disabled="true">
                   </form><small>Already have an account? </small><a href="<?php echo base_url();?>login" class="signup">Log in</a>
                 </div>

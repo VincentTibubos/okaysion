@@ -44,7 +44,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="<?php echo base_url();?>dashboard/index" class="navbar-brand">
+                <!-- Navbar Brand --><a href="<?php echo base_url();?>" class="navbar-brand">
                   <div class="brand-text brand-big"><span>OKAYsion</span></div>
                   <div class="brand-text brand-small"><strong><img src="<?php echo base_url();?>/assets/img/icon.png"></strong></div></a>
                
@@ -56,7 +56,7 @@
                 <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>
           
                 <!-- Logout    -->
-                <li class="nav-item"><a href="<?php echo base_url();?>" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="<?php echo base_url();?>logout" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
