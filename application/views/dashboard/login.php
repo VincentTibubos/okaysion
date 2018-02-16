@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/dashboard/css/style.default.css" id="theme-stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon
@@ -42,27 +41,26 @@
 <!--==========================
     Header
   ============================-->
-  <header id="header" style="z-index:1000">
+  <header id="header">
     <div class="container-fluid">
       <div id="logo" class="pull-left">
         <h1><a href="<?php echo base_url();?>">OKAYsion</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
-
      </div>
   </header><!-- #header -->    
   
   <!-- LOG IN -->
   <div class="login-page">
       <div class="container d-flex align-items-center">
-        <div class="form-holder"  style="margin-top: 150px;">
+        <div class="form-holder" style="margin-top:50px;">
           <div class="row">
-            
-            <!-- Form Panel    -->
-            <div class="col-md-6 ">
+          
+            <!-- Form Panel-->
+            <div class="col-lg-7">
 			</div>
-            <div class="col-md-6 bg-white">
+            <div class="col-lg-5 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
                   <?php echo validation_errors(); ?>
@@ -78,6 +76,7 @@
                     </div>
                     <input id="loginr" type="submit" value="Login" class="btn btn-primary">
                   </form>
+				  <br>
                   <small>Doesn't have an account? </small><a href="<?php echo base_url();?>register" class="signup">Register</a>
                 </div>
               </div>
