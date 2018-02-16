@@ -7,7 +7,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Hi Admin!</h2>
+              <h2 class="no-margin-bottom">Welcome Admin!</h2>
             </div>
             
           </header>
@@ -20,13 +20,13 @@
           if($this->session->flashdata('user_registered')): ?>
           <?php echo "<p class='alert alert-success'>".$this->session->flashdata('user_registered')."</p>"?>
          <?php endif;?>
+		 
           <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
             <div class="container-fluid">
               <div class="row bg-white has-shadow">
                
 			   <!-- Item -->
-		
                 <div class="col-xl-4 col-sm-9">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-violet"><i class="icon-user"></i></div>
@@ -38,6 +38,7 @@
                     <div class="number"><strong>25</strong></div>
                   </div>
                 </div>
+				
                 <!-- Item -->
                 <div class="col-xl-4 col-sm-6">
                   <div class="item d-flex align-items-center">
@@ -63,5 +64,7 @@
                     <div class="number"><strong>40</strong></div>
                   </div>
                 </div>
-              </section>
+              </section>          
+			  
+		
        

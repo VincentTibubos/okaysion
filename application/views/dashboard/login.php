@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/dashboard/css/style.default.css" id="theme-stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon
