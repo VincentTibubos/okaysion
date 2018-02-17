@@ -20,8 +20,10 @@ the services they offer.</p>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>   
+              <?php if(!$this->session->userdata('logged_in')): ?>
+                  <li><i class="ion-ios-arrow-right"></i> <a href="admin">Admin</a></li>
+              <?php endif;?>
             </ul>
             </ul>
           </div>

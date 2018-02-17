@@ -69,7 +69,8 @@ class Users extends CI_Controller {
                     $userdata=array(
                         'cid'=>$comdata['cid'],
                         'cname'=>$comdata['cname'],
-                        'logged_in'=>true
+                        'logged_in'=>true,
+                        'type'=>'Company'
                     );
                     $this->session->set_userdata($userdata);
                     $this->session->set_flashdata('user_loggedin','You are now logged in');
