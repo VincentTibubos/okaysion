@@ -24,6 +24,14 @@
 			}
 
 		}
+		public function company(){
+			$data['company']=$this->admin_model->viewcomp();
+		//	print_r($data);
+		//	exit();
+			$this->load->view('dashboard/templates/header');
+			$this->load->view('dashboard/users',$data);
+			$this->load->view('dashboard/templates/footer');
+		}
 		public function view($page='index'){
             if(!$this->session->userdata('logged_in')){
                 redirect('login');

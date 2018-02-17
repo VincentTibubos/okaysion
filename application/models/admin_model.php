@@ -25,4 +25,12 @@ class Admin_model extends CI_Model{
             );
             return $comdata;
     }
+    public function viewcomp($cname=FALSE){
+        if($cname===FALSE){
+            $query=$this->db->get('company_tbl');
+            return $query->result_array();
+        }
+            $query=$this->db->get_where('company_tbl', array('cname'=>$cname));
+            return $query->row_array();
+    }
 }

@@ -78,7 +78,14 @@
           <ul class="list-unstyled">
                     <li id="d_index"><a href="<?php echo base_url();?>dashboard/index"> <i class="icon-home"></i>Home </a></li>
                     <li id="d_messages"><a href="<?php echo base_url();?>dashboard/messages"> <i class="icon-mail"></i>Messages</a></li>
+
+          <?php if($this->session->userdata('type')!='Admin'): ?>
                     <li id="d_users"><a href="<?php echo base_url();?>dashboard/users"> <i class="icon-user"></i>Users</a></li>
+          <?php endif;?>
+          <?php if($this->session->userdata('type')=='Admin'): ?>
+                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/company"> <i class="icon-user"></i>Company</a></li>
+          <?php endif;?>
+
                     <li id="d_forms"><a href="<?php echo base_url();?>dashboard/forms"> <i class="icon-padnote"></i>Sample</a></li>
                     <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
                       <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
