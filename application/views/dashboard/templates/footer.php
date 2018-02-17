@@ -38,7 +38,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Do you realy want to logout?</p>
+          <p>Do you really want to logout?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal"  onclick="redirout();">Yes</button>

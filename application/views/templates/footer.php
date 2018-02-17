@@ -20,8 +20,10 @@ the services they offer.</p>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>   
+              <?php if(!$this->session->userdata('logged_in')): ?>
+                  <li><i class="ion-ios-arrow-right"></i> <a href="admin">Admin</a></li>
+              <?php endif;?>
             </ul>
             </ul>
           </div>
@@ -164,7 +166,7 @@ the services they offer.</p>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Do you realy want to logout?</p>
+          <p>Do you really want to logout?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal"  onclick="redirout();">Yes</button>
