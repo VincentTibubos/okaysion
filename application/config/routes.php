@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['copy'] = 'createweb/directory_copy';
 
 $route['createweb'] = 'createweb/index';
+$route['admin'] = 'admin/login';
 $route['login'] = 'users/login';
 $route['logout'] = 'users/logout';
 $route['register'] = 'users/register';
