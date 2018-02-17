@@ -4,7 +4,6 @@
  */
 class Admin extends CI_Controller {
         public function login(){
-
             if($this->session->userdata('logged_in')){
                 redirect();
             }
@@ -20,13 +19,14 @@ class Admin extends CI_Controller {
                 $epass=md5($this->input->post('apass'));
 
                 //login id
-                $comdata=$this->admin_model->login($auser,$epass);
-                if($comdata['checker']){
+                $admindata=$this->admin_model->login($auser,$epass);
+
+                if($admindata['checker']){
                     //c means company
 
                     $userdata=array(
-                        'cid'=>$comdata['aid'],
-                        'cname'=>$comdata['auser'],
+                        'cid'=>$admindata['aid'],
+                        'cname'=>$admindata['auser'],
                         'logged_in'=>true,
                         'type'=>'Admin'
                     );
