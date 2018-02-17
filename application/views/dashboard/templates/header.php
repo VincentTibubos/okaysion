@@ -56,7 +56,7 @@
                 <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>
           
                 <!-- Logout    -->
-                <li class="nav-item"><a href="<?php echo base_url();?>logout" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="" class="nav-link logout" data-toggle="modal" data-target="#logoutm">Logout<i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
