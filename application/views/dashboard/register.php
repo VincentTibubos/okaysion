@@ -56,7 +56,6 @@
               <div class="form d-flex align-items-center">
                 <div class="content">     
 
-                  <?php echo validation_errors(); ?>
                  <form id="register-form" action="register" method="post">
                     <div class="form-group">
                       <input id="rcname" type="text" name="cname" required class="input-material">

@@ -12,7 +12,7 @@ class Okaysion_controller extends CI_Controller {
 		}
 		else if($this->user_model->check_cname_exists($page)){
 			$data['title']=$page;
-			$this->user_model->view('company/company',$data);
+			$this->company_model->view('company/company',$data);
 		}
 		else{
 			show_404();

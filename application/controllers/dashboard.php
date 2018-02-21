@@ -24,10 +24,14 @@
 			}
 
 		}
-		public function company($cid=FALSE){
-			$data['cdata']=FALSE;
-			if($cid!==FALSE){
-				$data['cdata']=$this->company_model->viewcomp($cid);
+		public function company(){
+			$data['cdata']=array(
+				'cid'=>'',
+				'cname'=>'',
+				'cemail'=>''
+		);
+			if(!empty($_POST)){
+				$data['cdata']=$this->company_model->viewcomp($this->input->post('cid'));
 			}
 			$data['company']=$this->company_model->viewcomp();
 		//	print_r($data);

@@ -54,6 +54,8 @@
                     <div class="card-body">
                       <p>Update Company</p>
                         <form method="post" action="" id="formcom">
+                          
+                  <?php echo validation_errors(); ?>
                           <div class="form-group">
                             <label class="form-control-label">Email</label>
                             <input type="text" value="<?php echo $cdata['cemail']; ?>" name="cemail" class="form-control">
@@ -66,7 +68,7 @@
                           <div class="form-group"> 
 
                               <input type="submit" value="Add" class="btn btn-success" onclick="add();">
-                            <?php if($cdata!==FALSE):?>      
+                            <?php if($cdata['cid']!==''): ?>      
                               <input type="submit" value="Update" class="btn btn-success"  onclick="update();">
                             <?php endif;?>
                           </div>
@@ -106,18 +108,18 @@
                               <td>".$com['cemail']."</td>
                               <td>".$com['caddress']."</td>
                               <td>
-                              <div class='row'>
-                                <div class='col-xs-6'>
-                                  <a class='btn btn-success btn-block' href='".base_url()."dashboard/company/".$com['cid']."'>Edit</a>
-                                </div>
-                                <div class='col-xs-6'>
+                              <div class='btn-group'>
+                                  <form action='".base_url()."dashboard/company' method='post'>
+                                    <input type='hidden' value='".$com['cid']."' name='cid'>
+                                    <input type='hidden' value='dashboard/company' name='comp'>
+                                    <input type='submit' value='Edit' class='btn btn-success'>
+                                  </form>
                                   <form action='".base_url()."company/delete' method='post'>
                                     <input type='hidden' value='".$com['cid']."' name='cid'>
                                     <input type='hidden' value='dashboard/company' name='comp'>
                                     <input type='submit' value='Delete' class='btn btn-danger'>
                                   </form>
                                 </div>
-                              </div>
                               </td>
                             </tr>";
                             }?>

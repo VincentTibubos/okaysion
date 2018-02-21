@@ -33,8 +33,7 @@ class Company extends CI_Controller {
                // print_r(form_error('rpassword'));
                // print_r(form_error('rcpassword'));
                // exit();
-
-                $this->load->view('dashboard/company');
+                redirect('dashboard/company');
             }else{//encrypt password
 
                 $epass=md5('12345');
