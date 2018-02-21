@@ -7,14 +7,29 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Users</h2>
+              <h2 class="no-margin-bottom">
+                <?php if($this->session->userdata('type')=='Admin'): ?>
+                  Company      
+                <?php endif; ?>
+                <?php if($this->session->userdata('type')=='Company'): ?>
+                  Users      
+                <?php endif; ?>
+              </h2>
             </div>
           </header>
           <!-- Breadcrumb-->
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="<?php echo base_url();?>dashboard/index">Home</a></li>
-              <li class="breadcrumb-item active">Users         </li>
+
+              <li class="breadcrumb-item active">
+                <?php if($this->session->userdata('type')=='Admin'): ?>
+                  Company      
+                <?php endif; ?>
+                <?php if($this->session->userdata('type')=='Company'): ?>
+                  Users      
+                <?php endif; ?>
+              </li>
             </ul>
           </div>
 
@@ -24,7 +39,42 @@
           <section class="tables">   
             <div class="container-fluid">
               <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="card-close">
+                      <div class="dropdown">
+                        <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                      </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+
+                      <h3 class="h4">Company</h3>
+                    </div>
+                    <div class="card-body">
+                      <p>Update Company</p>
+                        <form method="post" action="" id="formcom">
+                          <div class="form-group">
+                            <label class="form-control-label">Email</label>
+                            <input type="text" value="<?php echo $cdata['cemail']; ?>" name="cemail" class="form-control">
+                          </div>
+                          <div class="form-group">       
+                            <label class="form-control-label">Company Name</label>
+                            <input type="text" value="<?php echo $cdata['cname'];?>" name="cname" class="form-control">
+                          </div>
+                          <input type="hidden" name="cid" value="<?php echo $cdata['cid'];?>">
+                          <div class="form-group"> 
+
+                              <input type="submit" value="Add" class="btn btn-success" onclick="add();">
+                            <?php if($cdata!==FALSE):?>      
+                              <input type="submit" value="Update" class="btn btn-success"  onclick="update();">
+                            <?php endif;?>
+                          </div>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-8">
                   <div class="card">
                     <div class="card-close">
                       <div class="dropdown">
@@ -44,6 +94,7 @@
                               <th>Company</th>
                               <th>Email</th>
                               <th>Address</th>
+                              <th>Modify Company</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -54,6 +105,20 @@
                               <td>".$com['cname']."</td>
                               <td>".$com['cemail']."</td>
                               <td>".$com['caddress']."</td>
+                              <td>
+                              <div class='row'>
+                                <div class='col-xs-6'>
+                                  <a class='btn btn-success btn-block' href='".base_url()."dashboard/company/".$com['cid']."'>Edit</a>
+                                </div>
+                                <div class='col-xs-6'>
+                                  <form action='".base_url()."company/delete' method='post'>
+                                    <input type='hidden' value='".$com['cid']."' name='cid'>
+                                    <input type='hidden' value='dashboard/company' name='comp'>
+                                    <input type='submit' value='Delete' class='btn btn-danger'>
+                                  </form>
+                                </div>
+                              </div>
+                              </td>
                             </tr>";
                             }?>
                           </tbody>
@@ -66,3 +131,13 @@
             </div>
           </section>
           <?php endif;?>
+
+<script>
+  function add(){
+      document.getElementById('formcom').action="<?php echo base_url();?>company/add";
+    }
+  function update(){
+      
+      document.getElementById('formcom').action="<?php echo base_url();?>company/update";
+    }
+</script>

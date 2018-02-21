@@ -48,6 +48,7 @@ class Admin extends CI_Controller {
             $this->session->unset_userdata('cid');
             $this->session->unset_userdata('cname');
             $this->session->unset_userdata('logged_in');
+            $this->session->unset_userdata('type');
             $this->session->set_flashdata('user_loggedout','You are now logged out');
 
                     redirect();

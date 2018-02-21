@@ -24,8 +24,12 @@
 			}
 
 		}
-		public function company(){
-			$data['company']=$this->admin_model->viewcomp();
+		public function company($cid=FALSE){
+			$data['cdata']=FALSE;
+			if($cid!==FALSE){
+				$data['cdata']=$this->company_model->viewcomp($cid);
+			}
+			$data['company']=$this->company_model->viewcomp();
 		//	print_r($data);
 		//	exit();
 			$this->load->view('dashboard/templates/header');
