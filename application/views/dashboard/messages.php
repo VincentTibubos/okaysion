@@ -14,7 +14,7 @@
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="<?php echo base_url();?>dashboard/index">Home</a></li>
-              <li class="breadcrumb-item active">Messages            </li>
+              <li class="breadcrumb-item active">Messages</li>
             </ul>
           </div>
           
