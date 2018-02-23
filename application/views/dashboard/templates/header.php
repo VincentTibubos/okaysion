@@ -25,8 +25,29 @@
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-
+<style type="text/css">
+  .calendar {
+    font-size: 20px;
+  }
+  table.calendar{
+    margin: auto;
+    border-collapse: collapse;
+  }
+  .calendar .days td{
+    width: 80px; height: 80px; padding: 4px;
+    vertical-align: top; background-color: #DEF;
+    border: 1px solid #dee2e6;
+  }
+  .calendar .days td:hover{
+    background-color: #fff; 
+  }
+  .calendar .highlight{
+    font-weight: bold;
+    color: #00f;  
+  }
+</style>
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
+    <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>
   </head>
   <body>
     <div class="page">
@@ -86,7 +107,14 @@
                     <li id="d_users"><a href="<?php echo base_url();?>dashboard/company"> <i class="icon-user"></i>Company</a></li>
           <?php endif;?>
 
+                <?php if($this->session->userdata('type')=='Admin'): ?>
+                  
                     <li id="d_forms"><a href="<?php echo base_url();?>dashboard/forms"> <i class="icon-padnote"></i>Sample</a></li>
+                <?php endif; ?>
+                <?php if($this->session->userdata('type')=='Company'): ?>
+                  
+                    <li id="d_forms"><a href="<?php echo base_url();?>dashboard/calendar"> <i class="icon-padnote"></i>Calendar</a></li>   
+                <?php endif; ?>
                     <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
                       <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                         <li><a href="#">Page</a></li>

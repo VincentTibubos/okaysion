@@ -48,4 +48,42 @@
 			$this->load->view('dashboard/'.$page);
 			$this->load->view('dashboard/templates/footer');
 		}
+		public function calendar($year=null,$month=null){
+			/*$conf=array(
+				'start_day'=>'monday',
+				'show_next_prev'=>true,
+				'next_prev_url'=>base_url().'dashboard/calendar'
+			);
+			$this->load->library('calendar',$conf);
+			echo $this->calendar->generate($year,$month);
+			exit();*/
+			if(!$year){
+				$year=date('Y');
+			}
+			if(!$month){
+				$month=date('m');
+			}
+
+			if($this->input->is_ajax_request()){
+				$day= $this->input->post('day');
+				$this->calendar_model->addsched("$year-$month-$day",
+				$this->input->post('details'));
+
+			}/*
+			if($day= $this->input->post('day')){
+				echo $this->input->post('day');
+				exit();
+				$this->calendar_model->addsched("$year-$month-$day",
+				$this->input->post('details'));
+			}*/
+
+			$data['calendar']=$this->calendar_model->generate($year,$month);
+			if(!$this->input->is_ajax_request()){				
+					$this->load->view('dashboard/templates/header');
+					$this->load->view('dashboard/forms',$data);
+					$this->load->view('dashboard/templates/footer');
+
+			}
+
+		}
 	}

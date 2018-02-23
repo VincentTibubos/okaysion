@@ -51,8 +51,8 @@
   
 
     <!-- Javascript files-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
+    <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/jquery.cookie/jquery.cookie.js"> </script>
@@ -61,10 +61,45 @@
     <!-- Main File-->
     <script src="<?php echo base_url();?>/assets/dashboard/js/front.js"></script>
 
+
     <script>
       function redirout(){
               window.location="<?php echo base_url()?>logout";
       }
     </script>
+    <script>
+      $(document).ready(function(){
+        $('.calendar .day').click(function(){
+          day_num = $(this).find('.day_num').html();
+          if(day_num!=null){
+            daydet=prompt('Enter details in day '+day_num,$(this).find('.content').html());
+            if(daydet!=null){
+                     alert(daydet+day_num+" "+window.location);
+              $.ajax({
+                 url: window.location,
+                 type: "POST",
+                 data: {
+                  day: day_num,
+                  details: daydet
+                 },
+                 success: reloadtable,//function(data){
+                   //location.reload();
+                    //alert('request success'+data);
+                 //},
+                  error: function(xhr, textStatus, errorThrown){
+                     alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                  }
+              });
+            }
+          }
+        });
+        function reloadtable(data){
+          alert(data);
+          location.reload();
+          $('#usercalendar').reload;
+        }
+      });
+    </script>
+
   </body>
 </html>

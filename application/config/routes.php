@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['dashboard/company'] = 'dashboard/company';
+$route['dashboard/calendar'] = 'dashboard/calendar';
 $route['copy'] = 'createweb/directory_copy';
 
 $route['createweb'] = 'createweb/index';
