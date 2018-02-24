@@ -34,6 +34,14 @@
           <!-- Page Footer-->
 
                 <?php if($this->session->userdata('type')=='Company'): ?>
+                  <div class="dropdown">
+                    <select class="form-control" name="customer">
+                      <?php foreach($customer as $cus){
+                        echo "<option value='".$cus['cuid']."'>".$cus['cuname']."</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
           <section class="tables">   
             <div class="container-fluid">
               <div class="row">

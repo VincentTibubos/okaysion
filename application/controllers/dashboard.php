@@ -73,6 +73,8 @@
 			$this->load->library('calendar',$conf);
 			echo $this->calendar->generate($year,$month);
 			exit();*/
+			
+			$data['customer']=$this->customer_model->viewcus();
 			if(!$year){
 				$year=date('Y');
 			}

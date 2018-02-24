@@ -100,8 +100,11 @@
                     <li id="d_index"><a href="<?php echo base_url();?>dashboard/index"> <i class="icon-home"></i>Home </a></li>
                     <li id="d_messages"><a href="<?php echo base_url();?>dashboard/messages"> <i class="icon-mail"></i>Messages</a></li>
 
-          <?php if($this->session->userdata('type')!='Admin'): ?>
+          <?php if($this->session->userdata('type')=='Company'): ?>
                     <li id="d_users"><a href="<?php echo base_url();?>dashboard/customer"> <i class="icon-user"></i>Customers</a></li>
+          <?php endif;?>
+          <?php if($this->session->userdata('type')=='Company'): ?>
+                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/service"> <i class="icon-user"></i>Services</a></li>
           <?php endif;?>
           <?php if($this->session->userdata('type')=='Admin'): ?>
                     <li id="d_users"><a href="<?php echo base_url();?>dashboard/company"> <i class="icon-user"></i>Companies</a></li>

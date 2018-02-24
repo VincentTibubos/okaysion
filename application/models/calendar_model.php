@@ -59,22 +59,22 @@ class Calendar_model extends CI_Model{
 
     }
     public function get_calendar($year,$month){
-        $query=$this->db->select('id,date,details')->from('schedule')->like('date',"$year-$month",'after')->get();
+        $query=$this->db->select('eid,edate,edetails')->from('event_tbl')->like('edate',"$year-$month",'after')->get();
         $caledata=array();
         foreach($query->result() as $row) {
-            if(substr($row->date,8,1)==0){
-                if(empty($caledata[substr($row->date,9,1)])){
-                    $caledata[substr($row->date,9,1)]='<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->id.'</div><div class="maincontent">'.$row->details.'</div></div>';
+            if(substr($row->edate,8,1)==0){
+                if(empty($caledata[substr($row->edate,9,1)])){
+                    $caledata[substr($row->edate,9,1)]='<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.'</div></div>';
                 }
                 else
-                    $caledata[substr($row->date,9,1)]=$caledata[substr($row->date,9,1)].'<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->id.'</div><div class="maincontent">'.$row->details.'</div></div>';
+                    $caledata[substr($row->edate,9,1)]=$caledata[substr($row->edate,9,1)].'<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.'</div></div>';
             }
             else{
-                if(empty($caledata[substr($row->date,8,2)])){
-                    $caledata[substr($row->date,8,2)]='<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->id.'</div><div class="maincontent">'.$row->details.'</div></div>';
+                if(empty($caledata[substr($row->edate,8,2)])){
+                    $caledata[substr($row->edate,8,2)]='<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.'</div></div>';
                 }
                 else
-                    $caledata[substr($row->date,8,2)]=$caledata[substr($row->date,8,2)].'<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->id.'</div><div class="maincontent">'.$row->details.'</div></div>';
+                    $caledata[substr($row->edate,8,2)]=$caledata[substr($row->edate,8,2)].'<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.'</div></div>';
             }
         }
         return $caledata;
@@ -86,20 +86,20 @@ class Calendar_model extends CI_Model{
             return $this->calendar->generate($year,$month,$caledata);
            // exit();
     }
-    public function addsched($date,$details){/*
+    public function addsched($edate,$edetails){/*
         if($this->db->select('date')->from('calendar')->where('date',$date)->count_all_results()){
-            $this->db->where('date',$date)->update('calendar',array('date'=>$date,'details'=>$details));
+            $this->db->where('date',$date)->update('calendar',array('date'=>$date,'edetails'=>$edetails));
         }
         else{
 
-            $this->db->insert('schedule',array(
+            $this->db->insert('event_tbl_tbl',array(
                 'date'=>$date,
-                'details'=>$details
+                'edetails'=>$edetails
             ));
 
-        }*/ $this->db->insert('schedule',array(
-                'date'=>$date,
-                'details'=>$details
+        }*/ $this->db->insert('event_tbl',array(
+                'edate'=>$edate,
+                'edetails'=>$edetails
             ));
 
     }

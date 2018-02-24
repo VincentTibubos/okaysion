@@ -120,8 +120,8 @@
         function reloadtable(data){
           //alert(data);
           //$('#usercalendar').html(data); 
-       //location.reload();
-         $('#usercalendar').html(data);
+       location.reload();
+        // $('#usercalendar').html(data);
 
          //return true;
         }

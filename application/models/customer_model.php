@@ -16,10 +16,13 @@ class Customer_model extends CI_Model{
     }
     public function viewcus($cuid=FALSE){
         if($cuid===FALSE){
-            $query=$this->db->get('customer_tbl');
+            $query = $this->db->get_where('customer_tbl',array('cid'=>$this->session->userdata('cid')));
+           // print_r($query->result_array());
+            //exit();
             return $query->result_array();
         }
-        $query = $this->db->get_where('customer_tbl',array('cuid'=>$cuid));
+
+        $query = $this->db->get_where('customer_tbl',array('cuid'=>$cuid,'cuid'=>$cuid));
         return $query->row_array();
     }
     public function delete($cuid){
@@ -29,6 +32,7 @@ class Customer_model extends CI_Model{
     }
     public function add(){
         $data =array(
+            'cid' => $this->session->userdata('cid'),
             'cuname' => $this->input->post('cuname'),
             'cuemail' => $this->input->post('cuemail')
         );
