@@ -7,11 +7,12 @@ class Calendar_model extends CI_Model{
             $this->conf=array(
                 'start_day'=>'monday',
                 'show_next_prev'=>true,
-                'next_prev_url'=>base_url().'dashboard/calendar'
+                'next_prev_url'=>base_url().'dashboard/calendar',
+                'show_other_days'=>true
             );
             $this->conf['template'] = '
 
-        {table_open}<table border="0" cellpadding="0" cellspacing="0" id="usercalendar" class="calendar table">{/table_open}
+        {table_open}<table border="0" cellpadding="0" cellspacing="0" id="usercalendar" class="calendar table table-condensed ">{/table_open}
 
         {heading_row_start}<tr>{/heading_row_start}
 
@@ -31,12 +32,10 @@ class Calendar_model extends CI_Model{
         {cal_cell_start_other}<td class="other-month">{/cal_cell_start_other}
 
         {cal_cell_content}
-            <div class="day_num">{day}</div>
-            <div class="content"><small>{content}</small></div>
+            <div class="day_num">{day}</div>{content}
         {/cal_cell_content}
         {cal_cell_content_today}
-            <div class="day_num highlight">{day}</div>
-            <div class="content"><small>{content}</small></div>
+            <div class="day_num highlight">{day}</div>{content}
         {/cal_cell_content_today}
 
         {cal_cell_no_content}
@@ -56,14 +55,27 @@ class Calendar_model extends CI_Model{
         {cal_row_end}</tr>{/cal_row_end}
 
         {table_close}</table>{/table_close}
-';
+';// <div class="content"><small>{content}</small></div>
 
     }
     public function get_calendar($year,$month){
-        $query=$this->db->select('date,details')->from('schedule')->like('date',"$year-$month",'after')->get();
+        $query=$this->db->select('id,date,details')->from('schedule')->like('date',"$year-$month",'after')->get();
         $caledata=array();
         foreach($query->result() as $row) {
-            $caledata[substr($row->date,8,2)]=$row->details;
+            if(substr($row->date,8,1)==0){
+                if(empty($caledata[substr($row->date,9,1)])){
+                    $caledata[substr($row->date,9,1)]='<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->id.'</div><div class="maincontent">'.$row->details.'</div></div>';
+                }
+                else
+                    $caledata[substr($row->date,9,1)]=$caledata[substr($row->date,9,1)].'<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->id.'</div><div class="maincontent">'.$row->details.'</div></div>';
+            }
+            else{
+                if(empty($caledata[substr($row->date,8,2)])){
+                    $caledata[substr($row->date,8,2)]='<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->id.'</div><div class="maincontent">'.$row->details.'</div></div>';
+                }
+                else
+                    $caledata[substr($row->date,8,2)]=$caledata[substr($row->date,8,2)].'<div class="content btn-sm btn-secondary"><div class="id_num" hidden>'.$row->id.'</div><div class="maincontent">'.$row->details.'</div></div>';
+            }
         }
         return $caledata;
 
@@ -74,10 +86,21 @@ class Calendar_model extends CI_Model{
             return $this->calendar->generate($year,$month,$caledata);
            // exit();
     }
-    public function addsched($date,$details){
-        $this->db->insert('schedule',array(
-            'date'=>$date,
-            'details'=>$details
-        ));
+    public function addsched($date,$details){/*
+        if($this->db->select('date')->from('calendar')->where('date',$date)->count_all_results()){
+            $this->db->where('date',$date)->update('calendar',array('date'=>$date,'details'=>$details));
+        }
+        else{
+
+            $this->db->insert('schedule',array(
+                'date'=>$date,
+                'details'=>$details
+            ));
+
+        }*/ $this->db->insert('schedule',array(
+                'date'=>$date,
+                'details'=>$details
+            ));
+
     }
 }

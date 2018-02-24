@@ -101,10 +101,10 @@
                     <li id="d_messages"><a href="<?php echo base_url();?>dashboard/messages"> <i class="icon-mail"></i>Messages</a></li>
 
           <?php if($this->session->userdata('type')!='Admin'): ?>
-                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/users"> <i class="icon-user"></i>Users</a></li>
+                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/customer"> <i class="icon-user"></i>Customers</a></li>
           <?php endif;?>
           <?php if($this->session->userdata('type')=='Admin'): ?>
-                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/company"> <i class="icon-user"></i>Company</a></li>
+                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/company"> <i class="icon-user"></i>Companies</a></li>
           <?php endif;?>
 
                 <?php if($this->session->userdata('type')=='Admin'): ?>

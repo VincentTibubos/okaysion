@@ -48,13 +48,11 @@
                     <div class="card-header d-flex align-items-center">
                       <h3 class="h4">Companies</h3>
                     </div>
-                    <div class="card-body">
-                      <div class="table-responsive">         
+                    <div class="card-body table-responsive" id="divcalendar">         
 
                         
                       <?php echo $calendar;?>
                       
-                      </div>
                     </div>
                   </div>
                 </div>

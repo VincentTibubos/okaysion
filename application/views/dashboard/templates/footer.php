@@ -72,31 +72,62 @@
         $('.calendar .day').click(function(){
           day_num = $(this).find('.day_num').html();
           if(day_num!=null){
-            daydet=prompt('Enter details in day '+day_num,$(this).find('.content').html());
+            daydet=prompt('Enter details in day '+day_num,$(this).find('.content .maincontent').html());
             if(daydet!=null){
-                     alert(daydet+day_num+" "+window.location);
+                       //alert(daydet+day_num+" "+window.location);
               $.ajax({
-                 url: window.location,
-                 type: "POST",
-                 data: {
-                  day: day_num,
-                  details: daydet
-                 },
-                 success: reloadtable,//function(data){
-                   //location.reload();
-                    //alert('request success'+data);
-                 //},
-                  error: function(xhr, textStatus, errorThrown){
-                     alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
-                  }
+                url: window.location,
+                type: "POST",
+                data: {
+                    day: day_num,
+                    details: daydet
+                },
+                success: reloadtable,//function(data){
+                     //location.reload();
+                      //alert('request success'+data);
+                   //},
+                error: function(xhr, textStatus, errorThrown){
+                       alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                }
               });
             }
           }
         });
+        /*$('.calendar .day .content').click(function(){
+          day_num = selectdaynum();
+          if(day_num!=null){
+            daydet=prompt('Enter details in day '+day_num,$(this).find('.maincontent').html());
+            if(daydet!=null){
+                       //alert(daydet+day_num+" "+window.location);
+              $.ajax({
+                url: window.location,
+                type: "POST",
+                data: {
+                    day: day_num,
+                    details: daydet
+                },
+                success: reloadtable,//function(data){
+                     //location.reload();
+                      //alert('request success'+data);
+                   //},
+                error: function(xhr, textStatus, errorThrown){
+                       alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                }
+              });
+            }
+          }
+        });*/
         function reloadtable(data){
-          alert(data);
-          location.reload();
-          $('#usercalendar').reload;
+          //alert(data);
+          //$('#usercalendar').html(data); 
+       //location.reload();
+         $('#usercalendar').html(data);
+
+         //return true;
+        }
+
+        function selectdaynum(){
+          return $(this).find('.calendar . day .day_num').html();
         }
       });
     </script>

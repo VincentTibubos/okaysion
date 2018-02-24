@@ -29,11 +29,27 @@
 				'cid'=>'',
 				'cname'=>'',
 				'cemail'=>''
-		);
+			);
 			if(!empty($_POST)){
-				$data['cdata']=$this->company_model->viewcomp($this->input->post('cid'));
+				$data['cdata']=$this->company_model->viewcus($this->input->post('cid'));
 			}
-			$data['company']=$this->company_model->viewcomp();
+			$data['company']=$this->company_model->viewcus();
+		//	print_r($data);
+		//	exit();
+			$this->load->view('dashboard/templates/header');
+			$this->load->view('dashboard/users',$data);
+			$this->load->view('dashboard/templates/footer');
+		}
+		public function customer(){
+			$data['cudata']=array(
+				'cuid'=>'',
+				'cuname'=>'',
+				'cuemail'=>''
+			);
+			if(!empty($_POST)){
+				$data['cudata']=$this->customer_model->viewcus($this->input->post('cuid'));
+			}
+			$data['customer']=$this->customer_model->viewcus();
 		//	print_r($data);
 		//	exit();
 			$this->load->view('dashboard/templates/header');
@@ -78,12 +94,13 @@
 			}*/
 
 			$data['calendar']=$this->calendar_model->generate($year,$month);
-			if(!$this->input->is_ajax_request()){				
+			if(!$this->input->is_ajax_request()){		
 					$this->load->view('dashboard/templates/header');
 					$this->load->view('dashboard/forms',$data);
 					$this->load->view('dashboard/templates/footer');
 
-			}
+			}else
+					echo $data['calendar'];		
 
 		}
 	}
