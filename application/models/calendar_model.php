@@ -17,14 +17,14 @@ class Calendar_model extends CI_Model{
         {heading_row_start}<tr>{/heading_row_start}
 
         {heading_previous_cell}
-        <div class="btn btn-group"><a class="btn btn-default" id="prevdate" href="{previous_url}">&lt;&lt;</a>{/heading_previous_cell}
+        <div class="btn btn-group"><a class="btn btn-primary" id="prevdate" href="{previous_url}">&lt;&lt;</a>{/heading_previous_cell}
         
         {heading_title_cell}
             <div class="btn">{heading}</div>
         {/heading_title_cell}
         
-        {heading_next_cell}<a class="btn btn-default" id="nextdate" href="{next_url}">&gt;&gt;</a>
-        </div><div class="btn btn-group"><a data-toggle="modal" data-target="#addEvent" class="btn btn-primary"><i class="fa fa-plus"></i> Add Event</a></div>{/heading_next_cell}
+        {heading_next_cell}<a class="btn btn-primary" id="nextdate" href="{next_url}">&gt;&gt;</a>
+        </div><div class="btn btn-group"><a  id="addeve" data-toggle="modal" data-target="#addEvent" class="btn btn-primary"><i class="fa fa-plus"></i> Add Event</a></div>{/heading_next_cell}
         
         {heading_row_end}</tr>{/heading_row_end}
 
@@ -35,7 +35,7 @@ class Calendar_model extends CI_Model{
         {cal_row_start}<tr class="days">{/cal_row_start}
         {cal_cell_start}<td class="day">{/cal_cell_start}
         {cal_cell_start_today}<td class="day">{/cal_cell_start_today}
-        {cal_cell_start_other}<td class="other-month" style="color: white">{/cal_cell_start_other}
+        {cal_cell_start_other}<td class="other-month">{/cal_cell_start_other}
 
         {cal_cell_content}
             <div class="day_num">{day}</div>{content}
@@ -65,22 +65,22 @@ class Calendar_model extends CI_Model{
 
     }
     public function get_calendar($year,$month){
-        $query=$this->db->select('eid,edate,edetails')->from('event_tbl')->where('cid',$this->session->userdata('cid'))->where('estatus',1)->like('edate',"$year-$month",'after')->get();
+        $query=$this->db->select('eid,edate,edetails,etime')->from('event_tbl')->where('cid',$this->session->userdata('cid'))->where('estatus',1)->like('edate',"$year-$month",'after')->get();
         $caledata=array();
         foreach($query->result() as $row) {
             if(substr($row->edate,8,1)==0){
                 if(empty($caledata[substr($row->edate,9,1)])){
-                    $caledata[substr($row->edate,9,1)]='<a data-toggle="modal" data-target="#addEvent" class="content btn-sm btn-secondary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.'</div></a>';
+                    $caledata[substr($row->edate,9,1)]='<a data-toggle="modal" data-target="#editEvent" class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
                 }//<a data-toggle="modal" data-target="#addEvent" class="btn btn-primary">
                 else
-                    $caledata[substr($row->edate,9,1)]=$caledata[substr($row->edate,9,1)].'<a data-toggle="modal" data-target="#addEvent"  class="content btn-sm btn-secondary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.'</div></a>';
+                    $caledata[substr($row->edate,9,1)]=$caledata[substr($row->edate,9,1)].'<a data-toggle="modal" data-target="#editEvent"  class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
             }
             else{
                 if(empty($caledata[substr($row->edate,8,2)])){
-                    $caledata[substr($row->edate,8,2)]='<a data-toggle="modal" data-target="#addEvent"  class="content btn-sm btn-secondary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.'</div></a>';
+                    $caledata[substr($row->edate,8,2)]='<a data-toggle="modal" data-target="#editEvent"  class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
                 }
                 else
-                    $caledata[substr($row->edate,8,2)]=$caledata[substr($row->edate,8,2)].'<a data-toggle="modal" data-target="#addEvent" class="content btn-sm btn-secondary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.'</div></a>';
+                    $caledata[substr($row->edate,8,2)]=$caledata[substr($row->edate,8,2)].'<a data-toggle="modal" data-target="#editEvent" class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
             }
         }
         return $caledata;

@@ -44,12 +44,24 @@
     vertical-align: top; background-color: #DEF;
     border: 1px solid #dee2e6;
   }
-  .calendar .days td:hover{
+  .calendar .days td :hover{
     background-color: #fff; 
   }
   .calendar .highlight{
     font-weight: bold;
     color: #00f;  
+  }
+  .content {
+    font-size: 10px;
+    padding: 0px 5px;
+  }
+  .maincontent{
+
+    color: white;
+  }
+  .calendar .days > .other-month{
+    background-color: #EEF;
+    color: gray;
   }
 </style>
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>

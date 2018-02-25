@@ -1,0 +1,23 @@
+
+.okicon{
+  margin: 0px 10px;
+}
+  .calendar {
+    font-size: 20px;
+  }
+  table.calendar{
+    margin: auto;
+    border-collapse: collapse;
+  }
+  .calendar .days td{
+    width: 80px; height: 80px; padding: 4px;
+    vertical-align: top; background-color: #DEF;
+    border: 1px solid #dee2e6;
+  }
+  .calendar .days td:hover{
+    background-color: #fff; 
+  }
+  .calendar .highlight{
+    font-weight: bold;
+    color: #00f;  
+  }
