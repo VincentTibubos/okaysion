@@ -36,6 +36,8 @@ class Service_model extends CI_Model{
         $data =array(
             'cid' => $this->session->userdata('cid'),
             'sname' => $this->input->post('sname'),
+            'svenue' => $this->input->post('svenue'),
+            'sprice' => $this->input->post('sprice'),
             'screated' => date('Y-m-d'),
             'sstatus' => 1,
             'smodified' => date('Y-m-d'),
@@ -47,6 +49,8 @@ class Service_model extends CI_Model{
     public function update(){
         $data =array(
             'sname' => $this->input->post('sname'),
+            'svenue' => $this->input->post('svenue'),
+            'sprice' => $this->input->post('sprice'),
             'sdescription' => $this->input->post('sdescription'),
             'smodified' => date('Y-m-d'),
         );

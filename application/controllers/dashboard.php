@@ -60,6 +60,8 @@
 			$data['sdata']=array(
 				'sid'=>'',
 				'sname'=>'',
+				'svenue'=>'',
+				'sprice'=>'',
 				'sdescription'=>''
 			);
 			if(!empty($_POST)){
