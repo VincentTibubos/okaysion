@@ -10,22 +10,28 @@
 	
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/glyphicons.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/fontastic.css">
+  <link href="<?php echo base_url();?>assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/custom.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/bootstrap-datetimepicker.min.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?php echo base_url();?>/assets/img/8czrGpnqi.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 <style type="text/css">
+.okicon{
+  margin: 0px 10px;
+}
   .calendar {
     font-size: 20px;
   }

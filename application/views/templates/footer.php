@@ -176,6 +176,7 @@ the services they offer.</p>
       
     </div>
   </div>
+  
   <!-- JavaScript Libraries -->
   <script src="<?php echo base_url();?>assets/lib/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url();?>assets/lib/jquery/jquery-migrate.min.js"></script>
