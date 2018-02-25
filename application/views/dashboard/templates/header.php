@@ -104,7 +104,7 @@
                     <li id="d_users"><a href="<?php echo base_url();?>dashboard/customer"> <i class="icon-user"></i>Customers</a></li>
           <?php endif;?>
           <?php if($this->session->userdata('type')=='Company'): ?>
-                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/service"> <i class="icon-user"></i>Services</a></li>
+                    <li id="d_service"><a href="<?php echo base_url();?>dashboard/service"> <i class="icon-user"></i>Services</a></li>
           <?php endif;?>
           <?php if($this->session->userdata('type')=='Admin'): ?>
                     <li id="d_users"><a href="<?php echo base_url();?>dashboard/company"> <i class="icon-user"></i>Companies</a></li>

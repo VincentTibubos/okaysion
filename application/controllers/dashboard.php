@@ -31,9 +31,9 @@
 				'cemail'=>''
 			);
 			if(!empty($_POST)){
-				$data['cdata']=$this->company_model->viewcus($this->input->post('cid'));
+				$data['cdata']=$this->company_model->viewcomp($this->input->post('cid'));
 			}
-			$data['company']=$this->company_model->viewcus();
+			$data['company']=$this->company_model->viewcomp();
 		//	print_r($data);
 		//	exit();
 			$this->load->view('dashboard/templates/header');
@@ -56,6 +56,22 @@
 			$this->load->view('dashboard/users',$data);
 			$this->load->view('dashboard/templates/footer');
 		}
+		public function service(){
+			$data['sdata']=array(
+				'sid'=>'',
+				'sname'=>'',
+				'sdescription'=>''
+			);
+			if(!empty($_POST)){
+				$data['sdata']=$this->service_model->viewser($this->input->post('sid'));
+			}
+			$data['service']=$this->service_model->viewser();
+			//print_r($data);
+			//exit();
+			$this->load->view('dashboard/templates/header');
+			$this->load->view('dashboard/service',$data);
+			$this->load->view('dashboard/templates/footer');
+		}
 		public function view($page='index'){
             if(!$this->session->userdata('logged_in')){
                 redirect('login');
@@ -73,8 +89,9 @@
 			$this->load->library('calendar',$conf);
 			echo $this->calendar->generate($year,$month);
 			exit();*/
-			
+
 			$data['customer']=$this->customer_model->viewcus();
+			$data['service']=$this->service_model->viewser();
 			if(!$year){
 				$year=date('Y');
 			}

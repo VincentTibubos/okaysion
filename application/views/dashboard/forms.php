@@ -42,6 +42,14 @@
                       ?>
                     </select>
                   </div>
+                  <div class="dropdown">
+                    <select class="form-control" name="customer">
+                      <?php foreach($service as $ser){
+                        echo "<option value='".$ser['sid']."'>".$ser['sname']."</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
           <section class="tables">   
             <div class="container-fluid">
               <div class="row">
