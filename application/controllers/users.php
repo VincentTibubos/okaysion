@@ -19,12 +19,31 @@ class Users extends CI_Controller {
                //print_r(form_error('rcname'));
                // print_r(form_error('remail'));
                // print_r(form_error('rpassword'));
-               // print_r(form_error('rcpassword'));
-               // exit();
                 $this->load->view('dashboard/register');
-            }else{//encrypt password
+            }else{
+                $config['upload_path']='./assets/img/logo';
+                $config['allowed_types']='gif|jpg|jpeg|png';
+                $config['max_size']='2048';
+                $config['max_width']='2048';
+                $config['max_height']='2048';
+
+                $this->load->library('upload',$config);
+
+                if(!$this->upload->do_upload()){
+                    $errors=array('errors'=> $this->upload->display_errors());
+                    $clogo='avatar1.jpg';
+                    //echo $clogo.' failed ';
+                    //print_r($errors);
+                }
+                else{
+                    $data=array('upsload_data'=> $this->upload->data());
+                    $clogo=$_FILES['userfile']['name'];
+                    //echo $clogo.' uploaded';
+                }
+                //exit();
+                //encrypt password
                 $epass=md5($this->input->post('rpassword'));
-                $this->company_model->add($epass);
+                $this->company_model->add($epass,$clogo);
                 //set message
                 $this->session->set_flashdata('user_registered','You are now registered and can log in');
                 redirect('dashboard');
@@ -69,6 +88,7 @@ class Users extends CI_Controller {
                     $userdata=array(
                         'cid'=>$comdata['cid'],
                         'cname'=>$comdata['cname'],
+                        'clogo'=>$comdata['clogo'],
                         'logged_in'=>true,
                         'type'=>'Company'
                     );
@@ -88,6 +108,7 @@ class Users extends CI_Controller {
                 redirect('login');
             }
             $this->session->unset_userdata('cid');
+            $this->session->unset_userdata('clogo');
             $this->session->unset_userdata('cname');
             $this->session->unset_userdata('type');
             $this->session->unset_userdata('logged_in');

@@ -56,7 +56,7 @@
               <div class="form d-flex align-items-center">
                 <div class="content">     
 
-                 <form id="register-form" action="register" method="post">
+                 <?php echo form_open_multipart('register')?>
                     <div class="form-group">
                       <input id="rcname" type="text" name="cname" required class="input-material">
                       <label for="rcname" class="label-material">Company Name</label>
@@ -77,6 +77,11 @@
                       <label for="rcpass" class="label-material">Confirm Password </label>
                       <small class="help-block text-danger"><?php echo form_error('rcpassword');?></small>
                     </div>
+                    <div class="form-group">
+                      <input id="logo" type="file" name="userfile" class="form-control-file" size="20" value="input"style="color:grey">
+                      
+                      <small class="help-block text-danger"><?php echo form_error('clogo');?></small>
+                    </div>
                     <div class="form-group terms-conditions">
                       <input id="license" type="checkbox" class="checkbox-template" onclick="checker()">
                       <label for="license"><a data-toggle="modal" href="" data-target="#modalAgree">Agree the terms and policy</a></label>
@@ -84,7 +89,8 @@
 
 
                     <input id="register" type="submit" value="Register" class="btn btn-primary" disabled="true">
-                  </form><small>Already have an account? </small><a href="<?php echo base_url();?>login" class="signup">Log in</a>
+                  </form>
+                  <small>Already have an account? </small><a href="<?php echo base_url();?>login" class="signup">Log in</a>
                 </div>
               </div>
             </div>

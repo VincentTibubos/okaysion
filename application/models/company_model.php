@@ -29,6 +29,7 @@ class Company_model extends CI_Model{
         $id=null;
         if($result->num_rows()>0){
             $comdata=array(
+                'clogo'=>$result->row(0)->clogo,
                 'cid'=>$result->row(0)->cid,
                 'cname'=>$result->row(0)->cname,
                 'checker'=>true
@@ -55,14 +56,15 @@ class Company_model extends CI_Model{
         $this->db->where('cid',$this->input->post('cid'));
         return $this->db->update('company_tbl',$data);
     }
-    public function add($epass){
+    public function add($epass,$clogo){
         $data =array(
             'cname' => $this->input->post('cname'),
             'cemail' => $this->input->post('cemail'),
             'ccreated' => date('Y-m-d'),
             'cmodified' => date('Y-m-d'),
             'cstatus' => 1,
-            'cpass' => $epass
+            'cpass' => $epass,
+            'clogo'=>$clogo
         );
         return $this->db->insert('company_tbl',$data);
     }
