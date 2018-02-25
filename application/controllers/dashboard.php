@@ -100,9 +100,15 @@
 			}
 
 			if($this->input->is_ajax_request()){
-				$day= $this->input->post('day');
-				$this->calendar_model->addsched("$year-$month-$day",
-				$this->input->post('details'));
+				$this->calendar_model->addsched(
+					$this->input->post('eid'),
+					$this->input->post('date'),
+					$this->input->post('time'),
+					$this->input->post('details'),
+					$this->input->post('sid'),
+					$this->input->post('cid'),
+					$this->input->post('cuid')
+				);
 
 			}/*
 			if($day= $this->input->post('day')){
@@ -111,7 +117,6 @@
 				$this->calendar_model->addsched("$year-$month-$day",
 				$this->input->post('details'));
 			}*/
-
 			$data['calendar']=$this->calendar_model->generate($year,$month);
 			if(!$this->input->is_ajax_request()){		
 					$this->load->view('dashboard/templates/header');

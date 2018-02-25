@@ -52,9 +52,39 @@
                     <div class="card-header d-flex align-items-center container-fluid">
                       <h3 class="h4">Event Calendar</h3>
                     </div>
-                          <a data-toggle="modal" data-target="#addEvent" class="btn btn-primary"><i class="fa fa-plus"></i>Add Event</a>
+                          
                     <div class="card-body table-responsive" id="divcalendar">                                 
-                      <?php echo $calendar;?>                      
+                      <?php echo $calendar;?>
+                      <script type="text/javascript">
+                        $(document).ready(function(){
+                          /*$('#nextdate').click(function(){
+                            var year='<?php echo $caldate['year'];?>';
+                            var month=Number('<?php echo $caldate['month'];?>')+1;
+                            if(month<10){
+                              month='0'+month;
+                            }
+                            else{
+                              month=month.toString();
+                            }
+                            alert(month);
+                            $.ajax({
+                              url: window.location,
+                              type: "POST",
+                              data: {
+                                  month: month,
+                                  year: year
+                              },
+                              success: function(data){
+                                month=data;
+                                location.reload();
+                              },
+                              error: function(xhr, textStatus, errorThrown){
+                                     alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                              }
+                            });
+                          });*/
+                        });
+                      </script>                      
                     </div>
                   </div>
                 </div>
@@ -70,42 +100,47 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Logout</h4>
+          <h4 class="modal-title">Add</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
+                                  <input id="eventid" type="text" value="">
                                     <div class="container">
                                       <div class="row">
                                         <div class="form-group col-sm-6">
-                                            <label for="dtp_input2" class="control-label">Date Picking</label>
+                                            <label for="dtp_input2" class="control-label">Event Date</label>
                                             <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                              <input class="form-control" size="16" type="text" value="" readonly>
+                                              <input class="form-control" size="16" type="text" value="<?php echo date('Y-m-d');?>" readonly  id="dform">
                                               <span class="input-group-addon"><span class="okicon glyphicon glyphicon-remove fa fa-remove"></span></span>
                                               <span class="input-group-addon"><span class="okicon glyphicon glyphicon-calendar fa fa-calendar"></span></span>
                                             </div>
                                             <input type="hidden" id="dtp_input2" value="" /><br/>
                                         </div>
                                         <div class="form-group col-sm-6">
-                                            <label for="dtp_input3" class="col-md-12 control-label">Time Picking</label>
+                                            <label for="dtp_input3" class="col-md-12 control-label">Event Time</label>
                                             <div class="input-group date form_time col-md-12" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
-                                                <input class="form-control" size="16" type="text" value="" readonly>
+                                                <input class="form-control" size="16" type="text" value="" readonly id="tform">
                                                 <span class="input-group-addon"><span class="okicon glyphicon glyphicon-remove fa fa-remove"></span></span>
                                                 <span class="input-group-addon"><span class="okicon glyphicon glyphicon-time fa fa-clock-o"></span></span>
                                             </div>
                                             <input type="hidden" id="dtp_input3" value="" /><br/>
                                         </div>
-
+                                        <div class="form-group col-sm-12">
+                                            <label>Event Details</label>
+                                            <input class="form-control" type="text" value="" id="edform">
+                                        </div>
                                         <div class="dropdown col-sm-12">
-                                          <select class="form-control" name="customer">
+                                          <label>Select Service</label>
+                                          <select class="form-control" name="service" id="sform">
                                             <?php foreach($service as $ser){
                                               echo "<option value='".$ser['sid']."'>".$ser['sname']."</option>";
                                             }
                                             ?>
                                           </select>
                                         </div>
-                                        <div class="dropdown col-sm-12
-                                            ">
-                                          <select class="form-control" name="customer">
+                                        <div class="dropdown col-sm-12">
+                                          <label>Select Customer</label>
+                                          <select class="form-control" name="customer" id="cuform">
                                             <?php foreach($customer as $cus){
                                               echo "<option value='".$cus['cuid']."'>".$cus['cuname']."</option>";
                                             }
@@ -117,8 +152,7 @@
                                     </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal"  onclick="redirout();">Yes</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-success" id='aEve'>Add</button>
         </div>
       </div>
       
@@ -152,8 +186,52 @@
     startView: 1,
     minView: 0,
     maxView: 1,
-    forceParse: 0,
-    stepping: 1
+    forceParse: 0
     });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    /*date
+    etime
+    edetails
+    sid
+    cid
+    cuid*/
+    $('#aEve').click(function(){
+      sid=$(this).offsetParent().find('#sform').val();
+      cuid=$(this).offsetParent().find('#cuform').val();
+      date=$(this).offsetParent().find('#dform').val();
+      time=$(this).offsetParent().find('#tform').val();
+      details=$(this).offsetParent().find('#edform').val();
+      eid=$(this).offsetParent().find('#eventid').val();
+      if(details!=''&&time!=''&&date!=''){
+        alert(sid+' '+cuid+' '+date+' '+time);
+        $.ajax({
+          url: window.location,
+          type: "POST",
+          data: {
+            eid: eid,
+            sid: sid,
+            cuid: cuid,
+            date: date,
+            time: time,
+            details: details,
+            cid: '<?php echo $this->session->userdata('cid')?>'
+          },
+          success: function(data){
+            alert(data);
+            location.reload();
+          },//function(data){
+               //location.reload();
+                //alert('request success'+data);
+             //},
+          error: function(xhr, textStatus, errorThrown){
+                 alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+          }
+        }); 
+      }     
+      return false;
+    });
+  });
 </script>
 

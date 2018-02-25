@@ -5,6 +5,7 @@ $route['dashboard/company'] = 'dashboard/company';
 $route['dashboard/service'] = 'dashboard/service';
 $route['dashboard/customer'] = 'dashboard/customer';
 $route['dashboard/calendar'] = 'dashboard/calendar';
+$route['calendar'] = 'calendar/index';
 $route['copy'] = 'createweb/directory_copy';
 
 $route['createweb'] = 'createweb/index';
