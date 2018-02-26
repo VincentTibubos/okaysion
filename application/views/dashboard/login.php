@@ -31,6 +31,10 @@
           if($this->session->flashdata('login_failed')): ?>
           <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('login_failed')."</p>"?>
          <?php endif;?>
+        <?php 
+          if($this->session->flashdata('user_registered')): ?>
+          <?php echo "<p class='alert alert-success'>".$this->session->flashdata('user_registered')."</p>"?>
+         <?php endif;?>
 
         <?php 
           if($this->session->flashdata('logged_out')): ?>
@@ -58,23 +62,25 @@
           <div class="row">
           
             <!-- Form Panel-->
-            <div class="col-lg-7">
+            <div class="col-lg-6">
 			</div>
-            <div class="col-lg-5 bg-white">
+            <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
                   <?php echo validation_errors(); ?>
 
                   <form id="login-form" action="login" method="post">
-                    <div class="form-group">
+                    <div class="form-group" id='lemail-group'>
                       <input id="lemail" type="email" name="lemail" required class="input-material">
                       <label for="lemail" class="label-material">Email Address      </label>
+                      <small class="help-block text-danger"></small>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id='lpass-group'>
                       <input id="lpass" type="password" name="lpassword" required class="input-material">
                       <label for="lpass" class="label-material">Password </label>
+                      <small class="help-block text-danger"></small>
                     </div>
-                    <input id="loginr" type="submit" value="Login" class="btn btn-primary">
+                    <input id="loginr" type="button" value="Login" class="btn btn-primary">
                   </form>
 				  <br>
                   <small>Doesn't have an account? </small><a href="<?php echo base_url();?>register" class="signup">Register</a>
@@ -97,10 +103,6 @@
   <script src="<?php echo base_url();?>assets/lib/superfish/superfish.min.js"></script>
   <script src="<?php echo base_url();?>assets/lib/wow/wow.min.js"></script>
 
-  <!-- Template Main Javascript File -->
-  <script src="<?php echo base_url();?>assets/js/main.js"></script>
-
-
     <!-- Javascript files-->
     <script src="<?php echo base_url();?>assets/lib/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url();?>assets/dashboard/vendor/popper.js/umd/popper.min.js"> </script>
@@ -110,11 +112,102 @@
     <script src="<?php echo base_url();?>assets/dashboard/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="<?php echo base_url();?>assets/dashboard/js/front.js"></script>
+    <script>
+      $(document).ready(function(){
+        passg=$(this).find('#lpass-group');
+        emailg=$(this).find('#lemail-group');
+        passin=passg.find('input');
+        emailin=emailg.find('input');
+        loginr=$(this).find('#loginr');
+        //alert(passin.val()+emailin.val());
 
+        if(passin.val()!=''){
+            passg.find('label').addClass('active');
+        }
+        if(emailin.val()!=''){
+            emailg.find('label').addClass('active');
+        }
+        //password checker
+        passin.on('ready change blur click keyup paste cut',function(){
+          
+          if(passin.val()!=''){
 
+              passg.find('label').addClass('active');
+              //alert('added');
+          }
+          $.ajax({
+                  url: '<?php echo base_url();?>company/check',
+                  type: "POST",
+                  data: {
+                    lpass: $(this).val(),
+                    lemail: emailin.val()
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    //alert(data['error'])
+                    passg.find('small').html('');
+                    emailg.find('small').html('');
+                    if(data['lpass']==''&&data['lemail']==''){
+                      loginr.attr('type','submit');
+                    }
+                    else{
+                      loginr.attr('type','button');
+                      if(data['lpass']!=''){
+                          passg.find('small').html(data['lpass']);
+                      }
 
+                      if(data['lemail']!=''){
+                          emailg.find('small').html(data['lemail']);
+                      }
+                      return false;
+                    }
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+        emailin.on('ready change blur click keyup paste cut',function(){
+          if(emailin.val()!=''){
+              emailg.find('label').addClass('active');
+              //alert('added');
+          }
+          $.ajax({
+                  url: '<?php echo base_url();?>company/check',
+                  type: "POST",
+                  data: {
+                    lpass: passin.val(),
+                    lemail: emailin.val()
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    //alert(data['error']);
+                    emailg.find('small').html('');
+                    passg.find('small').html('');
 
-
-
+                    if(data['lpass']==''&&data['lemail']==''){
+                      loginr.attr('type','submit');
+                    }
+                    else{
+                      loginr.attr('type','button');
+                      if(data['lpass']!=''){
+                        //alert(data['lpass']);
+                          passg.find('small').html(data['lpass']);
+                      }
+                      if(data['lemail']!=''){
+                          emailg.find('small').html(data['lemail']);
+                      }
+                      return false;
+                    }
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

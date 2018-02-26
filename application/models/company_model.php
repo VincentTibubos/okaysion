@@ -14,6 +14,15 @@ class Company_model extends CI_Model{
         }
         return false;
     }
+        public function getpass($lemail){
+           $this->db->where('cemail',$lemail);
+       // $query=$this->db->get_where('company_tbl',array('cemail'=>$lemail,'cpass'=>$epass));
+            $result=$this->db->get('company_tbl');
+            if($result->num_rows()>0){
+                return $result->row(0)->cpass;
+            }
+                return false;
+        }
     //login
     public function login($lemail,$epass){
    //     print_r($_POST);
@@ -57,6 +66,7 @@ class Company_model extends CI_Model{
         return $this->db->update('company_tbl',$data);
     }
     public function add($epass,$clogo){
+        //Array ( [cname] => vincent1312 [cemail] => 123213123@djkhkj [rpassword] => 123 [rcpassword] => 123 )
         $data =array(
             'cname' => $this->input->post('cname'),
             'cemail' => $this->input->post('cemail'),
@@ -70,6 +80,7 @@ class Company_model extends CI_Model{
     }
     public function update(){
         $data =array(
+
             'cname' => $this->input->post('cname'),
             'cmodified' => date('Y-m-d'),
             'cemail' => $this->input->post('cemail')

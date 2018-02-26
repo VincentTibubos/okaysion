@@ -44,7 +44,7 @@
     vertical-align: top; background-color: #DEF;
     border: 1px solid #dee2e6;
   }
-  .calendar .days td :hover{
+  .calendar .days td:hover{
     background-color: #fff; 
   }
   .calendar .highlight{
@@ -56,7 +56,6 @@
     padding: 0px 5px;
   }
   .maincontent{
-
     color: white;
   }
   .calendar .days > .other-month{

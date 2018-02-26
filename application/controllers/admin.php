@@ -23,12 +23,12 @@ class Admin extends CI_Controller {
 
                 if($admindata['checker']){
                     //c means company
-
                     $userdata=array(
                         'cid'=>$admindata['aid'],
                         'cname'=>$admindata['auser'],
                         'logged_in'=>true,
-                        'type'=>'Admin'
+                        'type'=>'Admin',
+                        'clogo'=>'avatar1.jpg'
                     );
                     $this->session->set_userdata($userdata);
                     $this->session->set_flashdata('user_loggedin','You are now logged in');

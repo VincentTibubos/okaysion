@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$route['company/check'] = 'company/checkcompany';
+
 $route['dashboard/company'] = 'dashboard/company';
 $route['dashboard/service'] = 'dashboard/service';
 $route['dashboard/customer'] = 'dashboard/customer';
