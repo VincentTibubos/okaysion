@@ -40,6 +40,30 @@
 			$this->load->view('dashboard/users',$data);
 			$this->load->view('dashboard/templates/footer');
 		}
+		public function messages(){
+			$data['mdata']=array(
+				'amid'=>'',
+				'amname'=>'',
+				'amemail'=>'',
+				'amsubject'=>'',
+				'ammsg'=>''
+			);
+			$type=$this->session->userdata('type');
+			//exit();
+			if($type=='Admin'){
+				if(!empty($_POST)){
+					$data['mdata']=$this->amessage_model->view($this->input->post('amid'));
+					//print_r($data['mdata']);
+				}
+				$data['message']=$this->amessage_model->view();
+				//print_r($data);
+			}
+		//	print_r($data);
+		//	exit();
+			$this->load->view('dashboard/templates/header');
+			$this->load->view('dashboard/messages',$data);
+			$this->load->view('dashboard/templates/footer');
+		}
 		public function customer(){
 			$data['cudata']=array(
 				'cuid'=>'',

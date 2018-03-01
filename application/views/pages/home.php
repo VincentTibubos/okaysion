@@ -57,7 +57,8 @@
             <h4 class="title"><a href="">You can create your own Website</a></h4>
             <p class="description">The website would allow you to create your own website according to your needs in design,context and structure of your content.</p>
           </div>
-
+
+
           <div class="col-lg-4 box box-bg">
             <i class="ion-ios-stopwatch-outline"></i>
             <h4 class="title"><a href="">A time-saving Website Generator</a></h4>
@@ -184,7 +185,7 @@ from.</p>
       <div class="form">
         <div id="sendmessage">Your message has been sent. Thank you!</div>
         <div id="errormessage"></div>
-        <form action="" method="post" role="form" class="contactForm">
+        <form action="amessage/send" method="post" role="form" >
           <div class="form-row">
             <div class="form-group col-md-6">
               <input type="text" name="name" class="form-control" id="fname" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
