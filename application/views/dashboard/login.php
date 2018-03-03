@@ -68,16 +68,16 @@
               <div class="form d-flex align-items-center">
                 <div class="content">
                   <?php echo validation_errors(); ?>
-
+                  <p id="inv" class="help-block text-danger"></p>
                   <form id="login-form" action="login" method="post">
                     <div class="form-group" id='lemail-group'>
                       <input id="lemail" type="email" name="lemail" required class="input-material">
-                      <label for="lemail" class="label-material">Email Address      </label>
+                      <label for="lemail" class="label-material active">Email Address      </label>
                       <small class="help-block text-danger"></small>
                     </div>
                     <div class="form-group" id='lpass-group'>
                       <input id="lpass" type="password" name="lpassword" required class="input-material">
-                      <label for="lpass" class="label-material">Password </label>
+                      <label for="lpass" class="label-material active">Password </label>
                       <small class="help-block text-danger"></small>
                     </div>
                     <input id="loginr" type="button" value="Login" class="btn btn-primary">
@@ -119,6 +119,7 @@
         passin=passg.find('input');
         emailin=emailg.find('input');
         loginr=$(this).find('#loginr');
+        invalid=$(this).find('#inv');
         //alert(passin.val()+emailin.val());
 
         if(passin.val()!=''){
@@ -127,7 +128,77 @@
         if(emailin.val()!=''){
             emailg.find('label').addClass('active');
         }
+        loginr.click(function(e){
+          check=true;
+          $.ajax({
+                  url: '<?php echo base_url();?>company/check',
+                  type: "POST",
+                  data: {
+                    lpass: passin.val(),
+                    lemail: emailin.val()
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    //location='wew';
+                    //location.reload();
+                    passg.find('small').html('');
+                    emailg.find('small').html('');
+                    invalid.html('');
+                    if(data['lpass']==''&&data['lemail']==''){
+                      //return true;
+                      $.ajax({
+                        url: '<?php echo base_url();?>login',
+                        type: 'POST',
+                        data: {      
+                          lpassword: passin.val(),
+                          lemail: emailin.val()
+                        },
+                        success: function(data){
+                          window.location.href = "<?php echo base_url().'dashboard'?>";
+                        },
+                        error: function(xhr, textStatus, errorThrown){
+                               return false;
+                        }
+                      });
+                      //$(this).submit();
+                    }
+                    else if(data['lpass']=='1'||data['lemail']=='1'){
+                      //loginr.attr('type','submit');
+                      invalid.html('Invalid Email or password');
+                      alert('invalid');
+                      check=false;
+                    }/*
+                    else{
+                      loginr.attr('type','button');
+                      if(data['lpass']!=''){
+                          passg.find('small').html(data['lpass']);
+                      }
+                      if(data['lemail']!=''){
+                          emailg.find('small').html(data['lemail']);
+                      }
+                      alert('required');
+                      check=false;
+                    }*/
+
+          alert(check);
+          if(check){
+            $(this).attr('type', 'submit');
+            $(this).click();
+            return true;
+
+          }
+          else{
+            e.preventDefault();
+            return false;
+          }
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         return false;
+                  }
+          });
+        });
         //password checker
+        /*
         passin.on('ready change blur click keyup paste cut',function(){
           
           if(passin.val()!=''){
@@ -207,6 +278,7 @@
                   }
           });
         });
+        */
       });
     </script>
   </body>

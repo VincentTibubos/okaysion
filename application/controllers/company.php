@@ -64,7 +64,7 @@ class Company extends CI_Controller {
                 $data['lemail']='Company email field is required';
             }
             else if($this->check_cemail_exists($this->input->post('lemail'))){
-                $data['lemail']='Invalid email';
+                $data['lemail']='1';
             }
             //---------
             $epass=md5($this->input->post('lpass'));
@@ -76,7 +76,7 @@ class Company extends CI_Controller {
                 $data['lpass']='Password field is required';
             }
             else if($comdata!=$epass){
-                $data['lpass']='Invalid password';   
+                $data['lpass']='1';   
             }
             //cname validation
             if($this->input->post('cname')==''){

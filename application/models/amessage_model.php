@@ -4,7 +4,7 @@ class Amessage_model extends CI_Model{
         //Array ( [name] => hdkjdlkjfdkjlafjkl [email] => jklasjlfsdjlfdjslskdfj@jkljlk.jdskljlk [subject] => jdflkdfsajaflk [message] => jlkjlkjjkljkfakljfasjklfadsjklfakjsafkjfdajkkjfds )
         $data =array(
             'amname' => $this->input->post('name'),
-            'amemail' => $this->input->post('message'),
+            'amemail' => $this->input->post('email'),
             'amsubject' => $this->input->post('subject'),
             'ammsg' => $this->input->post('message'),
             'amcreated' => date('Y-m-d')

@@ -73,39 +73,62 @@ class Users extends CI_Controller {
         }
     //login
         public function login(){
+            if($this->input->is_ajax_request()){
+                    $lemail=$this->input->post('lemail');
+                    $epass=md5($this->input->post('lpassword'));
 
-            if($this->session->userdata('logged_in')){
-                redirect();
+                    //login id
+                    $comdata=$this->company_model->login($lemail,$epass);
+                    if($comdata['checker']){
+                        //c means company
+                        $userdata=array(
+                            'cid'=>$comdata['cid'],
+                            'cname'=>$comdata['cname'],
+                            'clogo'=>$comdata['clogo'],
+                            'logged_in'=>true,
+                            'type'=>'Company'
+                        );
+                        $this->session->set_userdata($userdata);
+                        $this->session->set_flashdata('user_loggedin','You are now logged in');
+                    }
+                    else
+                     echo 'false';   
+                
             }
-            //callback_ is use before the method specified for custom validation
-            $this->form_validation->set_rules('lemail','Email','required');
-            $this->form_validation->set_rules('lpassword','Password','required');
-
-            if($this->form_validation->run()===FALSE){
-                $this->load->view('dashboard/login');
-            }else{
-                $lemail=$this->input->post('lemail');
-                $epass=md5($this->input->post('lpassword'));
-
-                //login id
-                $comdata=$this->company_model->login($lemail,$epass);
-                if($comdata['checker']){
-                    //c means company
-
-                    $userdata=array(
-                        'cid'=>$comdata['cid'],
-                        'cname'=>$comdata['cname'],
-                        'clogo'=>$comdata['clogo'],
-                        'logged_in'=>true,
-                        'type'=>'Company'
-                    );
-                    $this->session->set_userdata($userdata);
-                    $this->session->set_flashdata('user_loggedin','You are now logged in');
-                    redirect('dashboard');
+            else{
+                if($this->session->userdata('logged_in')){
+                    redirect();
                 }
-                else{
-                    $this->session->set_flashdata('login_failed','Login is Invalid');
-                    redirect('login');
+                //callback_ is use before the method specified for custom validation
+                $this->form_validation->set_rules('lemail','Email','required');
+                $this->form_validation->set_rules('lpassword','Password','required');
+
+                if($this->form_validation->run()===FALSE){
+                    $this->load->view('dashboard/login');
+                }else{
+                    $lemail=$this->input->post('lemail');
+                    $epass=md5($this->input->post('lpassword'));
+
+                    //login id
+                    $comdata=$this->company_model->login($lemail,$epass);
+                    if($comdata['checker']){
+                        //c means company
+
+                        $userdata=array(
+                            'cid'=>$comdata['cid'],
+                            'cname'=>$comdata['cname'],
+                            'clogo'=>$comdata['clogo'],
+                            'logged_in'=>true,
+                            'type'=>'Company'
+                        );
+                        $this->session->set_userdata($userdata);
+                        $this->session->set_flashdata('user_loggedin','You are now logged in');
+                        redirect('dashboard');
+                    }
+                    else{
+                        $this->session->set_flashdata('login_failed','Login is Invalid');
+                        redirect('login');
+                    }
                 }
             }
 
