@@ -54,21 +54,21 @@
 
           <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
             <div class="icon"><i class="ion-android-create"></i></div>
-            <h4 class="title"><a href="">You can create your own Website</a></h4>
+            <h4 class="title"><a>You can create your own Website</a></h4>
             <p class="description">The website would allow you to create your own website according to your needs in design,context and structure of your content.</p>
           </div>
 
 
-          <div class="col-lg-4 box box-bg">
-            <i class="ion-ios-stopwatch-outline"></i>
-            <h4 class="title"><a href="">A time-saving Website Generator</a></h4>
+           <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-stopwatch-outline"></i></div>
+            <h4 class="title"><a>A time-saving Website Generator</a></h4>
             <p class="description">You won't need to do it in a difficult way, 
 		all you have to do is choose your template and drag and drop your whatever things you want to add.</p>
           </div>
 
-          <div class="col-lg-4 box">
-            <i class="ion-ios-heart-outline"></i>
-            <h4 class="title"><a href="">It is easy to Use</a></h4>
+           <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-heart-outline"></i></div>
+            <h4 class="title"><a>It is easy to Use</a></h4>
             <p class="description">No need to worry about organizing your website, 
 		because all you have to do is to click add , drag and drop the files and then save.</p>
           </div>
@@ -176,7 +176,7 @@ from.</p>
           <div class="contact-email">
             <i class="ion-ios-email-outline"></i>
             <h3>Email</h3>
-            <p><a href="mailto:info@example.com">OKAYsion@gmail.com</a></p>
+            <p><a href="mailto:okaysion@gmail.com">OKAYsion@gmail.com</a></p>
           </div>
         </div>
 

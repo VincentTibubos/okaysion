@@ -1,14 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Customer_model extends CI_Model{
     public function check_cuname_exists($cuname){
-        $query=$this->db->get_where('customer_tbl',array('cuname'=>$cuname));
+        $query=$this->db->get_where('customer_tbl',array('cuname'=>$cuname,'cid'=>$this->session->userdata('cid')));
         if(empty($query->row_array())){
             return true;
         }
         return false;
     }
     public function check_cuemail_exists($cuemail){
-        $query=$this->db->get_where('customer_tbl',array('cuemail'=>$cuemail));
+        $query=$this->db->get_where('customer_tbl',array('cuemail'=>$cuemail,'cid'=>$this->session->userdata('cid')));
         if(empty($query->row_array())){
             return true;
         }

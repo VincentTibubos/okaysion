@@ -110,13 +110,22 @@ class Company extends CI_Controller {
             //$data['cemail']=$this->check_cemail_exists($this->input->post('cemail'));
             echo json_encode($data);
         }
+        else{
+            redirect();
+        }
         //echo json_encode($this->input->post());
     }
 	public function delete(){
+        if(empty($_POST)){
+            redirect();
+        }
 		$this->company_model->delete($this->input->post('cid'));
 		redirect($this->input->post('comp'));
 	}
 	public function update(){
+        if(empty($_POST)){
+            redirect();
+        }
         $this->company_model->update();
         redirect('dashboard/company');
 	}
@@ -133,22 +142,27 @@ class Company extends CI_Controller {
                // exit();
                 redirect('dashboard/company');
             }else{//encrypt password
-
-                $epass=md5('12345');
-                $this->company_model->add($epass);
+                $epass=md5('123456');
+                $this->company_model->add($epass,$this->input->post('clogo'));
                 //set message
                 $this->session->set_flashdata('company_added','Company has been added.');
                 redirect('dashboard/company');
             }
 	}
-    public function check_cname_exists($cname){
+    public function check_cname_exists($cname=FALSE){
+        if($cname==FALSE){
+            redirect();
+        }
         $this->form_validation->set_message('check_cname_exists','Company name already taken.');
         if($this->company_model->check_cname_exists($cname)){
             return true;
         }
         return false;
     }
-    public function check_cemail_exists($cemail){
+    public function check_cemail_exists($cemail=FALSE){
+        if($cemail==FALSE){
+            redirect();
+        }
         $this->form_validation->set_message('check_cemail_exists','Email already taken.');
         if($this->company_model->check_cemail_exists($cemail)){
             return true;

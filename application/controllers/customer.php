@@ -2,10 +2,16 @@
 class Customer extends CI_Controller {
 
 	public function delete(){
+        if(empty($_POST)){
+            redirect();
+        }
 		$this->customer_model->delete($this->input->post('cuid'));
         redirect('dashboard/customer');
 	}
 	public function update(){
+        if(empty($_POST)){
+            redirect();
+        }
         $this->customer_model->update();
         redirect('dashboard/customer');
 	}
@@ -22,20 +28,30 @@ class Customer extends CI_Controller {
                // exit();
                 redirect('dashboard/customer');
             }else{//encrypt password
+
+                    if(empty($_POST)){
+                        redirect();
+                    }
                 $this->customer_model->add();
                 //set message
                 $this->session->set_flashdata('customer_added','customer has been added.');
                 redirect('dashboard/customer');
             }
 	}
-    public function check_cuname_exists($cuname){
+    public function check_cuname_exists($cuname=FALSE){
+        if($cuname==FALSE){
+            redirect();
+        }
         $this->form_validation->set_message('check_cuname_exists','customer name already taken.');
         if($this->customer_model->check_cuname_exists($cuname)){
             return true;
         }
         return false;
     }
-    public function check_cuemail_exists($cuemail){
+    public function check_cuemail_exists($cuemail=FALSE){
+        if($cuemail==FALSE){
+            redirect();
+        }
         $this->form_validation->set_message('check_cuemail_exists','Email already taken.');
         if($this->customer_model->check_cuemail_exists($cuemail)){
             return true;

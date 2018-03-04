@@ -25,6 +25,9 @@
 
 		}
 		public function company(){
+			if($this->session->userdata('type')!='Admin'){
+				redirect('dashboard');
+			}
 			$data['cdata']=array(
 				'cid'=>'',
 				'cname'=>'',
@@ -73,6 +76,11 @@
 					$data['message']=$this->amessage_model->view(FALSE,$config['per_page'],$indexno);
 					//print_r($data);
 				}
+				else{
+				$this->load->view('dashboard/templates/header');
+				$this->load->view('dashboard/messages');
+				$this->load->view('dashboard/templates/footer');
+				}
 			//	print_r($data);
 			//	exit();
 				$this->load->view('dashboard/templates/header');
@@ -81,6 +89,9 @@
 			}
 		}
 		public function customer(){
+			if($this->session->userdata('type')!='Company'){
+				redirect('dashboard');
+			}
 			$data['cudata']=array(
 				'cuid'=>'',
 				'cuname'=>'',
@@ -97,6 +108,9 @@
 			$this->load->view('dashboard/templates/footer');
 		}
 		public function service(){
+			if($this->session->userdata('type')!='Company'){
+				redirect('dashboard');
+			}
 			$data['sdata']=array(
 				'sid'=>'',
 				'sname'=>'',
@@ -132,6 +146,9 @@
 			echo $this->calendar->generate($year,$month);
 			exit();*/
 
+			if($this->session->userdata('type')!='Company'){
+				redirect('dashboard');
+			}
 			$data['customer']=$this->customer_model->viewcus();
 			$data['service']=$this->service_model->viewser();
 			if(!$year){

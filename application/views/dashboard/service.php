@@ -50,19 +50,19 @@
                   <?php echo validation_errors(); ?>
                           <div class="form-group">       
                             <label class="form-control-label">Service Name</label>
-                            <input type="text" value="<?php echo $sdata['sname'];?>" name="sname" class="form-control">
+                            <input required type="text" value="<?php echo $sdata['sname'];?>" name="sname" class="form-control">
                           </div>
                           <div class="form-group">
                             <label class="form-control-label">Description</label>
-                            <input type="text" value="<?php echo $sdata['sdescription']; ?>" name="sdescription" class="form-control">
+                            <input required type="text" value="<?php echo $sdata['sdescription']; ?>" name="sdescription" class="form-control">
                           </div>
                           <div class="form-group">
                             <label class="form-control-label">Venue</label>
-                            <input type="text" value="<?php echo $sdata['svenue']; ?>" name="svenue" class="form-control">
+                            <input required type="text" value="<?php echo $sdata['svenue']; ?>" name="svenue" class="form-control">
                           </div>
                           <div class="form-group">
                             <label class="form-control-label">Price</label>
-                            <input type="numbers" value="<?php echo $sdata['sprice']; ?>" name="sprice" class="form-control">
+                            <input required onkeypress="return event.charCode >= 48&&event.charCode <= 57" type="number" value="<?php echo $sdata['sprice']; ?>" name="sprice" class="form-control">
                           </div>
                           <input type="hidden" name="sid" value="<?php echo $sdata['sid'];?>">
                           <div class="form-group"> 
