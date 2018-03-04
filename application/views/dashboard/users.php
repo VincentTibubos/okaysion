@@ -145,6 +145,7 @@
                   <?php echo validation_errors(); ?>
                           <div class="form-group">
                             <label class="form-control-label">Email</label>
+
                             <input required type="email" value="<?php echo $cudata['cuemail']; ?>" name="cuemail" class="form-control">
                             <small class="help-block text-danger"></small>
                           </div>
@@ -152,6 +153,7 @@
                             <label class="form-control-label">Customer Name</label>
                             <input required type="text" value="<?php echo $cudata['cuname'];?>" name="cuname" class="form-control">
                             <small class="help-block text-danger"></small>
+
                           </div>
                           <input type="hidden" name="cuid" value="<?php echo $cudata['cuid'];?>">
                           <div class="form-group"> 
@@ -163,6 +165,7 @@
                             <?php if($cudata['cuid']===''): ?>  
                               <input type="submit" value="Add" class="btn btn-success" onclick="cuadd();">
                             <?php endif;?>
+
                           </div>
                         </form>
                     </div>

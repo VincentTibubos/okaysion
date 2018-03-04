@@ -122,7 +122,6 @@ class Users extends CI_Controller {
                     $comdata=$this->company_model->login($lemail,$epass);
                     if($comdata['checker']){
                         //c means company
-
                         $userdata=array(
                             'cid'=>$comdata['cid'],
                             'cname'=>$comdata['cname'],

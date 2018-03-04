@@ -145,7 +145,6 @@
 			$this->load->library('calendar',$conf);
 			echo $this->calendar->generate($year,$month);
 			exit();*/
-
 			if($this->session->userdata('type')!='Company'){
 				redirect('dashboard');
 			}
