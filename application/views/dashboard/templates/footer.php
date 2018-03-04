@@ -67,51 +67,6 @@
               window.location="<?php echo base_url()?>logout";
       }
     </script>
-    <script>
-      $(document).ready(function(){
-                    sform=$(this).offsetParent().find('#sform');
-                    cuform=$(this).offsetParent().find('#cuform');
-                    dform=$(this).offsetParent().find('#dform');
-                    tform=$(this).offsetParent().find('#tform');
-                    edform=$(this).offsetParent().find('#edform');
-        $('.content').click(function(){
-            eid=$(this).find('.id_num').html();
-            if(eid!=''){
-                $.ajax({
-                  url: '<?php echo base_url();?>calendar',
-                  type: "POST",
-                  data: {
-                      eid: eid
-                  },
-                  dataType: 'json',
-                  success: function(data){
-                    $(this).offsetParent().find('#esform').val(data['sid']);
-                    $(this).offsetParent().find('#ecuform').val(data['cuid']);
-                    $(this).offsetParent().find('#edaform').val(data['edate']);
-                    $(this).offsetParent().find('#etform').val(data['etime']);
-                    $(this).offsetParent().find('#eedform').val(data['edetails']);
-                    $(this).offsetParent().find('#eeventid').val(data['eid']);
-                    return true;
-                  },//function(data){
-                       //location.reload();
-                        //alert('request success'+data);
-                     //},
-                  error: function(xhr, textStatus, errorThrown){
-                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
-                         e.preventDefault();
-                         return false;
-                  }
-                });
-            }
-        });
-        $('#addeve').click(function(){
-                    $(this).offsetParent().find('#dform').val('<?php echo date('Y-m-d');?>');
-                    $(this).offsetParent().find('#tform').val('');
-                    $(this).offsetParent().find('#edform').val('');
-                    $(this).offsetParent().find('#eventid').val('');
-        });
-      });
-    </script>
 
   </body>
 </html>

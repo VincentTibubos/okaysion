@@ -5,6 +5,7 @@ $route['amessage/(:any)'] = 'amessage/$1';
 $route['amessage'] = 'amessage';
 $route['company/check'] = 'company/checkcompany';
 
+$route['dashboard/messages/(:any)'] = 'dashboard/messages/$1';
 $route['dashboard/messages'] = 'dashboard/messages';
 $route['dashboard/company'] = 'dashboard/company';
 $route['dashboard/service'] = 'dashboard/service';

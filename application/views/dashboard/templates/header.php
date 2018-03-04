@@ -62,6 +62,30 @@
     background-color: #EEF;
     color: gray;
   }
+
+  .pagination{
+    margin: 0 auto;
+  }
+  .pagination a{
+    padding: 5px 13px;
+    margin: 5px;
+    background:#f4f4f4;
+    border: 1px #ccc solid;
+    color: black;
+  }
+  .pagination strong{
+    padding: 5px 13px;
+    margin: 5px;
+    background:#f4f4f4;
+    border: 1px #ccc solid;
+  }
+  .pagination a:hover{
+    color: white;
+    background:#4f4f4f;
+  }
+
+
+
 </style>
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>

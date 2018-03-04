@@ -40,29 +40,45 @@
 			$this->load->view('dashboard/users',$data);
 			$this->load->view('dashboard/templates/footer');
 		}
-		public function messages(){
-			$data['mdata']=array(
-				'amid'=>'',
-				'amname'=>'',
-				'amemail'=>'',
-				'amsubject'=>'',
-				'ammsg'=>''
-			);
-			$type=$this->session->userdata('type');
-			//exit();
-			if($type=='Admin'){
-				if(!empty($_POST)){
-					$data['mdata']=$this->amessage_model->view($this->input->post('amid'));
-					//print_r($data['mdata']);
+		public function messages($indexno=0){
+
+			if($this->input->is_ajax_request()){
+				$type=$this->session->userdata('type');
+				if($type=='Admin'){
+					if(!empty($_POST)){
+						$data=$this->amessage_model->view($this->input->post('amid'));
+					}
+					echo json_encode($data);
 				}
-				$data['message']=$this->amessage_model->view();
-				//print_r($data);
 			}
-		//	print_r($data);
-		//	exit();
-			$this->load->view('dashboard/templates/header');
-			$this->load->view('dashboard/messages',$data);
-			$this->load->view('dashboard/templates/footer');
+			else{
+				$data['mdata']=array(
+					'amid'=>'',
+					'amname'=>'',
+					'amemail'=>'',
+					'amsubject'=>'',
+					'ammsg'=>''
+				);
+				$type=$this->session->userdata('type');
+				//exit();
+				if($type=='Admin'){
+					$config['base_url'] = base_url().'dashboard/messages/';
+					$config['total_rows'] = $this->amessage_model->countnum();
+					$config['per_page'] = 3;
+					$config['uri_segment'] = 3;
+					$config['first_tag_open'] = '<div class="btn btn-success">';
+					$config['first_tag_close'] = '</div>';
+
+					$this->pagination->initialize($config);
+					$data['message']=$this->amessage_model->view(FALSE,$config['per_page'],$indexno);
+					//print_r($data);
+				}
+			//	print_r($data);
+			//	exit();
+				$this->load->view('dashboard/templates/header');
+				$this->load->view('dashboard/messages',$data);
+				$this->load->view('dashboard/templates/footer');
+			}
 		}
 		public function customer(){
 			$data['cudata']=array(

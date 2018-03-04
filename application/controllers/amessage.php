@@ -7,4 +7,8 @@ class Amessage extends CI_Controller {
         $this->amessage_model->send();
         redirect(base_url());
     }
+	public function delete(){
+		echo $this->amessage_model->delete($this->input->post('amid'));
+
+	}
 }
