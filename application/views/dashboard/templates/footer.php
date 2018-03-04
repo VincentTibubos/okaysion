@@ -51,8 +51,8 @@
   
 
     <!-- Javascript files-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
+    <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/jquery.cookie/jquery.cookie.js"> </script>
@@ -61,10 +61,12 @@
     <!-- Main File-->
     <script src="<?php echo base_url();?>/assets/dashboard/js/front.js"></script>
 
+
     <script>
       function redirout(){
               window.location="<?php echo base_url()?>logout";
       }
     </script>
+
   </body>
 </html>

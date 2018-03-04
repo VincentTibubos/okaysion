@@ -9,10 +9,10 @@
             <div class="container-fluid">
               <h2 class="no-margin-bottom">
                 <?php if($this->session->userdata('type')=='Admin'): ?>
-                  Company      
+                  Companies     
                 <?php endif; ?>
                 <?php if($this->session->userdata('type')=='Company'): ?>
-                  Users      
+                  Customers    
                 <?php endif; ?>
               </h2>
             </div>
@@ -24,10 +24,10 @@
 
               <li class="breadcrumb-item active">
                 <?php if($this->session->userdata('type')=='Admin'): ?>
-                  Company      
+                  Companies      
                 <?php endif; ?>
                 <?php if($this->session->userdata('type')=='Company'): ?>
-                  Users      
+                  Customers      
                 <?php endif; ?>
               </li>
             </ul>
@@ -41,12 +41,6 @@
               <div class="row">
                 <div class="col-lg-4">
                   <div class="card">
-                    <div class="card-close">
-                      <div class="dropdown">
-                        <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
-                    </div>
                     <div class="card-header d-flex align-items-center">
 
                       <h3 class="h4">Company</h3>
@@ -78,12 +72,6 @@
                 </div>
                 <div class="col-lg-8">
                   <div class="card">
-                    <div class="card-close">
-                      <div class="dropdown">
-                        <button type="button" id="closeCard3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard3" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
-                    </div>
                     <div class="card-header d-flex align-items-center">
                       <h3 class="h4">Companies</h3>
                     </div>
@@ -134,7 +122,102 @@
           </section>
           <?php endif;?>
 
+          <?php if($this->session->userdata('type')=='Company'): ?>
+
+          <section class="tables">   
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+
+                      <h3 class="h4">Customer</h3>
+                    </div>
+                    <div class="card-body">
+                      <p>Add or Update Company</p>
+                        <form method="post" action="" id="formcus">
+                          
+                  <?php echo validation_errors(); ?>
+                          <div class="form-group">
+                            <label class="form-control-label">Email</label>
+                            <input type="text" value="<?php echo $cudata['cuemail']; ?>" name="cuemail" class="form-control">
+                          </div>
+                          <div class="form-group">       
+                            <label class="form-control-label">Customer Name</label>
+                            <input type="text" value="<?php echo $cudata['cuname'];?>" name="cuname" class="form-control">
+                          </div>
+                          <input type="hidden" name="cuid" value="<?php echo $cudata['cuid'];?>">
+                          <div class="form-group"> 
+
+                              <input type="submit" value="Add" class="btn btn-success" onclick="cuadd();">
+                            <?php if($cudata['cuid']!==''): ?>      
+                              <input type="submit" value="Update" class="btn btn-success"  onclick="cuupdate();">
+                            <?php endif;?>
+                          </div>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">Customers</h3>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">                       
+                        <table class="table table-striped table-hover">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Customer</th>
+                              <th>Email</th>
+                              <th>Address</th>
+                              <th>Modify Customer</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php foreach($customer as $num=>$cus){
+                              echo "
+                            <tr>
+                              <th scope='row'>".($num+1)."</th>
+                              <td>".$cus['cuname']."</td>
+                              <td>".$cus['cuemail']."</td>
+                              <td>".$cus['cuaddress']."</td>
+                              <td>
+                              <div class='btn-group'>
+                                  <form action='".base_url()."dashboard/customer' method='post'>
+                                    <input type='hidden' value='".$cus['cuid']."' name='cuid'>
+                                    <input type='hidden' value='dashboard/company' name='comp'>
+                                    <input type='submit' value='Edit' class='btn btn-success'>
+                                  </form>
+                                  <form action='".base_url()."customer/delete' method='post'>
+                                    <input type='hidden' value='".$cus['cuid']."' name='cuid'>
+                                    <input type='hidden' value='dashboard/company' name='comp'>
+                                    <input type='submit' value='Delete' class='btn btn-danger'>
+                                  </form>
+                                </div>
+                              </td>
+                            </tr>";
+                            }?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <?php endif;?>
+
 <script>
+  function cuadd(){
+      document.getElementById('formcus').action="<?php echo base_url();?>customer/add";
+    }
+  function cuupdate(){
+      
+      document.getElementById('formcus').action="<?php echo base_url();?>customer/update";
+  }
   function add(){
       document.getElementById('formcom').action="<?php echo base_url();?>company/add";
     }

@@ -14,6 +14,15 @@ class Company_model extends CI_Model{
         }
         return false;
     }
+        public function getpass($lemail){
+           $this->db->where('cemail',$lemail);
+       // $query=$this->db->get_where('company_tbl',array('cemail'=>$lemail,'cpass'=>$epass));
+            $result=$this->db->get('company_tbl');
+            if($result->num_rows()>0){
+                return $result->row(0)->cpass;
+            }
+                return false;
+        }
     //login
     public function login($lemail,$epass){
    //     print_r($_POST);
@@ -29,6 +38,7 @@ class Company_model extends CI_Model{
         $id=null;
         if($result->num_rows()>0){
             $comdata=array(
+                'clogo'=>$result->row(0)->clogo,
                 'cid'=>$result->row(0)->cid,
                 'cname'=>$result->row(0)->cname,
                 'checker'=>true
@@ -42,28 +52,37 @@ class Company_model extends CI_Model{
     }
     public function viewcomp($cid=FALSE){
         if($cid===FALSE){
-            $query=$this->db->get('company_tbl');
+            $query = $this->db->get_where('company_tbl',array('cstatus'=>1));
             return $query->result_array();
         }
-        $query = $this->db->get_where('company_tbl',array('cid'=>$cid));
+        $query = $this->db->get_where('company_tbl',array('cid'=>$cid,'cstatus'=>1));
         return $query->row_array();
     }
     public function delete($cid){
-        $this->db->where('cid',$cid);
-        $this->db->delete('company_tbl');
-        return true;
+        $data =array(
+            'cstatus' => 0
+        );
+        $this->db->where('cid',$this->input->post('cid'));
+        return $this->db->update('company_tbl',$data);
     }
-    public function add($epass){
+    public function add($epass,$clogo){
+        //Array ( [cname] => vincent1312 [cemail] => 123213123@djkhkj [rpassword] => 123 [rcpassword] => 123 )
         $data =array(
             'cname' => $this->input->post('cname'),
             'cemail' => $this->input->post('cemail'),
-            'cpass' => $epass
+            'ccreated' => date('Y-m-d'),
+            'cmodified' => date('Y-m-d'),
+            'cstatus' => 1,
+            'cpass' => $epass,
+            'clogo'=>$clogo
         );
         return $this->db->insert('company_tbl',$data);
     }
     public function update(){
         $data =array(
+
             'cname' => $this->input->post('cname'),
+            'cmodified' => date('Y-m-d'),
             'cemail' => $this->input->post('cemail')
         );
         $this->db->where('cid',$this->input->post('cid'));

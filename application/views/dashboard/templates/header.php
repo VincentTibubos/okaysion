@@ -10,23 +10,85 @@
 	
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/glyphicons.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/fontastic.css">
+  <link href="<?php echo base_url();?>assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/custom.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/bootstrap-datetimepicker.min.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?php echo base_url();?>/assets/img/8czrGpnqi.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+<style type="text/css">
+.okicon{
+  margin: 0px 10px;
+}
+  .calendar {
+    font-size: 20px;
+  }
+  table.calendar{
+    margin: auto;
+    border-collapse: collapse;
+  }
+  .calendar .days td{
+    width: 80px; height: 80px; padding: 4px;
+    vertical-align: top; background-color: #DEF;
+    border: 1px solid #dee2e6;
+  }
+  .calendar .days td:hover{
+    background-color: #fff; 
+  }
+  .calendar .highlight{
+    font-weight: bold;
+    color: #00f;  
+  }
+  .content {
+    font-size: 10px;
+    padding: 0px 5px;
+  }
+  .maincontent{
+    color: white;
+  }
+  .calendar .days > .other-month{
+    background-color: #EEF;
+    color: gray;
+  }
 
+  .pagination{
+    margin: 0 auto;
+  }
+  .pagination a{
+    padding: 5px 13px;
+    margin: 5px;
+    background:#f4f4f4;
+    border: 1px #ccc solid;
+    color: black;
+  }
+  .pagination strong{
+    padding: 5px 13px;
+    margin: 5px;
+    background:#f4f4f4;
+    border: 1px #ccc solid;
+  }
+  .pagination a:hover{
+    color: white;
+    background:#4f4f4f;
+  }
+
+
+
+</style>
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
+    <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>
   </head>
   <body>
     <div class="page">
@@ -68,7 +130,7 @@
         <nav class="side-navbar">
           <!-- Sidebar Header-->
           <div class="sidebar-header d-flex align-items-center">
-            <div class="avatar"><img src="<?php echo base_url();?>/assets/dashboard/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="avatar"><img src="<?php echo base_url().'assets/img/logo/'.$this->session->userdata('clogo');?>" alt="..." class="rounded-circle" style="height:55px;width:55px;"></div>
             <div class="title">
               <h1 class="h4"><?php echo $this->session->userdata('cname');?></h1>
               <p><?php echo $this->session->userdata('type');?></p>
@@ -79,14 +141,24 @@
                     <li id="d_index"><a href="<?php echo base_url();?>dashboard/index"> <i class="icon-home"></i>Home </a></li>
                     <li id="d_messages"><a href="<?php echo base_url();?>dashboard/messages"> <i class="icon-mail"></i>Messages</a></li>
 
-          <?php if($this->session->userdata('type')!='Admin'): ?>
-                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/users"> <i class="icon-user"></i>Users</a></li>
+          <?php if($this->session->userdata('type')=='Company'): ?>
+                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/customer"> <i class="icon-user"></i>Customers</a></li>
+          <?php endif;?>
+          <?php if($this->session->userdata('type')=='Company'): ?>
+                    <li id="d_service"><a href="<?php echo base_url();?>dashboard/service"> <i class="icon-user"></i>Services</a></li>
           <?php endif;?>
           <?php if($this->session->userdata('type')=='Admin'): ?>
-                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/company"> <i class="icon-user"></i>Company</a></li>
+                    <li id="d_users"><a href="<?php echo base_url();?>dashboard/company"> <i class="icon-user"></i>Companies</a></li>
           <?php endif;?>
 
+                <?php if($this->session->userdata('type')=='Admin'): ?>
+                  
                     <li id="d_forms"><a href="<?php echo base_url();?>dashboard/forms"> <i class="icon-padnote"></i>Sample</a></li>
+                <?php endif; ?>
+                <?php if($this->session->userdata('type')=='Company'): ?>
+                  
+                    <li id="d_forms"><a href="<?php echo base_url();?>dashboard/calendar"> <i class="icon-padnote"></i>Calendar</a></li>   
+                <?php endif; ?>
                     <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
                       <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                         <li><a href="#">Page</a></li>
