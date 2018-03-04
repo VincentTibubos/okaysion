@@ -184,7 +184,7 @@
                                         </div>
                                         <div class="form-group col-sm-12">
                                             <label>Event Details</label>
-                                            <input class="form-control" type="text" value="" id="eedform">
+                                            <input class="form-control" type="text" value="" id="eedform" required>
                                         </div>
                                         <div class="dropdown col-sm-12">
                                           <label>Select Service</label>

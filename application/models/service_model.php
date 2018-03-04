@@ -1,14 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Service_model extends CI_Model{
     public function check_sname_exists($sname){
-        $query=$this->db->get_where('service_tbl',array('sname'=>$sname));
+        $query=$this->db->get_where('service_tbl',array('sname'=>$sname,'cid'=>$this->session->userdata('cid')));
         if(empty($query->row_array())){
             return true;
         }
         return false;
     }
     public function check_sdescription_exists($sdescription){
-        $query=$this->db->get_where('service_tbl',array('sdescription'=>$sdescription));
+        $query=$this->db->get_where('service_tbl',array('sdescription'=>$sdescription,'cid'=>$this->session->userdata('cid')));
         if(empty($query->row_array())){
             return true;
         }

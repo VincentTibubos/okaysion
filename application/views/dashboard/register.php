@@ -70,12 +70,12 @@
                             <small class="help-block text-danger"><?php echo form_error('cemail');?></small>
                           </div>
                           <div class="form-group" id='comppass'>
-                            <input id="rpass" type="password" name="rpassword" required class="input-material">
+                            <input id="rpass" type="password" name="rpassword" required class="input-material" title="minimum of 6 characters">
                             <label for="rpass" class="label-material">Password </label>
                             <small class="help-block text-danger"><?php echo form_error('rpassword');?></small>
                           </div>
                           <div class="form-group"  id='compcpass'>
-                            <input id="rcpass" type="password" name="rcpassword" required class="input-material">
+                            <input id="rcpass" type="password" name="rcpassword" required class="input-material" title="minimum of 6 characters">
                             <label for="rcpass" class="label-material">Confirm Password </label>
                             <small class="help-block text-danger"><?php echo form_error('rcpassword');?></small>
                           </div>
@@ -207,7 +207,7 @@
           else
             regi.attr('disabled','disabled');
         });
-        ccpass.find('input').on('blur change',function(){
+        ccpass.find('input').on('blur change cut paste keyup',function(){
           //alert(cpass.find('input').val());
           $.ajax({
                   url: '<?php echo base_url();?>company/check',
@@ -230,7 +230,7 @@
                   }
           });
         });
-        cpass.find('input').on('blur change',function(){
+        cpass.find('input').on('blur change cut paste keyup',function(){
           $.ajax({
                   url: '<?php echo base_url();?>company/check',
                   type: "POST",
@@ -256,7 +256,7 @@
                   }
           });
         });
-        cemail.find('input').on('blur change',function(){
+        cemail.find('input').on('blur change cut paste keyup',function(){
           $.ajax({
                   url: '<?php echo base_url();?>company/check',
                   type: "POST",
@@ -277,7 +277,7 @@
                   }
           });
         });
-        cname.find('input').on('blur change',function(){
+        cname.find('input').on('blur change cut paste keyup',function(){
           $.ajax({
                   url: '<?php echo base_url();?>company/check',
                   type: "POST",

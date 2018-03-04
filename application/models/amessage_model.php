@@ -30,6 +30,7 @@ class Amessage_model extends CI_Model{
                 $this->db->limit($limit,$indexno);
             }
             if($mid===FALSE){
+                $this->db->order_by('amid','DESC');
                 $query = $this->db->get_where('amessage_tbl',array('amstatus'=>1));
                 return $query->result_array();
             }

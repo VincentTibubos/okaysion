@@ -15,6 +15,7 @@ $route['calendar'] = 'calendar/index';
 $route['copy'] = 'createweb/directory_copy';
 
 $route['createweb'] = 'createweb/index';
+$route['admin/check'] = 'admin/checkadmin';
 $route['admin'] = 'admin/login';
 $route['login'] = 'users/login';
 $route['logout'] = 'users/logout';

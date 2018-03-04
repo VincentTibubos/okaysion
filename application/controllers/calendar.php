@@ -6,6 +6,9 @@ class Calendar extends CI_Controller {
            
             $data=$this->calendar_model->getvalues($this->input->post('eid'));
         }
+        else{
+            redirect();
+        }
         echo json_encode($data);       
 
         //return $data;

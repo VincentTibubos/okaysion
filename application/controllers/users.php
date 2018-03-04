@@ -57,14 +57,21 @@ class Users extends CI_Controller {
             }
 
         }
-        public function check_cname_exists($cname){
+        public function check_cname_exists($cname=FALSE){
+
+        if($cname==FALSE){
+            redirect();
+        }
             $this->form_validation->set_message('check_cname_exists','Company name already taken.');
             if($this->company_model->check_cname_exists($cname)){
                 return true;
             }
             return false;
         }
-        public function check_cemail_exists($cemail){
+        public function check_cemail_exists($cemail=FALSE){
+        if($cemail==FALSE){
+            redirect();
+        }
             $this->form_validation->set_message('check_cemail_exists','Email already taken.');
             if($this->company_model->check_cemail_exists($cemail)){
                 return true;
@@ -106,6 +113,8 @@ class Users extends CI_Controller {
                 if($this->form_validation->run()===FALSE){
                     $this->load->view('dashboard/login');
                 }else{
+                    redirect();
+
                     $lemail=$this->input->post('lemail');
                     $epass=md5($this->input->post('lpassword'));
 
@@ -113,7 +122,6 @@ class Users extends CI_Controller {
                     $comdata=$this->company_model->login($lemail,$epass);
                     if($comdata['checker']){
                         //c means company
-
                         $userdata=array(
                             'cid'=>$comdata['cid'],
                             'cname'=>$comdata['cname'],

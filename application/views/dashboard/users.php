@@ -50,20 +50,25 @@
                         <form method="post" action="" id="formcom">
                           
                   <?php echo validation_errors(); ?>
-                          <div class="form-group">
+                          <div class="form-group"  id="acemail" >
                             <label class="form-control-label">Email</label>
-                            <input type="text" value="<?php echo $cdata['cemail']; ?>" name="cemail" class="form-control">
+                            <input required type="email" value="<?php echo $cdata['cemail']; ?>" name="cemail" class="form-control">
+                            <small class="help-block text-danger"></small>
                           </div>
-                          <div class="form-group">       
+                          <div class="form-group" id="acname">       
                             <label class="form-control-label">Company Name</label>
-                            <input type="text" value="<?php echo $cdata['cname'];?>" name="cname" class="form-control">
+                            <input required type="text" value="<?php echo $cdata['cname'];?>" name="cname" class="form-control">
+                            <small class="help-block text-danger"></small>
                           </div>
-                          <input type="hidden" name="cid" value="<?php echo $cdata['cid'];?>">
+                          <input id="acid" type="hidden" name="cid" value="<?php echo $cdata['cid'];?>">
+                          <input type="hidden" name="clogo" value="avatar1.jpg">
                           <div class="form-group"> 
 
-                              <input type="submit" value="Add" class="btn btn-success" onclick="add();">
+                            <?php if($cdata['cid']===''): ?>  
+                              <input type="submit" value="Add" class="btn btn-success" onclick="add();" id='addbtn' disabled>
+                            <?php endif;?>
                             <?php if($cdata['cid']!==''): ?>      
-                              <input type="submit" value="Update" class="btn btn-success"  onclick="update();">
+                              <input type="submit" id="upbtn" value="Update" class="btn btn-success" disabled  onclick="update();">
                             <?php endif;?>
                           </div>
                         </form>
@@ -140,19 +145,27 @@
                   <?php echo validation_errors(); ?>
                           <div class="form-group">
                             <label class="form-control-label">Email</label>
-                            <input type="text" value="<?php echo $cudata['cuemail']; ?>" name="cuemail" class="form-control">
+
+                            <input required type="email" value="<?php echo $cudata['cuemail']; ?>" name="cuemail" class="form-control">
+                            <small class="help-block text-danger"></small>
                           </div>
                           <div class="form-group">       
                             <label class="form-control-label">Customer Name</label>
-                            <input type="text" value="<?php echo $cudata['cuname'];?>" name="cuname" class="form-control">
+                            <input required type="text" value="<?php echo $cudata['cuname'];?>" name="cuname" class="form-control">
+                            <small class="help-block text-danger"></small>
+
                           </div>
                           <input type="hidden" name="cuid" value="<?php echo $cudata['cuid'];?>">
                           <div class="form-group"> 
 
-                              <input type="submit" value="Add" class="btn btn-success" onclick="cuadd();">
                             <?php if($cudata['cuid']!==''): ?>      
                               <input type="submit" value="Update" class="btn btn-success"  onclick="cuupdate();">
                             <?php endif;?>
+
+                            <?php if($cudata['cuid']===''): ?>  
+                              <input type="submit" value="Add" class="btn btn-success" onclick="cuadd();">
+                            <?php endif;?>
+
                           </div>
                         </form>
                     </div>
@@ -225,4 +238,122 @@
       
       document.getElementById('formcom').action="<?php echo base_url();?>company/update";
     }
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+        add=$('#addbtn');
+        up=$('#upbtn');
+        cname=$(this).find('#acname');
+        cemail=$(this).find('#acemail');
+        if($('#acid').val()!=''){
+          vcname=cname.find('input').val();
+          vcemail=cemail.find('input').val();
+        }
+        $('.form-control').on('blur change cut paste keyup ready',function(){
+          cem=cemail.find('input').val();
+          cna=cname.find('input').val();
+          $.ajax({
+                  url: '<?php echo base_url();?>company/check',
+                  type: "POST",
+                  data: {
+                    cemail: cem,
+                    cname: cna
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    cemail.find('small').html('');
+                    cname.find('small').html('');
+                    if($('#acid').val()!=''){
+                      if((cem==vcemail&&data['cname']=='')){
+                        up.removeAttr('disabled');
+                      }
+                      else if((cna==vcname&&data['cemail']=='')){
+                        up.removeAttr('disabled');
+                      }
+                      else if((cem==vcemail&&cna==vcname)){
+                        up.removeAttr('disabled');
+                      }
+                      else if(data['cname']!=''||data['cemail']!=''){
+                        cemail.find('small').html(data['cemail']);
+                        cname.find('small').html(data['cname']);
+                        up.attr('disabled','disabled');
+                        add.attr('disabled','disabled');
+                      }
+                      else{
+                        add.removeAttr('disabled');
+                        up.removeAttr('disabled');
+                      }
+                    }
+                    else if(data['cname']!=''||data['cemail']!=''){
+                      cemail.find('small').html(data['cemail']);
+                      cname.find('small').html(data['cname']);
+                      up.attr('disabled','disabled');
+                      add.attr('disabled','disabled');
+                    }
+                    else{
+                      add.removeAttr('disabled');
+                      up.removeAttr('disabled');
+                    }
+                    return false;
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+        /*
+        cemail.find('input').on('blur change cut paste keyup',function(){
+          $.ajax({
+                  url: '<?php echo base_url();?>company/check',
+                  type: "POST",
+                  data: {
+                    cemail: $(this).val(),
+                    cname: cname.find('input').val()
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    cemail.find('small').html('');
+                    if(data['cname']!=''){
+                      cemail.find('small').html(data['cemail']);
+                      add.attr('disabled','disabled');
+                    }
+                    else{
+                      add.removeAttr('disabled');
+                    }
+                    return false;
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+        cname.find('input').on('blur change cut paste keyup',function(){
+          $.ajax({
+                  url: '<?php echo base_url();?>company/check',
+                  type: "POST",
+                  data: {
+                    cname: $(this).val(),
+                    cemail: cemail.find('input').val()
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    cname.find('small').html('');
+                    if(data['cname']!=''){
+                        cname.find('small').html(data['cname']);
+                      add.attr('disabled','disabled');
+                    }
+                    else{
+                      add.removeAttr('disabled');
+                    }
+                    return false;
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });*/
+  });
 </script>
