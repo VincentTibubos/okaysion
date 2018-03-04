@@ -132,9 +132,15 @@
             if(!$this->session->userdata('logged_in')){
                 redirect('login');
             }
-			$this->load->view('dashboard/templates/header');
-			$this->load->view('dashboard/'.$page);
-			$this->load->view('dashboard/templates/footer');
+            if(file_exists(APPPATH.'views/dashboard/'.$page.'.php')){
+						
+					$this->load->view('dashboard/templates/header');
+					$this->load->view('dashboard/'.$page);
+					$this->load->view('dashboard/templates/footer');
+			}
+			else{
+				show_404();
+			}
 		}
 		public function calendar($year=null,$month=null){
 			/*$conf=array(

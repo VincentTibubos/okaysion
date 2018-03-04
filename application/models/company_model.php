@@ -41,6 +41,7 @@ class Company_model extends CI_Model{
                 'clogo'=>$result->row(0)->clogo,
                 'cid'=>$result->row(0)->cid,
                 'cname'=>$result->row(0)->cname,
+                'ccreated'=>$result->row(0)->ccreated,
                 'checker'=>true
             );
             return $comdata;

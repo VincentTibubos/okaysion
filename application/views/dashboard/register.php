@@ -80,7 +80,7 @@
                             <small class="help-block text-danger"><?php echo form_error('rcpassword');?></small>
                           </div>
                           <div class="form-group"  id='complogo'>
-                            <input id="logo" required type="file" name="userfile" class="form-control-file" size="20" value="input"style="color:grey">
+                            <input id="logo" type="file" name="userfile" class="form-control-file" size="20" value="input"style="color:grey">
                             <small class="help-block text-danger"><?php echo form_error('clogo');?></small>
                           </div>
                           <div class="form-group terms-conditions" id='compag'>
@@ -345,7 +345,7 @@
                           ccpass.find('small').html(data['ccpass']);
                         }
                         e.preventDefault();
-                        alert('prevented');
+                        //alert('prevented');
                         return false;
                     }
                   },

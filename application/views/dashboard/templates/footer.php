@@ -4,6 +4,20 @@
               <div class="row">
                 <div class="col-sm-6">
                   <p>OKAYsion &copy; 2018</p>
+                  <?php if($this->session->userdata('type')=='Company'){
+                    $thiday=strtotime($this->session->userdata('ccreated').'+ 30 days');
+                    $numdays= ($thiday-time());
+                    $numdays=round($numdays/(60*60*24));
+                    if($numdays<0){
+                      $numdays=0;
+                    }
+                    if($numdays<=1){
+                      echo $numdays.' day left';
+                    }
+                    else{
+                      echo $numdays.' days left';
+                    }
+                  }?>
                 </div>
 
                <!--
