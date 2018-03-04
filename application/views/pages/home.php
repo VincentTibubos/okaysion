@@ -188,20 +188,20 @@ from.</p>
         <form action="amessage/send" method="post" role="form" >
           <div class="form-row">
             <div class="form-group col-md-6">
-              <input type="text" name="name" class="form-control" id="fname" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <input type="text" name="name" class="form-control" id="fname" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required />
               <div class="validation"></div>
             </div>
             <div class="form-group col-md-6">
-              <input type="email" class="form-control" name="email" id="femail" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+              <input type="email" class="form-control" name="email" id="femail" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email"  required/>
               <div class="validation"></div>
             </div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="subject" id="fsubject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+            <input type="text" class="form-control" name="subject" id="fsubject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"  required />
             <div class="validation"></div>
           </div>
           <div class="form-group">
-            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"  required></textarea>
             <div class="validation"></div>
           </div>
           <div class="text-center"><button type="submit">Send Message</button></div>
