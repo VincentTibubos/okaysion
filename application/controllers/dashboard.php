@@ -25,23 +25,29 @@
 
 		}
 		public function company(){
-			if($this->session->userdata('type')!='Admin'){
-				redirect('dashboard');
+			if($this->input->is_ajax_request()){
+				$data=$this->company_model->viewcomp($this->input->post('cid'));
+				echo json_encode($data);
 			}
-			$data['cdata']=array(
-				'cid'=>'',
-				'cname'=>'',
-				'cemail'=>''
-			);
-			if(!empty($_POST)){
-				$data['cdata']=$this->company_model->viewcomp($this->input->post('cid'));
+			else{
+				if($this->session->userdata('type')!='Admin'){
+					redirect('dashboard');
+				}
+				$data['cdata']=array(
+					'cid'=>'',
+					'cname'=>'',
+					'cemail'=>''
+				);
+				if(!empty($_POST)){
+					$data['cdata']=$this->company_model->viewcomp($this->input->post('cid'));
+				}
+				$data['company']=$this->company_model->viewcomp();
+			//	print_r($data);
+			//	exit();
+				$this->load->view('dashboard/templates/header');
+				$this->load->view('dashboard/users',$data);
+				$this->load->view('dashboard/templates/footer');
 			}
-			$data['company']=$this->company_model->viewcomp();
-		//	print_r($data);
-		//	exit();
-			$this->load->view('dashboard/templates/header');
-			$this->load->view('dashboard/users',$data);
-			$this->load->view('dashboard/templates/footer');
 		}
 		public function messages($indexno=0){
 

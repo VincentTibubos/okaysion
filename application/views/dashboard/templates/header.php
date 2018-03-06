@@ -114,8 +114,8 @@
               </div>
               <!-- Navbar Menu -->
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                <!-- Search-->
-                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>
+                <!-- Search
+                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>-->
           
                 <!-- Logout    -->
                 <li class="nav-item"><a href="" class="nav-link logout" data-toggle="modal" data-target="#logoutm">Logout<i class="fa fa-sign-out"></i></a></li>
@@ -159,18 +159,21 @@
                   
                     <li id="d_forms"><a href="<?php echo base_url();?>dashboard/calendar"> <i class="icon-padnote"></i>Calendar</a></li>   
                 <?php endif; ?>
-                    <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
+                    <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Settings </a>
                       <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
+
+                        <?php if($this->session->userdata('type')=='Company'): ?>
+                          <li class="nav-item"><a data-toggle="modal" data-target="#editaccm" id="editacc">Edit Account</a></li>
+                        <?php endif; ?>
+                        <li class="nav-item"><a href="" class="nav-link logout" data-toggle="modal" data-target="#logoutm">Logout</a></li>
                       </ul>
                     </li>
-          </ul><span class="heading">Extras</span>
+          </ul><!--
+          <span class="heading">Extras</span>
           <ul class="list-unstyled">
             <li> <a href="#"> <i class="icon-flask"></i>Demo </a></li>
             <li> <a href="#"> <i class="icon-screen"></i>Demo </a></li>
             <li> <a href="#"> <i class="icon-mail"></i>Demo </a></li>
             <li> <a href="#"> <i class="icon-picture"></i>Demo </a></li>
-          </ul>
+          </ul>-->
         </nav>

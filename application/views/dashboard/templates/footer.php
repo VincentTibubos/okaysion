@@ -62,8 +62,131 @@
       
     </div>
   </div>
+  <!-- Modal -->
+  <div class="modal fade" id="editaccm" role="dialog">
+    <div class="modal-dialog  modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Account</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form method="post" action="<?php echo base_url();?>company/update" id="formcom">
+          <div class="modal-body">
+
+                    <div class="form-group"  id="aacemail" >
+                      <label class="form-control-label">Email</label>
+                      <input required type="email" value="" name="cemail" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aacname">       
+                      <label class="form-control-label">Company Name</label>
+                      <input required type="text" value="" name="cname" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <input id="aacid" type="hidden" name="cid" value="<?php echo $this->session->userdata('cid');?>">
+                    <input type="hidden" name="clogo" value="avatar1.jpg">
+                    
+          </div>
+          <div class="modal-footer">
+            <div class="form-group">     
+                <input type="submit" id="aupbtn" value="Update" class="btn btn-success" disabled>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      
+    </div>
+  </div>
   
 
+<script type="text/javascript">
+  $(document).ready(function(){
+        add=$('#aaddbtn');
+        up=$('#aupbtn');
+        cname=$(this).find('#aacname');
+        cemail=$(this).find('#aacemail');
+        if($('#aacid').val()!=''){
+          vcname=cname.find('input').val();
+          vcemail=cemail.find('input').val();
+        }
+        $('#editacc').click(function(){
+           $.ajax({
+                  url: '<?php echo base_url();?>dashboard/company',
+                  type: "POST",
+                  data: {
+                    cid: '<?php echo $this->session->userdata('cid');?>'
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    vcname=data['cname'];
+                    vcemail=data['cemail'];
+                    cname.find('input').val(data['cname']);
+                    cemail.find('input').val(data['cemail']);
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+        $('.form-control').on('blur change cut paste keyup ready',function(){
+          cem=cemail.find('input').val();
+          cna=cname.find('input').val();
+          $.ajax({
+                  url: '<?php echo base_url();?>company/check',
+                  type: "POST",
+                  data: {
+                    cemail: cem,
+                    cname: cna
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    cemail.find('small').html('');
+                    cname.find('small').html('');
+                    if($('#acid').val()!=''){
+                      if((cem==vcemail&&data['cname']=='')){
+                        up.removeAttr('disabled');
+                      }
+                      else if((cna==vcname&&data['cemail']=='')){
+                        up.removeAttr('disabled');
+                      }
+                      else if((cem==vcemail&&cna==vcname)){
+                        up.removeAttr('disabled');
+                      }
+                      else if(data['cname']!=''||data['cemail']!=''){
+                        cemail.find('small').html(data['cemail']);
+                        cname.find('small').html(data['cname']);
+                        up.attr('disabled','disabled');
+                        add.attr('disabled','disabled');
+                      }
+                      else{
+                        add.removeAttr('disabled');
+                        up.removeAttr('disabled');
+                      }
+                    }
+                    else if(data['cname']!=''||data['cemail']!=''){
+                      cemail.find('small').html(data['cemail']);
+                      cname.find('small').html(data['cname']);
+                      up.attr('disabled','disabled');
+                      add.attr('disabled','disabled');
+                    }
+                    else{
+                      add.removeAttr('disabled');
+                      up.removeAttr('disabled');
+                    }
+                    return false;
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+  });
+</script>
     <!-- Javascript files-->
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>
