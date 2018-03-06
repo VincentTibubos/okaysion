@@ -39,6 +39,7 @@ class User_model extends CI_Model{
             $comdata=array(
                 'cid'=>$result->row(0)->cid,
                 'cname'=>$result->row(0)->cname,
+                'ccreated'=>$result->row(0)->ccreated,
                 'checker'=>true
             );
             return $comdata;

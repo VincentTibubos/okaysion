@@ -13,7 +13,9 @@
           <div class="carousel-container">
             <div class="carousel-content">
               <h2>A Multi-Tenant System</h2>
-              <a href="#<?php echo base_url();?>/copy" class="btn-get-started scrollto">Start Your 30-day Free Trial</a>
+              <?php if(!$this->session->userdata('logged_in')):?>
+              <a href="<?php echo base_url();?>register" class="btn-get-started scrollto">Start Your 30-day Free Trial</a>
+            <?php endif;?>
             </div>
           </div>
         </div>
@@ -22,7 +24,9 @@
           <div class="carousel-container">
             <div class="carousel-content">
               <h2>OKAYsion</h2>
-              <a href="#featured-services" class="btn-get-started scrollto">Start Your 30-day Free Trial</a>
+              <?php if(!$this->session->userdata('logged_in')):?>
+              <a href="<?php echo base_url();?>register" class="btn-get-started scrollto">Start Your 30-day Free Trial</a>
+              <?php endif;?>
             </div>
           </div>
         </div>

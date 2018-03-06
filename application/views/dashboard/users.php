@@ -46,8 +46,14 @@
                       <h3 class="h4">Company</h3>
                     </div>
                     <div class="card-body">
-                      <p>Update Company</p>
-                        <form method="post" action="" id="formcom">
+
+                      <?php if($cdata['cid']===''): ?>  
+                        <p>Add Company</p>
+                      <?php endif;?>
+                      <?php if($cdata['cid']!==''): ?>      
+                        <p>Update Company</p>
+                      <?php endif;?>
+                        <form method="post" action="<?php echo base_url();?>company/add" id="formcom">
                           
                   <?php echo validation_errors(); ?>
                           <div class="form-group"  id="acemail" >
@@ -232,6 +238,7 @@
       document.getElementById('formcus').action="<?php echo base_url();?>customer/update";
   }
   function add(){
+    alert('wew');
       document.getElementById('formcom').action="<?php echo base_url();?>company/add";
     }
   function update(){

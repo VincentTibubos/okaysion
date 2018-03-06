@@ -27,19 +27,6 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
-        <?php 
-          if($this->session->flashdata('login_failed')): ?>
-          <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('login_failed')."</p>"?>
-         <?php endif;?>
-        <?php 
-          if($this->session->flashdata('user_registered')): ?>
-          <?php echo "<p class='alert alert-success'>".$this->session->flashdata('user_registered')."</p>"?>
-         <?php endif;?>
-
-        <?php 
-          if($this->session->flashdata('logged_out')): ?>
-          <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('logged_outs')."</p>"?>
-         <?php endif;?>
 		 
 		 
 <!--==========================
@@ -68,6 +55,19 @@
               <div class="form d-flex align-items-center">
                 <div class="content">
                   <?php echo validation_errors(); ?>
+                  <?php 
+                    if($this->session->flashdata('login_failed')): ?>
+                    <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('login_failed')."</p>"?>
+                   <?php endif;?>
+                  <?php 
+                    if($this->session->flashdata('user_registered')): ?>
+                    <?php echo "<p class='alert alert-success'>".$this->session->flashdata('user_registered')."</p>"?>
+                   <?php endif;?>
+
+                  <?php 
+                    if($this->session->flashdata('logged_out')): ?>
+                    <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('logged_out')."</p>"?>
+                   <?php endif;?>
                   <p id="inv" class="help-block text-danger"></p>
                   <form id="login-form" action="login" method="post">
                     <div class="form-group" id='lemail-group'>
@@ -165,7 +165,7 @@
                     else if(data['lpass']=='1'||data['lemail']=='1'){
                       //loginr.attr('type','submit');
                       invalid.html('Invalid Email or password');
-                      alert('invalid');
+                      //alert('invalid');
                       check=false;
                     }/*
                     else{
@@ -180,7 +180,7 @@
                       check=false;
                     }*/
 
-          alert(check);
+          //alert(check);
           if(check){
             $(this).attr('type', 'submit');
             $(this).click();

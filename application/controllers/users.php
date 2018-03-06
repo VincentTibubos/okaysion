@@ -92,6 +92,7 @@ class Users extends CI_Controller {
                             'cid'=>$comdata['cid'],
                             'cname'=>$comdata['cname'],
                             'clogo'=>$comdata['clogo'],
+                            'ccreated'=>$comdata['ccreated'],
                             'logged_in'=>true,
                             'type'=>'Company'
                         );
@@ -126,6 +127,7 @@ class Users extends CI_Controller {
                             'cid'=>$comdata['cid'],
                             'cname'=>$comdata['cname'],
                             'clogo'=>$comdata['clogo'],
+                            'ccreated'=>$comdata['ccreated'],
                             'logged_in'=>true,
                             'type'=>'Company'
                         );
@@ -150,6 +152,7 @@ class Users extends CI_Controller {
             $this->session->unset_userdata('cname');
             $this->session->unset_userdata('type');
             $this->session->unset_userdata('logged_in');
+            $this->session->unset_userdata('ccreated');
             $this->session->set_flashdata('user_loggedout','You are now logged out');
 
                     redirect();

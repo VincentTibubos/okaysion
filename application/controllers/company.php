@@ -92,6 +92,12 @@ class Company extends CI_Controller {
             else if(!$this->check_cemail_exists($this->input->post('cemail'))){
                 $data['cemail']='Company email already taken';
             }
+            else if(!strpos($this->input->post('cemail'),'@')){
+                $data['cemail']='Company email is missing "@"';
+            }
+            else if((strpos($this->input->post('cemail'),'@')==strlen($this->input->post('cemail'))-1)){
+                $data['cemail']='Part following "@" is missing';
+            }
             //cname validation
             if($this->input->post('cpass')==''){
                 $data['cpass']='Password field is required';
@@ -127,27 +133,20 @@ class Company extends CI_Controller {
             redirect();
         }
         $this->company_model->update();
+        $_POST=null;
         redirect('dashboard/company');
 	}
 	public function add(){
-            //callback_ is use before the method specified for custom validation
-            $this->form_validation->set_rules('cname','Name','required|callback_check_cname_exists');
-            $this->form_validation->set_rules('cemail','Email','required|callback_check_cemail_exists');
-           
-            if($this->form_validation->run()===FALSE){
-               //print_r(form_error('rcname'));
-               // print_r(form_error('remail'));
-               // print_r(form_error('rpassword'));
-               // print_r(form_error('rcpassword'));
-               // exit();
-                redirect('dashboard/company');
-            }else{//encrypt password
+            //encrypt password
+        
+        if(empty($_POST)){
+            redirect();
+        }
                 $epass=md5('123456');
                 $this->company_model->add($epass,$this->input->post('clogo'));
                 //set message
                 $this->session->set_flashdata('company_added','Company has been added.');
                 redirect('dashboard/company');
-            }
 	}
     public function check_cname_exists($cname=FALSE){
         if($cname==FALSE){

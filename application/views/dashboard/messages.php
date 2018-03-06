@@ -125,7 +125,6 @@
                                   </div>
                                 </div>
                                 <div class="date text-right"><small><?php
-
                                 $numdays= (time()-strtotime($msgs['amcreated']));
                                 $numdays=round($numdays/(60*60*24));
                                 if($numdays==0){
