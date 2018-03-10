@@ -73,21 +73,23 @@ class Company_model extends CI_Model{
         $this->db->where('cid',$this->input->post('cid'));
         return $this->db->update('company_tbl',$data);
     }
-    public function add($epass,$clogo){
+    public function add($epass/*,$clogo*/){
         //Array ( [cname] => fdjkhsafkjh [cemail] => kjhaskjdfhkash@hkjhkj [rpassword] => 123 [rcpassword] => 123 [rwelcome] => dsklfkjalk [rabout] => klajfjals [rurl] => sdjfafkdsjafalka [raddre] => 232 [rphone] => 2323223 )
+
+        date_default_timezone_set("Asia/Manila"); 
         $data =array(
             'cname' => $this->input->post('cname'),
-            'cemail' => $this->input->post('cemail'),
+            'cemail' => $this->input->post('cemail'),/*
             'cwelcome' => $this->input->post('rwelcome'),
             'cabout' => $this->input->post('rabout'),
             'curl' => $this->input->post('rurl').'.com',
             'ccontact' => $this->input->post('rphone'),
             'caddress' => $this->input->post('raddre'),
+            'clogo'=>$clogo,*/
             'ccreated' => date('Y-m-d'),
             'cmodified' => date('Y-m-d'),
             'cstatus' => 1,
-            'cpass' => $epass,
-            'clogo'=>$clogo
+            'cpass' => $epass
         );
         return $this->db->insert('company_tbl',$data);
     }

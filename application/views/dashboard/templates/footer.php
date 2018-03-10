@@ -85,6 +85,21 @@
                       <input required type="text" value="" name="cname" class="form-control">
                       <small class="help-block text-danger"></small>
                     </div>
+                    <div class="form-group" id="aacpass">       
+                      <label class="form-control-label">Old Password</label>
+                      <input required type="password" value="" name="cpass" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aacnpass">       
+                      <label class="form-control-label">New Password</label>
+                      <input required type="password" value="" name="cnpass" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aaccpass">       
+                      <label class="form-control-label">Confirm Password</label>
+                      <input required type="password" value="" name="ccpass" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
                     <input id="aacid" type="hidden" name="cid" value="<?php echo $this->session->userdata('cid');?>">
                     <input type="hidden" name="clogo" value="avatar1.jpg">
                     
@@ -108,8 +123,14 @@
         up=$('#aupbtn');
         cname=$(this).find('#aacname');
         cemail=$(this).find('#aacemail');
+        cpass=$(this).find('#aapass');
+        ccpass=$(this).find('#aacpass');
+        cnpass=$(this).find('#aanpass');
         if($('#aacid').val()!=''){
           vcname=cname.find('input').val();
+          vcpass=cpass.find('input').val();
+          vcnpass=cnpass.find('input').val();
+          vccpass=ccpass.find('input').val();
           vcemail=cemail.find('input').val();
         }
         $('#editacc').click(function(){
@@ -135,17 +156,26 @@
         $('.form-control').on('blur change cut paste keyup ready',function(){
           cem=cemail.find('input').val();
           cna=cname.find('input').val();
+          cpa=cpass.find('input').val();
+          cnpa=cnpass.find('input').val();
+          ccpa=ccpass.find('input').val();
           $.ajax({
                   url: '<?php echo base_url();?>company/check',
                   type: "POST",
                   data: {
                     cemail: cem,
-                    cname: cna
+                    cname: cna,
+                    oldpass: cpass,
+                    cnpass: cnpass,
+                    cncpass: ccpass
                   },
                   dataType: 'json',
                   success: function(data){
                     cemail.find('small').html('');
                     cname.find('small').html('');
+                    cpass.find('small').html('');
+                    cnpass.find('small').html('');
+                    ccpass.find('small').html('');
                     if($('#acid').val()!=''){
                       if((cem==vcemail&&data['cname']=='')){
                         up.removeAttr('disabled');
@@ -167,7 +197,7 @@
                         up.removeAttr('disabled');
                       }
                     }
-                    else if(data['cname']!=''||data['cemail']!=''){
+                    else if(data['cname']!=''||data['cemail']!=''||data['cpass']!=''||data['cnpass']!=''||data['ccpass']!=''){
                       cemail.find('small').html(data['cemail']);
                       cname.find('small').html(data['cname']);
                       up.attr('disabled','disabled');
@@ -186,6 +216,41 @@
           });
         });
   });
+  setInterval(checkIsLoggedIn, 1000);
+  function checkIsLoggedIn(){
+    $.ajax({
+                  url: '<?php echo base_url();?>IsLoggedIn',
+                  type: "POST",
+                  data: {
+                    cid: '<?php echo $this->session->userdata('cid');?>'
+                  },
+                  //dataType: 'json',
+                  success: function(data){
+                    if(data!=1){
+                      location.reload();
+                    }
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+    });
+
+  }
+  /*
+    var login='<?php if($this->session->userdata("logged_in")==true){
+      echo "true";
+    }
+    else
+      echo "false";
+      ?>';
+
+    alert(login);
+    if(login=='false'){
+
+      location.reload();
+      //window.location.replace("<?php echo base_url();?>");
+    }*/
 </script>
     <!-- Javascript files-->
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>

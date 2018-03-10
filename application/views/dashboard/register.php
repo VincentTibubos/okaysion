@@ -79,18 +79,18 @@
                             <label for="rcpass" class="label-material">Confirm Password </label>
                             <small class="help-block text-danger"><?php echo form_error('rcpassword');?></small>
                           </div>
-                          <div class="form-group"  id='complogo'>
+                         <!-- <div class="form-group"  id='complogo'>
                             <input id="logo" type="file" name="userfile" class="form-control-file" size="20" value="input"style="color:grey">
                             <small class="help-block text-danger"><?php echo form_error('clogo');?></small>
-                          </div>
+                          </div>-->
                           <div class="form-group terms-conditions" id='compag'>
                             <input id="license" type="checkbox" class="checkbox-template">
                             <label for="license"><a data-toggle="modal" href="" data-target="#modalAgree">Agree to terms and policy</a></label>
                           </div>
                           <div class="form-group">
-                            <input id="button1" type="button" value="Continue" class="btn btn-primary input-material">
+                            <input id="button1" type="submit" value="Register" class="btn btn-primary input-material">
                           </div>
-                        </div>
+                        </div><!--
                         <div id="form2">
                           <h2 class='form-group text-secondary'>Company Website:</h2>
                           <div class="form-group" id='compwelcome'>
@@ -130,7 +130,7 @@
                         </div>
                         <div id="formlast">
                           <input id="register" type="submit" value="Register" class="btn btn-primary">
-                        </div>
+                        </div>-->
                   </form>
                   <small>Already have an account?</small><a href="<?php echo base_url();?>login" class="signup">Log in</a>
                 </div>
@@ -403,12 +403,12 @@
                          return false;
                   }
           });
-        });*/
+        });
         $('#back2').click(function(){
 
           $('#form2').hide();
           $('#form1').show();
-        });
+        });*/
       });
     </script>
   </body>

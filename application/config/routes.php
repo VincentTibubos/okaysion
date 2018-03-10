@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$route['IsLoggedIn'] = 'company/IsLoggedIn';
 $route['amessage/(:any)'] = 'amessage/$1';
 $route['amessage'] = 'amessage';
 $route['company/check'] = 'company/checkcompany';
@@ -22,10 +23,6 @@ $route['logout'] = 'users/logout';
 $route['register'] = 'users/register';
 $route['dashboard'] = 'dashboard/view';
 $route['dashboard/(:any)'] = 'dashboard/view/$1';
-$route['filess'] = 'filess/write';
-$route['filess/(:any)'] = 'filess/write/$1';
-$route['welcome'] = 'welcome/index';
-$route['http://localhost/welcome'] = 'welcome/index';
 $route['default_controller'] = 'okaysion_controller/view';
 $route['(:any)'] = 'okaysion_controller/view/$1';
 $route['404_override'] = '';

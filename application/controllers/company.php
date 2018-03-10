@@ -1,6 +1,14 @@
 <?php
 class Company extends CI_Controller {
-
+    public function isLoggedIn(){
+        if($this->input->is_ajax_request()){
+            echo $this->session->userdata('logged_in');
+            //echo json_encode(array('logged_in'=>$this->session->userdata('logged_in')));
+            exit();
+        }
+        else
+            redirect();
+    }
     public function register(){
         if($this->session->userdata('logged_in')){
             redirect();
@@ -16,7 +24,7 @@ class Company extends CI_Controller {
            // print_r(form_error('remail'));
            // print_r(form_error('rpassword'));
             $this->load->view('dashboard/register');
-        }else{
+        }else{/*
             $config['upload_path']='./assets/img/logo';
             $config['allowed_types']='gif|jpg|jpeg|png';
             $config['max_size']='2048';
@@ -35,11 +43,11 @@ class Company extends CI_Controller {
                 $data=array('upsload_data'=> $this->upload->data());
                 $clogo=$_FILES['userfile']['name'];
                 //echo $clogo.' uploaded';
-            }
+            }*/
             //exit();
             //encrypt password
             $epass=md5($this->input->post('rpassword'));
-            $this->company_model->add($epass,$clogo);
+            $this->company_model->add($epass/*,$clogo*/);
             //set message
             $this->session->set_flashdata('user_registered','You are now registered and can log in');
             redirect('dashboard');
@@ -52,6 +60,8 @@ class Company extends CI_Controller {
                 'cname'=>'',
                 'cemail'=>'',
                 'cpass'=>'',
+                'cnpass'=>'',
+                'cncpass'=>'',
                 'ccpass'=>'',
                 'clogo'=>'',
                 'lpass'=>'',
@@ -78,6 +88,19 @@ class Company extends CI_Controller {
             else if($comdata!=$epass){
                 $data['lpass']='1';   
             }
+            //--------------------------------
+            $epass=md5($this->input->post('lpass'));
+            $lemail=$this->input->post('lemail');
+            $comdata=$this->company_model->getpass($lemail);
+            //echo $comdata;
+            $data['error']=$comdata;
+            if($this->input->post('lpass')==''){
+                $data['lpass']='Password field is required';
+            }
+            else if($comdata!=$epass){
+                $data['lpass']='1';   
+            }
+            //--------------------------------
             //cname validation
             if($this->input->post('cname')==''){
                 $data['cname']='Company name field is required';
