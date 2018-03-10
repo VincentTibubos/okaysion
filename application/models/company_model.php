@@ -59,6 +59,13 @@ class Company_model extends CI_Model{
         $query = $this->db->get_where('company_tbl',array('cid'=>$cid,'cstatus'=>1));
         return $query->row_array();
     }
+    public function viewweb($curl=FALSE){
+        if($curl===FALSE){
+            return false;
+        }
+        $query = $this->db->get_where('company_tbl',array('curl'=>$curl,'cstatus'=>1));
+        return $query->row_array();
+    }
     public function delete($cid){
         $data =array(
             'cstatus' => 0
@@ -67,10 +74,15 @@ class Company_model extends CI_Model{
         return $this->db->update('company_tbl',$data);
     }
     public function add($epass,$clogo){
-        //Array ( [cname] => vincent1312 [cemail] => 123213123@djkhkj [rpassword] => 123 [rcpassword] => 123 )
+        //Array ( [cname] => fdjkhsafkjh [cemail] => kjhaskjdfhkash@hkjhkj [rpassword] => 123 [rcpassword] => 123 [rwelcome] => dsklfkjalk [rabout] => klajfjals [rurl] => sdjfafkdsjafalka [raddre] => 232 [rphone] => 2323223 )
         $data =array(
             'cname' => $this->input->post('cname'),
             'cemail' => $this->input->post('cemail'),
+            'cwelcome' => $this->input->post('rwelcome'),
+            'cabout' => $this->input->post('rabout'),
+            'curl' => $this->input->post('rurl').'.com',
+            'ccontact' => $this->input->post('rphone'),
+            'caddress' => $this->input->post('raddre'),
             'ccreated' => date('Y-m-d'),
             'cmodified' => date('Y-m-d'),
             'cstatus' => 1,
