@@ -4,6 +4,20 @@
               <div class="row">
                 <div class="col-sm-6">
                   <p>OKAYsion &copy; 2018</p>
+                  <?php if($this->session->userdata('type')=='Company'){
+                    $thiday=strtotime($this->session->userdata('ccreated').'+ 30 days');
+                    $numdays= ($thiday-time());
+                    $numdays=round($numdays/(60*60*24));
+                    if($numdays<0){
+                      $numdays=0;
+                    }
+                    if($numdays<=1){
+                      echo $numdays.' day left';
+                    }
+                    else{
+                      echo $numdays.' days left';
+                    }
+                  }?>
                 </div>
 
                <!--
@@ -26,9 +40,221 @@
         </div>
       </div>
     </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="logoutm" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Logout</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Do you really want to logout?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal"  onclick="redirout();">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="editaccm" role="dialog">
+    <div class="modal-dialog  modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Account</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form method="post" action="<?php echo base_url();?>company/update" id="formcom">
+          <div class="modal-body">
+
+                    <div class="form-group"  id="aacemail" >
+                      <label class="form-control-label">Email</label>
+                      <input required type="email" value="" name="cemail" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aacname">       
+                      <label class="form-control-label">Company Name</label>
+                      <input required type="text" value="" name="cname" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aacpass">       
+                      <label class="form-control-label">Old Password</label>
+                      <input required type="password" value="" name="cpass" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aacnpass">       
+                      <label class="form-control-label">New Password</label>
+                      <input required type="password" value="" name="cnpass" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aaccpass">       
+                      <label class="form-control-label">Confirm Password</label>
+                      <input required type="password" value="" name="ccpass" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <input id="aacid" type="hidden" name="cid" value="<?php echo $this->session->userdata('cid');?>">
+                    <input type="hidden" name="clogo" value="avatar1.jpg">
+                    
+          </div>
+          <div class="modal-footer">
+            <div class="form-group">     
+                <input type="submit" id="aupbtn" value="Update" class="btn btn-success" disabled>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+  $(document).ready(function(){
+        add=$('#aaddbtn');
+        up=$('#aupbtn');
+        cname=$(this).find('#aacname');
+        cemail=$(this).find('#aacemail');
+        cpass=$(this).find('#aapass');
+        ccpass=$(this).find('#aacpass');
+        cnpass=$(this).find('#aanpass');
+        if($('#aacid').val()!=''){
+          vcname=cname.find('input').val();
+          vcpass=cpass.find('input').val();
+          vcnpass=cnpass.find('input').val();
+          vccpass=ccpass.find('input').val();
+          vcemail=cemail.find('input').val();
+        }
+        $('#editacc').click(function(){
+           $.ajax({
+                  url: '<?php echo base_url();?>dashboard/company',
+                  type: "POST",
+                  data: {
+                    cid: '<?php echo $this->session->userdata('cid');?>'
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    vcname=data['cname'];
+                    vcemail=data['cemail'];
+                    cname.find('input').val(data['cname']);
+                    cemail.find('input').val(data['cemail']);
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+        $('.form-control').on('blur change cut paste keyup ready',function(){
+          cem=cemail.find('input').val();
+          cna=cname.find('input').val();
+          cpa=cpass.find('input').val();
+          cnpa=cnpass.find('input').val();
+          ccpa=ccpass.find('input').val();
+          $.ajax({
+                  url: '<?php echo base_url();?>company/check',
+                  type: "POST",
+                  data: {
+                    cemail: cem,
+                    cname: cna,
+                    oldpass: cpass,
+                    cnpass: cnpass,
+                    cncpass: ccpass
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    cemail.find('small').html('');
+                    cname.find('small').html('');
+                    cpass.find('small').html('');
+                    cnpass.find('small').html('');
+                    ccpass.find('small').html('');
+                    if($('#acid').val()!=''){
+                      if((cem==vcemail&&data['cname']=='')){
+                        up.removeAttr('disabled');
+                      }
+                      else if((cna==vcname&&data['cemail']=='')){
+                        up.removeAttr('disabled');
+                      }
+                      else if((cem==vcemail&&cna==vcname)){
+                        up.removeAttr('disabled');
+                      }
+                      else if(data['cname']!=''||data['cemail']!=''){
+                        cemail.find('small').html(data['cemail']);
+                        cname.find('small').html(data['cname']);
+                        up.attr('disabled','disabled');
+                        add.attr('disabled','disabled');
+                      }
+                      else{
+                        add.removeAttr('disabled');
+                        up.removeAttr('disabled');
+                      }
+                    }
+                    else if(data['cname']!=''||data['cemail']!=''||data['cpass']!=''||data['cnpass']!=''||data['ccpass']!=''){
+                      cemail.find('small').html(data['cemail']);
+                      cname.find('small').html(data['cname']);
+                      up.attr('disabled','disabled');
+                      add.attr('disabled','disabled');
+                    }
+                    else{
+                      add.removeAttr('disabled');
+                      up.removeAttr('disabled');
+                    }
+                    return false;
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+  });
+  setInterval(checkIsLoggedIn, 1000);
+  function checkIsLoggedIn(){
+    $.ajax({
+                  url: '<?php echo base_url();?>IsLoggedIn',
+                  type: "POST",
+                  data: {
+                    cid: '<?php echo $this->session->userdata('cid');?>'
+                  },
+                  //dataType: 'json',
+                  success: function(data){
+                    if(data!=1){
+                      location.reload();
+                    }
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+    });
+
+  }
+  /*
+    var login='<?php if($this->session->userdata("logged_in")==true){
+      echo "true";
+    }
+    else
+      echo "false";
+      ?>';
+
+    alert(login);
+    if(login=='false'){
+
+      location.reload();
+      //window.location.replace("<?php echo base_url();?>");
+    }*/
+</script>
     <!-- Javascript files-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
+    <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/jquery.cookie/jquery.cookie.js"> </script>
@@ -36,5 +262,13 @@
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="<?php echo base_url();?>/assets/dashboard/js/front.js"></script>
+
+
+    <script>
+      function redirout(){
+              window.location="<?php echo base_url()?>logout";
+      }
+    </script>
+
   </body>
 </html>

@@ -17,11 +17,12 @@ the services they offer.</p>
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#intro">Home</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#about">About us</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#featured-services">Services</a></li>
+              <?php if(!$this->session->userdata('logged_in')): ?>
+                  <li><i class="ion-ios-arrow-right"></i> <a href="admin">Admin</a></li>
+              <?php endif;?>
             </ul>
             </ul>
           </div>
@@ -153,6 +154,28 @@ the services they offer.</p>
     </div>
 </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="logoutm" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Logout</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Do you really want to logout?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal"  onclick="redirout();">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
   <!-- JavaScript Libraries -->
   <script src="<?php echo base_url();?>assets/lib/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url();?>assets/lib/jquery/jquery-migrate.min.js"></script>
@@ -173,5 +196,10 @@ the services they offer.</p>
   <!-- Template Main Javascript File -->
   <script src="<?php echo base_url();?>assets/js/main.js"></script>
 
+    <script>
+      function redirout(){
+              window.location="<?php echo base_url()?>logout";
+      }
+    </script>
 </body>
 </html>

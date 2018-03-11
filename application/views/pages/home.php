@@ -13,7 +13,9 @@
           <div class="carousel-container">
             <div class="carousel-content">
               <h2>A Multi-Tenant System</h2>
-              <a href="#<?php echo base_url();?>/copy" class="btn-get-started scrollto">Start Your 30-day Free Trial</a>
+              <?php if(!$this->session->userdata('logged_in')):?>
+              <a href="<?php echo base_url();?>register" class="btn-get-started scrollto">Start Your 30-day Free Trial</a>
+            <?php endif;?>
             </div>
           </div>
         </div>
@@ -22,7 +24,9 @@
           <div class="carousel-container">
             <div class="carousel-content">
               <h2>OKAYsion</h2>
-              <a href="#featured-services" class="btn-get-started scrollto">Start Your 30-day Free Trial</a>
+              <?php if(!$this->session->userdata('logged_in')):?>
+              <a href="<?php echo base_url();?>register" class="btn-get-started scrollto">Start Your 30-day Free Trial</a>
+              <?php endif;?>
             </div>
           </div>
         </div>
@@ -54,20 +58,21 @@
 
           <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
             <div class="icon"><i class="ion-android-create"></i></div>
-            <h4 class="title"><a href="">You can create your own Website</a></h4>
+            <h4 class="title"><a>You can create your own Website</a></h4>
             <p class="description">The website would allow you to create your own website according to your needs in design,context and structure of your content.</p>
           </div>
-
-          <div class="col-lg-4 box box-bg">
-            <i class="ion-ios-stopwatch-outline"></i>
-            <h4 class="title"><a href="">A time-saving Website Generator</a></h4>
+
+
+           <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-stopwatch-outline"></i></div>
+            <h4 class="title"><a>A time-saving Website Generator</a></h4>
             <p class="description">You won't need to do it in a difficult way, 
 		all you have to do is choose your template and drag and drop your whatever things you want to add.</p>
           </div>
 
-          <div class="col-lg-4 box">
-            <i class="ion-ios-heart-outline"></i>
-            <h4 class="title"><a href="">It is easy to Use</a></h4>
+           <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-heart-outline"></i></div>
+            <h4 class="title"><a>It is easy to Use</a></h4>
             <p class="description">No need to worry about organizing your website, 
 		because all you have to do is to click add , drag and drop the files and then save.</p>
           </div>
@@ -175,7 +180,7 @@ from.</p>
           <div class="contact-email">
             <i class="ion-ios-email-outline"></i>
             <h3>Email</h3>
-            <p><a href="mailto:info@example.com">OKAYsion@gmail.com</a></p>
+            <p><a href="mailto:okaysion@gmail.com">OKAYsion@gmail.com</a></p>
           </div>
         </div>
 
@@ -184,23 +189,23 @@ from.</p>
       <div class="form">
         <div id="sendmessage">Your message has been sent. Thank you!</div>
         <div id="errormessage"></div>
-        <form action="" method="post" role="form" class="contactForm">
+        <form action="amessage/send" method="post" role="form" >
           <div class="form-row">
             <div class="form-group col-md-6">
-              <input type="text" name="name" class="form-control" id="fname" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <input type="text" name="name" class="form-control" id="fname" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required />
               <div class="validation"></div>
             </div>
             <div class="form-group col-md-6">
-              <input type="email" class="form-control" name="email" id="femail" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+              <input type="email" class="form-control" name="email" id="femail" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email"  required/>
               <div class="validation"></div>
             </div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="subject" id="fsubject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+            <input type="text" class="form-control" name="subject" id="fsubject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"  required />
             <div class="validation"></div>
           </div>
           <div class="form-group">
-            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"  required></textarea>
             <div class="validation"></div>
           </div>
           <div class="text-center"><button type="submit">Send Message</button></div>
