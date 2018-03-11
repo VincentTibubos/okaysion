@@ -36,7 +36,10 @@
 				$data['cdata']=array(
 					'cid'=>'',
 					'cname'=>'',
-					'cemail'=>''
+					'cemail'=>'',
+					'cwelcome'=>'',
+					'cabout'=>'',
+					'curl'=>''
 				);
 				if(!empty($_POST)){
 					$data['cdata']=$this->company_model->viewcomp($this->input->post('cid'));

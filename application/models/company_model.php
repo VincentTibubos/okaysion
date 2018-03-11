@@ -118,4 +118,14 @@ class Company_model extends CI_Model{
         $this->db->where('cid',$this->session->userdata('cid'));
         return $this->db->update('company_tbl',$data);
     }
+    public function updateweb(){
+        $data =array(
+            'cwelcome'=>$this->input->post('cwelcome'),
+            'cwelcome'=>$this->input->post('cabout'),
+            'ctemplate'=>$this->input->post('ctemplate'),
+            'curl'=>$this->input->post('curl').'.com'
+        );
+        $this->db->where('cid',$this->session->userdata('cid'));
+        return $this->db->update('company_tbl',$data);
+    }
 }

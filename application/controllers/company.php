@@ -65,6 +65,9 @@ class Company extends CI_Controller {
                 'clogo'=>'',
                 'lpass'=>'',
                 'lemail'=>'',
+                'cwelcome'=>'',
+                'cabout'=>'',
+                'curl'=>'',
                 'error'=>''
             );
             
@@ -121,7 +124,18 @@ class Company extends CI_Controller {
             if($this->input->post('clogo')==''){
                 $data['clogo']='Company logo is required';
             }
-            
+            if($this->input->post('cwelcome')==''){
+                $data['cwelcome']='Welcome Message field is required';
+            }
+            if($this->input->post('cabout')==''){
+                $data['cabout']='This field is required';
+            }
+            if($this->input->post('curl')==''){
+                $data['curl']='Company url is required';
+            }
+            else if($this->company_model->viewweb($this->input->post('curl').'.com')){
+                $data['curl']='Company Url already taken';
+            }
             //$data['cemail']=$this->check_cemail_exists($this->input->post('cemail'));
             echo json_encode($data);
         }
@@ -187,6 +201,14 @@ class Company extends CI_Controller {
             redirect();
         }
         $this->company_model->updatePass();
+        $_POST=null;
+        redirect('dashboard');
+    }
+    public function updateweb(){
+        if(empty($_POST)){
+            redirect();
+        }
+        $this->company_model->updateweb();
         $_POST=null;
         redirect('dashboard');
     }

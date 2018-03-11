@@ -143,18 +143,81 @@
   </div>
   
 
+  <!-- Modal -->
+  <div class="modal fade" id="editwebm" role="dialog">
+    <div class="modal-dialog  modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Website</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form method="post" action="<?php echo base_url();?>company/updateweb" id="formeditweb">
+          <div class="modal-body">
+                    <div class="form-group"  id="aacwelcome" >
+                      <label class="form-control-label">Welcome message</label>
+                      <input required type="text" value="" name="cwelcome" class="form-control changeWeb text-secondary">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aacabout">       
+                            <label for="aboutc" class="text-secondary">About Company</label>
+                            <textarea name="cabout" rows="5" required class="input-material changeWeb text-secondary" style="width: 100%"></textarea>
+                            <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aacurl">       
+                      <label for="curl" class="form-control-label">Url</label>
+                      <div class='input-group'>
+                        <input  id='curl' required type="text" value="" name="curl" class="form-control changeWeb text-secondary" style="width: 80%; margin-right: 0px;">
+                        <h4 class='text-secondary' style="width:20%; padding: 7px 7px;">.com</h4>
+                      </div>
+                        <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aactemplate">       
+                      <label class="form-control-label">Template</label>
+                      <div class='input-group'>
+                        <select class="form-control text-secondary" name="ctemplate">
+                              <option value='1'>Template 1</option>       
+                              <option value='2'>Template 2</option>       
+                        </select>
+                      </div>
+                        <small class="help-block text-danger"></small>
+                    </div>
+                    <input id="ewcid" type="hidden" name="cid" value="<?php echo $this->session->userdata('cid');?>">
+          </div>
+          <div class="modal-footer">
+            <div class="form-group">     
+                <input type="button" id="aupWebbtn" value="Update" class="btn btn-success">
+            </div>
+          </div>
+
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  
 <script type="text/javascript">
   $(document).ready(function(){
 
         add=$('#aaddbtn');
         up=$('#aupbtn');
         editpass=$('#aupPassbtn');
+        editweb=$('#aupWebbtn');
         formedit=$('#formedit');
+        formeditweb=$('#formeditweb');
         cname=$(this).find('#aacname');
         cemail=$(this).find('#aacemail');
         cpass=$(this).find('#aacpass');
         cnpass=$(this).find('#aacnpass');
         ccpass=$(this).find('#aaccpass');
+        cwelcome=$(this).find('#aacwelcome');
+        cabout=$(this).find('#aacabout');
+        curl=$(this).find('#aacurl');
+        ctemplate=$(this).find('#aactemplate');
+        if($('#ewcid').val()!=''){
+          vcurl=curl.find('input').val();
+        }
         if($('#aacid').val()!=''){
           vcname=cname.find('input').val();
           vcemail=cemail.find('input').val();
@@ -168,10 +231,32 @@
                   },
                   dataType: 'json',
                   success: function(data){
-                    vcname=data['cname'];
-                    vcemail=data['cemail'];
                     cname.find('input').val(data['cname']);
                     cemail.find('input').val(data['cemail']);
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+        $('#editweb').click(function(){
+           $.ajax({
+                  url: '<?php echo base_url();?>dashboard/company',
+                  type: "POST",
+                  data: {
+                    cid: '<?php echo $this->session->userdata('cid');?>'
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    data['curl']=data['curl'].substring(0,data['curl'].lastIndexOf(".com"));
+                    vcwelcome=data['cwelcome'];
+                    vcurl=data['curl'];
+                    vcabout=data['cabout'];
+                    cwelcome.find('input').val(data['cwelcome']);
+                    cabout.find('textarea').val(data['cabout']);
+                    curl.find('input').val(data['curl']);
+                    ctemplate.find('select').val(data['ctemplate']);
                   },
                   error: function(xhr, textStatus, errorThrown){
                          alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
@@ -225,6 +310,47 @@
                       up.removeAttr('disabled');
                     }
                     return false;
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+        editweb.on('click',function(e){
+          cwel=cwelcome.find('input').val();
+          cab=cabout.find('textarea').val();
+          cur=curl.find('input').val();
+                      cwelcome.find('small').html('');
+                      cabout.find('small').html('');
+                      curl.find('small').html('');
+          e.preventDefault();
+          $.ajax({
+                  url: '<?php echo base_url();?>company/check',
+                  type: "POST",
+                  data: {
+                    cid: '<?php echo $this->session->userdata("cid");?>',
+                    cwelcome: cwel,
+                    cabout: cab,
+                    curl: cur
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                    if(data['cwelcome']==''&&data['cabout']==''&&vcurl==cur){
+
+                        formeditweb.submit();
+                        return true;
+                    }
+                     else if(data['cwelcome']!=''||data['cabout']!=''||data['curl']!=''){
+                        cwelcome.find('small').html(data['cwelcome']);
+                        cabout.find('small').html(data['cabout']);
+                        curl.find('small').html(data['curl']);
+                        return false;
+                      }
+                      else{
+                        formeditweb.submit();
+                        return true;
+                      }
                   },
                   error: function(xhr, textStatus, errorThrown){
                          alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
