@@ -10,9 +10,9 @@ class Okaysion_controller extends CI_Controller {
 			$this->load->view('pages/'.$page);
 			$this->load->view('templates/footer');
 		}
-		else if($this->user_model->check_cname_exists($page)){
-			$data['title']=$page;
-			$this->company_model->view('company/company',$data);
+		else if($web=$this->company_model->viewweb($page)){
+			$data['web']=$web;
+			$this->load->view('website/template'.$web['ctemplate'],$data);
 		}
 		else{
 			show_404();

@@ -130,7 +130,7 @@
         <nav class="side-navbar">
           <!-- Sidebar Header-->
           <div class="sidebar-header d-flex align-items-center">
-            <div class="avatar"><img src="<?php echo base_url().'assets/img/logo/'.$this->session->userdata('clogo');?>" alt="..." class="rounded-circle" style="height:55px;width:55px;"></div>
+            <div class="avatar"><img src="<?php echo base_url().'assets/img/logo/avatar1.jpg';?>" alt="..." class="rounded-circle" style="height:55px;width:55px;"></div>
             <div class="title">
               <h1 class="h4"><?php echo $this->session->userdata('cname');?></h1>
               <p><?php echo $this->session->userdata('type');?></p>
@@ -163,7 +163,9 @@
                       <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
 
                         <?php if($this->session->userdata('type')=='Company'): ?>
-                          <li class="nav-item"><a data-toggle="modal" data-target="#editaccm" id="editacc">Edit Account</a></li>
+                          <li class="nav-item"><a href="" data-toggle="modal" data-target="#editaccm" id="editacc">Edit Account</a></li>
+                          <li class="nav-item"><a href="" data-toggle="modal" data-target="#editpassm" id="editpass">Edit Password</a></li>
+                          <li class="nav-item"><a href="" data-toggle="modal" data-target="#editwebm" id="editweb">Edit Website</a></li>
                         <?php endif; ?>
                         <li class="nav-item"><a href="" class="nav-link logout" data-toggle="modal" data-target="#logoutm">Logout</a></li>
                       </ul>

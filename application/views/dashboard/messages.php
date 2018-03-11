@@ -1,6 +1,5 @@
   
   <script>
-    
         $("#d_messages").addClass("active");
   </script>
         <div class="content-inner">
@@ -150,6 +149,10 @@
                 </div>
               </div>
             </section>
+          <?php endif;?>
+
+          <?php if($this->session->userdata('type')=='Company'):?>
+            wew
           <?php endif;?>
           <script type="text/javascript">
             $(document).ready(function(){

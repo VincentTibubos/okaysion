@@ -69,7 +69,7 @@ class Admin extends CI_Controller {
                         $userdata=array(
                             'cid'=>$comdata['aid'],
                             'cname'=>$comdata['auser'],
-                            'clogo'=>'avatar1.jpg',
+                            //'clogo'=>'avatar1.jpg',
                             'logged_in'=>true,
                             'type'=>'Admin'
                         );

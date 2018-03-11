@@ -79,24 +79,50 @@
                             <label for="rcpass" class="label-material">Confirm Password </label>
                             <small class="help-block text-danger"><?php echo form_error('rcpassword');?></small>
                           </div>
-                          <div class="form-group"  id='complogo'>
+                         <!-- <div class="form-group"  id='complogo'>
                             <input id="logo" type="file" name="userfile" class="form-control-file" size="20" value="input"style="color:grey">
                             <small class="help-block text-danger"><?php echo form_error('clogo');?></small>
-                          </div>
+                          </div>-->
                           <div class="form-group terms-conditions" id='compag'>
                             <input id="license" type="checkbox" class="checkbox-template">
                             <label for="license"><a data-toggle="modal" href="" data-target="#modalAgree">Agree to terms and policy</a></label>
                           </div>
                           <div class="form-group">
-                            <input id="button1" type="button" value="Continue" class="btn btn-primary input-material">
+                            <input id="button1" type="submit" value="Register" class="btn btn-primary input-material">
                           </div>
-                        </div>
+                        </div><!--
                         <div id="form2">
                           <h2 class='form-group text-secondary'>Company Website:</h2>
+                          <div class="form-group" id='compwelcome'>
+                            <input id="welcomec" type="text" name="rwelcome" required class="input-material" >
+                            <label for="welcomec" class="label-material">Welcome Message</label>
+                            <small class="help-block text-danger"></small>
+                          </div>
+                          <div class="form-group" id='compabout'>
+                            <label for="aboutc" class="text-secondary">About Company:</label>
+                            <textarea id="aboutc" name="rabout" rows="5" required class="input-material" style="width: 100%"></textarea>
+                            <small class="help-block text-danger"></small>
+                          </div>
+                          <div class="input-group" id='compurl' style="margin-bottom: 30px;">
+                            <input id="urlc" type="text" name="rurl" required class="input-material" style="width:90%">
+                            <label for="urlc" class="label-material">Website Url</label>
+                            <h4 class="text-secondary" style="width:10%; padding-top: 16px">.com</h4>
+                            <small class="help-block text-danger"></small>
+                          </div>
+                          <div class="form-group" id='compaddress'>
+                            <input id="addrec" type="text" name="raddre" required class="input-material" >
+                            <label for="addrec" class="label-material">Address</label>
+                            <small class="help-block text-danger"></small>
+                          </div>
+                          <div class="form-group" id='compphone'>
+                            <input id="phonec" type="text" name="rphone" required class="input-material" >
+                            <label for="phonec" class="label-material">Phone</label>
+                            <small class="help-block text-danger"></small>
+                          </div>
                           <div class="form-group">
-                            <div class="btn-group">
-                              <input id="back2" value="Back" class="btn btn-danger input-material">
-                              <input id="button2" type='submit' value="Continue" class="btn btn-primary btn-group input-material">
+                            <div class="btn-group btn-block">
+                              <input id="back2" type='button' value="Back" class="btn btn-danger input-material">
+                              <input id="button2" type='submit' value="Register" class="btn btn-primary input-material">
                             </div>
                           </div>
                           <div class="btn-group btn-block form-group">
@@ -104,7 +130,7 @@
                         </div>
                         <div id="formlast">
                           <input id="register" type="submit" value="Register" class="btn btn-primary">
-                        </div>
+                        </div>-->
                   </form>
                   <small>Already have an account?</small><a href="<?php echo base_url();?>login" class="signup">Log in</a>
                 </div>
@@ -377,12 +403,12 @@
                          return false;
                   }
           });
-        });*/
+        });
         $('#back2').click(function(){
 
           $('#form2').hide();
           $('#form1').show();
-        });
+        });*/
       });
     </script>
   </body>

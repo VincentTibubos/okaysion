@@ -91,7 +91,7 @@ class Users extends CI_Controller {
                         $userdata=array(
                             'cid'=>$comdata['cid'],
                             'cname'=>$comdata['cname'],
-                            'clogo'=>$comdata['clogo'],
+                            //'clogo'=>$comdata['clogo'],
                             'ccreated'=>$comdata['ccreated'],
                             'logged_in'=>true,
                             'type'=>'Company'
