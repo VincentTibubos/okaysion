@@ -100,7 +100,6 @@
       
     </div>
   </div>
-
   <!-- Modal -->
   <div class="modal fade" id="editpassm" role="dialog">
     <div class="modal-dialog  modal-lg">

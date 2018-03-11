@@ -64,6 +64,7 @@ CREATE TABLE `amessage_tbl` (
 INSERT INTO `amessage_tbl` (`amid`, `amname`, `amemail`, `amsubject`, `ammsg`, `amcreated`, `amstatus`) VALUES
 (1, 'hdkjdlkjfdkjlafjkl', 'jlkjlkjjkljkfakljfasjklfadsjklfakjsafkjfdajkkjfds', 'jdflkdfsajaflk', 'jlkjlkjjkljkfakljfasjklfadsjklfakjsafkjfdajkkjfds', '2018-03-01', 0),
 (4, 'Vincent', 'please help me i can\'t signup\r\n', 'error register', 'please help me i can\'t signup\r\n', '2018-03-01', 0),
+
 (5, 'tibbs', 'tiboobs@gmail.com', 'wla lng to ', 'hello sa oinyo', '2018-03-02', 0),
 (6, '', '', '', '', '2018-03-02', 0),
 (7, '', 'as@dd', 'we', '', '2018-03-02', 0),
@@ -167,8 +168,7 @@ INSERT INTO `company_tbl` (`cid`, `clogo`, `cname`, `cpass`, `cemail`, `cwelcome
 (80, 'avatar1.jpg', 'jheremiev2', '202cb962ac59075b964b07152d234b70', 'jheremie10v2@gmail.com', 'ako ay scrub', 'wlang priority', 'wlakwenta.com', 'khit san pde', '7324198743928', 0, '2018-03-10', '2018-03-10', 1),
 (81, '', 'bona', '202cb962ac59075b964b07152d234b70', 'bona@gmail.com', '', '', '', '', '', 0, '2018-03-10', '2018-03-10', 1),
 (82, '', 'teves', '202cb962ac59075b964b07152d234b70', 'teves@gmail.com', '', '', '', '', '', 0, '2018-03-10', '2018-03-10', 1),
-(83, '', 'TUP1', '202cb962ac59075b964b07152d234b70', 'lala2@gmail.com', 'hahahaaha\'\r\njehhehehehehe\r\nhhihihi\r\nparang k=joke', '', 'tupjoker.com', '', '', 1, '2018-03-11', '2018-03-11', 1);
-
+(83, '', 'TUP1', '202cb962ac59075b964b07152d234b70', 'lala2@gmail.com', 'hahahaaha\'\r\njehhehehehehe\r\nhhihihi\r\nparang k=joke', '', 'tupjoker.com', '', '', 1, '2018-03-11', '2018-03-11',
 -- --------------------------------------------------------
 
 --
