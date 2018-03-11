@@ -54,14 +54,13 @@ class Company extends CI_Controller {
         }
 
     }
+
     public function checkcompany(){
         if($this->input->is_ajax_request()){
             $data=array(
                 'cname'=>'',
                 'cemail'=>'',
                 'cpass'=>'',
-                'cnpass'=>'',
-                'cncpass'=>'',
                 'ccpass'=>'',
                 'clogo'=>'',
                 'lpass'=>'',
@@ -88,19 +87,6 @@ class Company extends CI_Controller {
             else if($comdata!=$epass){
                 $data['lpass']='1';   
             }
-            //--------------------------------
-            $epass=md5($this->input->post('lpass'));
-            $lemail=$this->input->post('lemail');
-            $comdata=$this->company_model->getpass($lemail);
-            //echo $comdata;
-            $data['error']=$comdata;
-            if($this->input->post('lpass')==''){
-                $data['lpass']='Password field is required';
-            }
-            else if($comdata!=$epass){
-                $data['lpass']='1';   
-            }
-            //--------------------------------
             //cname validation
             if($this->input->post('cname')==''){
                 $data['cname']='Company name field is required';
@@ -144,6 +130,42 @@ class Company extends CI_Controller {
         }
         //echo json_encode($this->input->post());
     }
+
+    public function checkPass(){
+        if($this->input->is_ajax_request()){
+            $data=array(
+                'cpass'=>'',
+                'cnpass'=>'',
+                'ccpass'=>''
+            );
+            $cid=$this->input->post('cid');
+            $cpass=$this->input->post('cpass');
+            $cnpass=$this->input->post('cnpass');
+            $ccpass=$this->input->post('ccpass');
+            $epass=md5($cpass);
+            if($cnpass==''){
+                $data['cnpass']='New Password is required';
+            }
+            if($ccpass==''){
+                $data['ccpass']='Confirm Password is required';
+            }
+            else if($ccpass!=$cnpass){
+                $data['ccpass']='Password Mismatch';   
+            }
+            if($cpass==''){
+                $data['cpass']='Current Password is required';
+            }
+            else if($epass!=$this->company_model->getPassUsingId($cid)){
+                $data['cpass']='Invalid Password';
+            }
+            //$data['cemail']=$this->check_cemail_exists($this->input->post('cemail'));
+            echo json_encode($data);
+        }
+        else{
+            redirect();
+        }
+        //echo json_encode($this->input->post());
+    }
 	public function delete(){
         if(empty($_POST)){
             redirect();
@@ -151,14 +173,23 @@ class Company extends CI_Controller {
 		$this->company_model->delete($this->input->post('cid'));
 		redirect($this->input->post('comp'));
 	}
-	public function update(){
+    public function update(){
         if(empty($_POST)){
             redirect();
         }
+        $this->session->set_userdata('cname',$this->input->post('cname'));
         $this->company_model->update();
         $_POST=null;
-        redirect('dashboard/company');
-	}
+        redirect('dashboard');
+    }
+    public function updatePass(){
+        if(empty($_POST)){
+            redirect();
+        }
+        $this->company_model->updatePass();
+        $_POST=null;
+        redirect('dashboard');
+    }
 	public function add(){
             //encrypt password
         

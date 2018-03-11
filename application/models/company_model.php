@@ -14,6 +14,15 @@ class Company_model extends CI_Model{
         }
         return false;
     }
+    public function getPassUsingId($cid){
+           $this->db->where('cid',$cid);
+       // $query=$this->db->get_where('company_tbl',array('cemail'=>$lemail,'cpass'=>$epass));
+            $result=$this->db->get('company_tbl');
+            if($result->num_rows()>0){
+                return $result->row(0)->cpass;
+            }
+                return false;
+    }
         public function getpass($lemail){
            $this->db->where('cemail',$lemail);
        // $query=$this->db->get_where('company_tbl',array('cemail'=>$lemail,'cpass'=>$epass));
@@ -95,12 +104,18 @@ class Company_model extends CI_Model{
     }
     public function update(){
         $data =array(
-
             'cname' => $this->input->post('cname'),
             'cmodified' => date('Y-m-d'),
             'cemail' => $this->input->post('cemail')
         );
         $this->db->where('cid',$this->input->post('cid'));
+        return $this->db->update('company_tbl',$data);
+    }
+    public function updatePass(){
+        $data =array(
+            'cpass' => md5($this->input->post('cnpass'))
+        );
+        $this->db->where('cid',$this->session->userdata('cid'));
         return $this->db->update('company_tbl',$data);
     }
 }

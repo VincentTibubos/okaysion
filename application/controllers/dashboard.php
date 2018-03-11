@@ -81,12 +81,12 @@
 					$this->pagination->initialize($config);
 					$data['message']=$this->amessage_model->view(FALSE,$config['per_page'],$indexno);
 					//print_r($data);
-				}
+				}/*
 				else{
 				$this->load->view('dashboard/templates/header');
 				$this->load->view('dashboard/messages');
 				$this->load->view('dashboard/templates/footer');
-				}
+				}*/
 			//	print_r($data);
 			//	exit();
 				$this->load->view('dashboard/templates/header');

@@ -163,7 +163,9 @@
                       <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
 
                         <?php if($this->session->userdata('type')=='Company'): ?>
-                          <li class="nav-item"><a data-toggle="modal" data-target="#editaccm" id="editacc">Edit Account</a></li>
+                          <li class="nav-item"><a href="" data-toggle="modal" data-target="#editaccm" id="editacc">Edit Account</a></li>
+                          <li class="nav-item"><a href="" data-toggle="modal" data-target="#editpassm" id="editacc">Edit Password</a></li>
+                          <li class="nav-item"><a href="" data-toggle="modal" data-target="#editwebm" id="editacc">Edit Website</a></li>
                         <?php endif; ?>
                         <li class="nav-item"><a href="" class="nav-link logout" data-toggle="modal" data-target="#logoutm">Logout</a></li>
                       </ul>

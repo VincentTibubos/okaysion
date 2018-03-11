@@ -77,27 +77,12 @@
 
                     <div class="form-group"  id="aacemail" >
                       <label class="form-control-label">Email</label>
-                      <input required type="email" value="" name="cemail" class="form-control">
+                      <input required type="email" value="" name="cemail" class="form-control emailAndName">
                       <small class="help-block text-danger"></small>
                     </div>
                     <div class="form-group" id="aacname">       
                       <label class="form-control-label">Company Name</label>
-                      <input required type="text" value="" name="cname" class="form-control">
-                      <small class="help-block text-danger"></small>
-                    </div>
-                    <div class="form-group" id="aacpass">       
-                      <label class="form-control-label">Old Password</label>
-                      <input required type="password" value="" name="cpass" class="form-control">
-                      <small class="help-block text-danger"></small>
-                    </div>
-                    <div class="form-group" id="aacnpass">       
-                      <label class="form-control-label">New Password</label>
-                      <input required type="password" value="" name="cnpass" class="form-control">
-                      <small class="help-block text-danger"></small>
-                    </div>
-                    <div class="form-group" id="aaccpass">       
-                      <label class="form-control-label">Confirm Password</label>
-                      <input required type="password" value="" name="ccpass" class="form-control">
+                      <input required type="text" value="" name="cname" class="form-control emailAndName">
                       <small class="help-block text-danger"></small>
                     </div>
                     <input id="aacid" type="hidden" name="cid" value="<?php echo $this->session->userdata('cid');?>">
@@ -115,22 +100,63 @@
       
     </div>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="editpassm" role="dialog">
+    <div class="modal-dialog  modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Password</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form method="post" action="<?php echo base_url();?>company/updatepass" id="formedit">
+          <div class="modal-body">
+                    <div class="form-group"  id="aacpass" >
+                      <label class="form-control-label">Enter Password</label>
+                      <input required type="password" value="" name="cpass" class="form-control changePass">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aacnpass">       
+                      <label class="form-control-label">New Password</label>
+                      <input required type="password" value="" name="cnpass" class="form-control changePass">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group" id="aaccpass">       
+                      <label class="form-control-label">Confirm Password</label>
+                      <input required type="password" value="" name="ccpass" class="form-control changePass">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <input id="epcid" type="hidden" name="cid" value="<?php echo $this->session->userdata('cid');?>">
+          </div>
+          <div class="modal-footer">
+            <div class="form-group">     
+                <input type="submit" id="aupPassbtn" value="Update" class="btn btn-success">
+            </div>
+          </div>
+
+        </form>
+      </div>
+      
+    </div>
+  </div>
   
 
 <script type="text/javascript">
   $(document).ready(function(){
+
         add=$('#aaddbtn');
         up=$('#aupbtn');
+        editpass=$('#aupPassbtn');
+        formedit=$('#formedit');
         cname=$(this).find('#aacname');
         cemail=$(this).find('#aacemail');
-        cpass=$(this).find('#aapass');
-        ccpass=$(this).find('#aacpass');
-        cnpass=$(this).find('#aanpass');
+        cpass=$(this).find('#aacpass');
+        cnpass=$(this).find('#aacnpass');
+        ccpass=$(this).find('#aaccpass');
         if($('#aacid').val()!=''){
           vcname=cname.find('input').val();
-          vcpass=cpass.find('input').val();
-          vcnpass=cnpass.find('input').val();
-          vccpass=ccpass.find('input').val();
           vcemail=cemail.find('input').val();
         }
         $('#editacc').click(function(){
@@ -153,29 +179,20 @@
                   }
           });
         });
-        $('.form-control').on('blur change cut paste keyup ready',function(){
+        $('.emailAndName').on('blur change cut paste keyup ready',function(){
           cem=cemail.find('input').val();
           cna=cname.find('input').val();
-          cpa=cpass.find('input').val();
-          cnpa=cnpass.find('input').val();
-          ccpa=ccpass.find('input').val();
           $.ajax({
                   url: '<?php echo base_url();?>company/check',
                   type: "POST",
                   data: {
                     cemail: cem,
-                    cname: cna,
-                    oldpass: cpass,
-                    cnpass: cnpass,
-                    cncpass: ccpass
+                    cname: cna
                   },
                   dataType: 'json',
                   success: function(data){
                     cemail.find('small').html('');
                     cname.find('small').html('');
-                    cpass.find('small').html('');
-                    cnpass.find('small').html('');
-                    ccpass.find('small').html('');
                     if($('#acid').val()!=''){
                       if((cem==vcemail&&data['cname']=='')){
                         up.removeAttr('disabled');
@@ -197,7 +214,7 @@
                         up.removeAttr('disabled');
                       }
                     }
-                    else if(data['cname']!=''||data['cemail']!=''||data['cpass']!=''||data['cnpass']!=''||data['ccpass']!=''){
+                    else if(data['cname']!=''||data['cemail']!=''){
                       cemail.find('small').html(data['cemail']);
                       cname.find('small').html(data['cname']);
                       up.attr('disabled','disabled');
@@ -208,6 +225,44 @@
                       up.removeAttr('disabled');
                     }
                     return false;
+                  },
+                  error: function(xhr, textStatus, errorThrown){
+                         alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                         return false;
+                  }
+          });
+        });
+
+        editpass.on('click',function(e){
+          cpa=cpass.find('input').val();
+          cnpa=cnpass.find('input').val();
+          ccpa=ccpass.find('input').val();
+
+                      cpass.find('small').html('');
+                      cnpass.find('small').html('');
+                      ccpass.find('small').html('');
+          e.preventDefault();
+          $.ajax({
+                  url: '<?php echo base_url();?>company/checkpass',
+                  type: "POST",
+                  data: {
+                    cid: '<?php echo $this->session->userdata("cid");?>',
+                    cpass: cpa,
+                    cnpass: cnpa,
+                    ccpass: ccpa
+                  },
+                  dataType: 'json',
+                  success: function(data){
+                      if(data['cpass']!=''||data['cnpass']!=''||data['ccpass']!=''){
+                        cpass.find('small').html(data['cpass']);
+                        cnpass.find('small').html(data['cnpass']);
+                        ccpass.find('small').html(data['ccpass']);
+                        return false;
+                      }
+                      else{
+                        formedit.submit();
+                        return true;
+                      }
                   },
                   error: function(xhr, textStatus, errorThrown){
                          alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
@@ -226,7 +281,7 @@
                   },
                   //dataType: 'json',
                   success: function(data){
-                    if(data!=1){
+                    if(data!='1'){
                       location.reload();
                     }
                   },
