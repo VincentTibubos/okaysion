@@ -1,0 +1,25 @@
+
+@media print{
+
+ .page-header{
+	display:none;
+}
+ 
+.col-lg-4{
+	display:none;
+}
+ 
+ 
+.breadcrumb-holder{
+	display:none;
+}
+ 
+form{
+	display:none;
+} 
+
+.main-footer{
+	display:none;
+}
+ 
+}
