@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2018 at 06:37 AM
+-- Generation Time: Mar 17, 2018 at 06:47 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin_tbl`
 --
 
+DROP TABLE IF EXISTS `admin_tbl`;
 CREATE TABLE `admin_tbl` (
   `aid` int(11) NOT NULL,
   `auser` varchar(255) NOT NULL,
@@ -47,6 +48,7 @@ INSERT INTO `admin_tbl` (`aid`, `auser`, `apass`) VALUES
 -- Table structure for table `amessage_tbl`
 --
 
+DROP TABLE IF EXISTS `amessage_tbl`;
 CREATE TABLE `amessage_tbl` (
   `amid` int(11) NOT NULL,
   `amname` varchar(255) NOT NULL,
@@ -82,6 +84,7 @@ INSERT INTO `amessage_tbl` (`amid`, `amname`, `amemail`, `amsubject`, `ammsg`, `
 -- Table structure for table `cmessage_tbl`
 --
 
+DROP TABLE IF EXISTS `cmessage_tbl`;
 CREATE TABLE `cmessage_tbl` (
   `cmid` int(11) NOT NULL,
   `cmmsg` text NOT NULL,
@@ -116,6 +119,7 @@ INSERT INTO `cmessage_tbl` (`cmid`, `cmmsg`, `cmname`, `cmemail`, `cmcreated`, `
 -- Table structure for table `company_tbl`
 --
 
+DROP TABLE IF EXISTS `company_tbl`;
 CREATE TABLE `company_tbl` (
   `cid` int(11) NOT NULL,
   `clogo` varchar(255) NOT NULL,
@@ -218,6 +222,7 @@ INSERT INTO `company_tbl` (`cid`, `clogo`, `cname`, `cpass`, `cemail`, `cwelcome
 -- Table structure for table `customer_tbl`
 --
 
+DROP TABLE IF EXISTS `customer_tbl`;
 CREATE TABLE `customer_tbl` (
   `cuid` int(11) NOT NULL,
   `cuname` varchar(255) NOT NULL,
@@ -270,6 +275,7 @@ INSERT INTO `customer_tbl` (`cuid`, `cuname`, `cuemail`, `cuaddress`, `cucontact
 -- Table structure for table `event_tbl`
 --
 
+DROP TABLE IF EXISTS `event_tbl`;
 CREATE TABLE `event_tbl` (
   `eid` int(11) NOT NULL,
   `edate` date NOT NULL,
@@ -352,6 +358,7 @@ INSERT INTO `event_tbl` (`eid`, `edate`, `etime`, `edetails`, `enumg`, `sid`, `c
 -- Table structure for table `organizer_tbl`
 --
 
+DROP TABLE IF EXISTS `organizer_tbl`;
 CREATE TABLE `organizer_tbl` (
   `oid` int(11) NOT NULL,
   `ouser` varchar(255) NOT NULL,
@@ -377,6 +384,7 @@ INSERT INTO `organizer_tbl` (`oid`, `ouser`, `ofname`, `olname`, `opass`, `ogend
 -- Table structure for table `schedule`
 --
 
+DROP TABLE IF EXISTS `schedule`;
 CREATE TABLE `schedule` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
@@ -444,6 +452,7 @@ INSERT INTO `schedule` (`id`, `date`, `details`) VALUES
 -- Table structure for table `service_tbl`
 --
 
+DROP TABLE IF EXISTS `service_tbl`;
 CREATE TABLE `service_tbl` (
   `sid` int(11) NOT NULL,
   `sname` varchar(255) NOT NULL,
