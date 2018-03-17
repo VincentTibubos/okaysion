@@ -9,10 +9,10 @@
             <div class="container-fluid">
               <h2 class="no-margin-bottom">
                 <?php if($this->session->userdata('type')=='Admin'): ?>
-                  Forms     
+                  Forms <input type="button" value="Print" class="btn btn-primary printbtn" >
                 <?php endif; ?>
                 <?php if($this->session->userdata('type')=='Company'): ?>
-                  Calendar      
+                  Calendar <input type="button" value="Print" class="btn btn-primary printbtn" >
                 <?php endif; ?>
               </h2>
             </div>

@@ -17,14 +17,14 @@ class Calendar_model extends CI_Model{
         {heading_row_start}<tr>{/heading_row_start}
 
         {heading_previous_cell}
-        <div class="btn btn-group"><a class="btn btn-primary" id="prevdate" href="{previous_url}">&lt;&lt;</a>{/heading_previous_cell}
+        <div class="btn btn-group btn-hideto"><a class="btn btn-primary" id="prevdate" href="{previous_url}">&lt;&lt;</a>{/heading_previous_cell}
         
         {heading_title_cell}
             <div class="btn">{heading}</div>
         {/heading_title_cell}
         
         {heading_next_cell}<a class="btn btn-primary" id="nextdate" href="{next_url}">&gt;&gt;</a>
-        </div><div class="btn btn-group"><a  id="addeve" data-toggle="modal" data-target="#addEvent" class="btn btn-primary"><i class="fa fa-plus"></i> Add Event</a></div>{/heading_next_cell}
+        </div><div class="btn btn-group btn-hideto"><a  id="addeve" data-toggle="modal" data-target="#addEvent" class="btn btn-primary"><i class="fa fa-plus"></i> Add Event</a></div>{/heading_next_cell}
         
         {heading_row_end}</tr>{/heading_row_end}
 
@@ -70,17 +70,17 @@ class Calendar_model extends CI_Model{
         foreach($query->result() as $row) {
             if(substr($row->edate,8,1)==0){
                 if(empty($caledata[substr($row->edate,9,1)])){
-                    $caledata[substr($row->edate,9,1)]='<a data-toggle="modal" data-target="#editEvent" class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
+                    $caledata[substr($row->edate,9,1)]='<a href="" data-toggle="modal" data-target="#editEvent" class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
                 }//<a data-toggle="modal" data-target="#addEvent" class="btn btn-primary">
                 else
-                    $caledata[substr($row->edate,9,1)]=$caledata[substr($row->edate,9,1)].'<a data-toggle="modal" data-target="#editEvent"  class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
+                    $caledata[substr($row->edate,9,1)]=$caledata[substr($row->edate,9,1)].'<a href="" data-toggle="modal" data-target="#editEvent"  class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
             }
             else{
                 if(empty($caledata[substr($row->edate,8,2)])){
-                    $caledata[substr($row->edate,8,2)]='<a data-toggle="modal" data-target="#editEvent"  class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
+                    $caledata[substr($row->edate,8,2)]='<a href="" data-toggle="modal" data-target="#editEvent"  class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
                 }
                 else
-                    $caledata[substr($row->edate,8,2)]=$caledata[substr($row->edate,8,2)].'<a data-toggle="modal" data-target="#editEvent" class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
+                    $caledata[substr($row->edate,8,2)]=$caledata[substr($row->edate,8,2)].'<a href="" data-toggle="modal" data-target="#editEvent" class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
             }
         }
         return $caledata;
@@ -111,6 +111,7 @@ class Calendar_model extends CI_Model{
                     $this->input->post('cuid')
 
         }*/ 
+        date_default_timezone_set("Asia/Manila"); 
         if($eid==''){
             $this->db->insert('event_tbl',array(
                 'edate'=>$edate,
@@ -141,4 +142,13 @@ class Calendar_model extends CI_Model{
         $query = $this->db->get_where('event_tbl',array('eid'=>$eid));
         return $query->row_array();
     }
+
+    public function countnum(){
+        //$this->db->where('cid',$this->session->userdata('cid'));
+        //$c=$this->db->count_all('cmessage_tbl');
+        $this->db->where('estatus',1);
+        $this->db->where('cid',$this->session->userdata('cid'));
+        $query=$this->db->get('event_tbl');
+        return count($query->result_array());
+    } 
 }

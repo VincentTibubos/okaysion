@@ -1,9 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+$route['navarro'] = 'admin/login';
 $route['IsLoggedIn'] = 'company/IsLoggedIn';
 $route['amessage/(:any)'] = 'amessage/$1';
 $route['amessage'] = 'amessage';
+$route['cmessage/(:any)'] = 'cmessage/$1';
+$route['cmessage'] = 'cmessage';
 $route['company/check'] = 'company/checkcompany';
 $route['company/checkpass'] = 'company/checkPass';
 

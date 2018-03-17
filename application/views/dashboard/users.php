@@ -9,10 +9,10 @@
             <div class="container-fluid">
               <h2 class="no-margin-bottom">
                 <?php if($this->session->userdata('type')=='Admin'): ?>
-                  Companies     
+                  Companies <input type="button" value="Print" class="btn btn-primary printbtn" >
                 <?php endif; ?>
                 <?php if($this->session->userdata('type')=='Company'): ?>
-                  Customers    
+                  Customers <input type="button" value="Print" class="btn btn-primary printbtn" >
                 <?php endif; ?>
               </h2>
             </div>
@@ -95,7 +95,7 @@
                               <th>Company</th>
                               <th>Email</th>
                               <th>Address</th>
-                              <th>Modify Company</th>
+                              <th class="btn-hideto">Modify Company</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -107,7 +107,7 @@
                               <td>".$com['cemail']."</td>
                               <td>".$com['caddress']."</td>
                               <td>
-                              <div class='btn-group'>
+                              <div class='btn-group btn-hideto'>
                                   <form action='".base_url()."dashboard/company' method='post'>
                                     <input type='hidden' value='".$com['cid']."' name='cid'>
                                     <input type='hidden' value='dashboard/company' name='comp'>
@@ -145,7 +145,7 @@
                       <h3 class="h4">Customer</h3>
                     </div>
                     <div class="card-body">
-                      <p>Add or Update Company</p>
+                      <p>Add or Update Customer</p>
                         <form method="post" action="" id="formcus">
                           
                   <?php echo validation_errors(); ?>
@@ -190,20 +190,20 @@
                               <th>#</th>
                               <th>Customer</th>
                               <th>Email</th>
-                              <th>Address</th>
-                              <th>Modify Customer</th>
+                              <!--<th>Address</th>-->
+                              <th class="btn-hideto">Modify Customer</th>
                             </tr>
                           </thead>
                           <tbody>
                             <?php foreach($customer as $num=>$cus){
+                              //<td>".$cus['cuaddress']."</td>
                               echo "
                             <tr>
                               <th scope='row'>".($num+1)."</th>
                               <td>".$cus['cuname']."</td>
                               <td>".$cus['cuemail']."</td>
-                              <td>".$cus['cuaddress']."</td>
                               <td>
-                              <div class='btn-group'>
+                              <div class='btn-group btn-hideto'>
                                   <form action='".base_url()."dashboard/customer' method='post'>
                                     <input type='hidden' value='".$cus['cuid']."' name='cuid'>
                                     <input type='hidden' value='dashboard/company' name='comp'>

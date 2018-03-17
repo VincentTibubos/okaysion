@@ -66,6 +66,8 @@ class Company extends CI_Controller {
                 'lpass'=>'',
                 'lemail'=>'',
                 'cwelcome'=>'',
+                'caddress'=>'',
+                'ccontact'=>'',
                 'cabout'=>'',
                 'curl'=>'',
                 'error'=>''
@@ -126,6 +128,12 @@ class Company extends CI_Controller {
             }
             if($this->input->post('cwelcome')==''){
                 $data['cwelcome']='Welcome Message field is required';
+            }
+            if($this->input->post('ccontact')==''){
+                $data['ccontact']='Contact field is required';
+            }
+            if($this->input->post('caddress')==''){
+                $data['caddress']='Address field is required';
             }
             if($this->input->post('cabout')==''){
                 $data['cabout']='This field is required';
@@ -190,11 +198,12 @@ class Company extends CI_Controller {
     public function update(){
         if(empty($_POST)){
             redirect();
-        }
-        $this->session->set_userdata('cname',$this->input->post('cname'));
+        }if($this->session->userdata('type')=='Company'){
+           $this->session->set_userdata('cname',$this->input->post('cname'));
+    }
         $this->company_model->update();
         $_POST=null;
-        redirect('dashboard');
+        redirect('dashboard/company');
     }
     public function updatePass(){
         if(empty($_POST)){
