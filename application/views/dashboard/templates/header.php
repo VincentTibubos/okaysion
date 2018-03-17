@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php date_default_timezone_set("Asia/Manila"); ?><!DOCTYPE html>
 <html>
   <head>
     <!--<meta charset="utf-8">
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/custom.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/print.css">
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/bootstrap-datetimepicker.min.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?php echo base_url();?>/assets/img/8czrGpnqi.png">
@@ -151,10 +152,6 @@
                     <li id="d_users"><a href="<?php echo base_url();?>dashboard/company"> <i class="icon-user"></i>Companies</a></li>
           <?php endif;?>
 
-                <?php if($this->session->userdata('type')=='Admin'): ?>
-                  
-                    <li id="d_forms"><a href="<?php echo base_url();?>dashboard/forms"> <i class="icon-padnote"></i>Sample</a></li>
-                <?php endif; ?>
                 <?php if($this->session->userdata('type')=='Company'): ?>
                   
                     <li id="d_forms"><a href="<?php echo base_url();?>dashboard/calendar"> <i class="icon-padnote"></i>Calendar</a></li>   
@@ -165,7 +162,8 @@
                         <?php if($this->session->userdata('type')=='Company'): ?>
                           <li class="nav-item"><a href="" data-toggle="modal" data-target="#editaccm" id="editacc">Edit Account</a></li>
                           <li class="nav-item"><a href="" data-toggle="modal" data-target="#editpassm" id="editpass">Edit Password</a></li>
-                          <li class="nav-item"><a href="" data-toggle="modal" data-target="#editwebm" id="editweb">Edit Website</a></li>
+                          <li class="nav-item"><a href="" data-toggle="modal" data-target="#editwebm" id="editweb">Edit Info and Web</a></li>
+                          <li class="nav-item"><a href="" data-toggle="modal" data-target="#editpaymentm" id="editpayment">Payment</a></li>
                         <?php endif; ?>
                         <li class="nav-item"><a href="" class="nav-link logout" data-toggle="modal" data-target="#logoutm">Logout</a></li>
                       </ul>

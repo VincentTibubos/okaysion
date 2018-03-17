@@ -62,18 +62,25 @@
 					}
 					echo json_encode($data);
 				}
+				else if($type=='Company'){
+					if(!empty($_POST)){
+						$data=$this->cmessage_model->view($this->input->post('cmid'));
+					}
+					echo json_encode($data);
+				}
 			}
 			else{
-				$data['mdata']=array(
-					'amid'=>'',
-					'amname'=>'',
-					'amemail'=>'',
-					'amsubject'=>'',
-					'ammsg'=>''
-				);
 				$type=$this->session->userdata('type');
 				//exit();
 				if($type=='Admin'){
+
+					$data['mdata']=array(
+						'amid'=>'',
+						'amname'=>'',
+						'amemail'=>'',
+						'amsubject'=>'',
+						'ammsg'=>''
+					);
 					$config['base_url'] = base_url().'dashboard/messages/';
 					$config['total_rows'] = $this->amessage_model->countnum();
 					$config['per_page'] = 3;
@@ -83,7 +90,25 @@
 
 					$this->pagination->initialize($config);
 					$data['message']=$this->amessage_model->view(FALSE,$config['per_page'],$indexno);
-					//print_r($data);
+				}
+				else if($type=='Company'){
+
+					$data['mdata']=array(
+						'cmid'=>'',
+						'cmname'=>'',
+						'cmemail'=>'',
+						'cmsubject'=>'',
+						'cmmsg'=>''
+					);
+					$config['base_url'] = base_url().'dashboard/messages/';
+					$config['total_rows'] = $this->cmessage_model->countnum();
+					$config['per_page'] = 3;
+					$config['uri_segment'] = 3;
+					$config['first_tag_open'] = '<div class="btn btn-success">';
+					$config['first_tag_close'] = '</div>';
+
+					$this->pagination->initialize($config);
+					$data['message']=$this->cmessage_model->view(FALSE,$config['per_page'],$indexno);
 				}/*
 				else{
 				$this->load->view('dashboard/templates/header');
@@ -129,22 +154,36 @@
 			);
 			if(!empty($_POST)){
 				$data['sdata']=$this->service_model->viewser($this->input->post('sid'));
+				echo json_encode($data['sdata']);
 			}
-			$data['service']=$this->service_model->viewser();
-			//print_r($data);
-			//exit();
-			$this->load->view('dashboard/templates/header');
-			$this->load->view('dashboard/service',$data);
-			$this->load->view('dashboard/templates/footer');
+			else{
+				$data['service']=$this->service_model->viewser();
+			
+				//print_r($data);
+				//exit();
+				$this->load->view('dashboard/templates/header');
+				$this->load->view('dashboard/service',$data);
+				$this->load->view('dashboard/templates/footer');
+			}
 		}
 		public function view($page='index'){
             if(!$this->session->userdata('logged_in')){
                 redirect('login');
             }
             if(file_exists(APPPATH.'views/dashboard/'.$page.'.php')){
-						
+            		if($this->session->userdata('type')=='Company'){
+						$data['calendar']=$this->calendar_model->generate(date('Y'),date('m'));
+						$data['calendarnum']=$this->calendar_model->countnum();
+						$data['servicenum']=$this->service_model->countnum();
+						$data['cunum']=$this->customer_model->countnum();
+					}
+					else if($this->session->userdata('type')=='Admin'){
+						$data['company']=$this->company_model->viewcomp();
+						$data['cosnum']=$this->company_model->countnum();
+						$data['msgnum']=$this->amessage_model->countnum();
+					}
 					$this->load->view('dashboard/templates/header');
-					$this->load->view('dashboard/'.$page);
+					$this->load->view('dashboard/'.$page,$data);
 					$this->load->view('dashboard/templates/footer');
 			}
 			else{
@@ -152,6 +191,7 @@
 			}
 		}
 		public function calendar($year=null,$month=null){
+        date_default_timezone_set("Asia/Manila"); 
 			/*$conf=array(
 				'start_day'=>'monday',
 				'show_next_prev'=>true,

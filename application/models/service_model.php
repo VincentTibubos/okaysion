@@ -33,6 +33,7 @@ class Service_model extends CI_Model{
         return $this->db->update('service_tbl',$data);
     }
     public function add(){
+        date_default_timezone_set("Asia/Manila"); 
         $data =array(
             'cid' => $this->session->userdata('cid'),
             'sname' => $this->input->post('sname'),
@@ -47,6 +48,7 @@ class Service_model extends CI_Model{
         return $this->db->insert('service_tbl',$data);
     }
     public function update(){
+        date_default_timezone_set("Asia/Manila"); 
         $data =array(
             'sname' => $this->input->post('sname'),
             'svenue' => $this->input->post('svenue'),
@@ -57,4 +59,13 @@ class Service_model extends CI_Model{
         $this->db->where('sid',$this->input->post('sid'));
         return $this->db->update('service_tbl',$data);
     }
+
+    public function countnum(){
+        //$this->db->where('cid',$this->session->userdata('cid'));
+        //$c=$this->db->count_all('cmessage_tbl');
+        $this->db->where('sstatus',1);
+        $this->db->where('cid',$this->session->userdata('cid'));
+        $query=$this->db->get('service_tbl');
+        return count($query->result_array());
+    } 
 }

@@ -32,6 +32,7 @@ class Company_model extends CI_Model{
             }
                 return false;
         }
+        
     //login
     public function login($lemail,$epass){
    //     print_r($_POST);
@@ -72,8 +73,16 @@ class Company_model extends CI_Model{
         if($curl===FALSE){
             return false;
         }
-        $query = $this->db->get_where('company_tbl',array('curl'=>$curl,'cstatus'=>1));
-        return $query->row_array();
+        $query = $this->db->get_where('company_tbl',array('curl'=>$curl,'cstatus'=>1))->row_array();
+
+        date_default_timezone_set("Asia/Manila"); 
+        $thiday=strtotime($query['ccreated'].'+ 30 days');
+        $numdays= ($thiday-time());
+        $numdays=round($numdays/(60*60*24));
+        if($numdays<=0){
+          return false;
+        }
+        return $query;
     }
     public function delete($cid){
         $data =array(
@@ -103,6 +112,7 @@ class Company_model extends CI_Model{
         return $this->db->insert('company_tbl',$data);
     }
     public function update(){
+        date_default_timezone_set("Asia/Manila"); 
         $data =array(
             'cname' => $this->input->post('cname'),
             'cmodified' => date('Y-m-d'),
@@ -121,11 +131,21 @@ class Company_model extends CI_Model{
     public function updateweb(){
         $data =array(
             'cwelcome'=>$this->input->post('cwelcome'),
-            'cwelcome'=>$this->input->post('cabout'),
+            'ccontact'=>$this->input->post('ccontact'),
+            'caddress'=>$this->input->post('caddress'),
+            'cabout'=>$this->input->post('cabout'),
             'ctemplate'=>$this->input->post('ctemplate'),
             'curl'=>$this->input->post('curl').'.com'
         );
         $this->db->where('cid',$this->session->userdata('cid'));
         return $this->db->update('company_tbl',$data);
     }
+
+    public function countnum(){
+        //$this->db->where('cid',$this->session->userdata('cid'));
+        //$c=$this->db->count_all('cmessage_tbl');
+        $this->db->where('cstatus',1);
+        $query=$this->db->get('company_tbl');
+        return count($query->result_array());
+    } 
 }

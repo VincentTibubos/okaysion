@@ -10,6 +10,8 @@ class Amessage_model extends CI_Model{
     }
     public function send(){
         //Array ( [name] => hdkjdlkjfdkjlafjkl [email] => jklasjlfsdjlfdjslskdfj@jkljlk.jdskljlk [subject] => jdflkdfsajaflk [message] => jlkjlkjjkljkfakljfasjklfadsjklfakjsafkjfdajkkjfds )
+        
+        date_default_timezone_set("Asia/Manila"); 
         $data =array(
             'amname' => $this->input->post('name'),
             'amemail' => $this->input->post('email'),

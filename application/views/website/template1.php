@@ -156,39 +156,41 @@
 									<h2 class="title__title">SEND US A MESSAGE</h2>
 								</div><!-- End / title -->
 								
-								<div class="form-wrapper">
-									
-									<!-- form-item -->
-									<div class="form-item form-item--half">
-										<label class="form__label">Email<span>*</span>
-										</label>
-										<input class="form-control" type="text" name="input" placeholder=""/>
-									</div><!-- End / form-item -->
-									
-									
-									<!-- form-item -->
-									<div class="form-item form-item--half">
-										<label class="form__label">Name<span>*</span>
-										</label>
-										<input class="form-control" type="text" name="input" placeholder=""/>
-									</div><!-- End / form-item -->
-									
-									
-									<!-- form-item -->
-									<div class="form-item">
-										<label class="form__label">Message<span>*</span>
-										</label>
-										<textarea class="form-control"></textarea>
-									</div><!-- End / form-item -->
-									
-									
-									<!-- form-item -->
-									<div class="form-item">
-										<a class="md-btn btn-custom" href="#">Send message
-										</a>
-									</div><!-- End / form-item -->
-									
-								</div>
+                <form action="cmessage/send" method="post" role="form" >
+  								<div class="form-wrapper">
+  									
+  									<!-- form-item -->
+  									<div class="form-item form-item--half">
+  										<label class="form__label">Email<span>*</span>
+  										</label>
+  										<input class="form-control" type="email" required name=email placeholder=""/>
+  									</div><!-- End / form-item -->
+  									
+  									
+  									<!-- form-item -->
+  									<div class="form-item form-item--half">
+  										<label class="form__label">Name<span>*</span>
+  										</label>
+  										<input class="form-control" type="text" name="name" required placeholder=""/>
+  									</div><!-- End / form-item -->
+  									
+  									
+  									<!-- form-item -->
+  									<div class="form-item">
+  										<label class="form__label">Message<span>*</span>
+  										</label>
+  										<textarea class="form-control" required name="message"></textarea>
+  									</div><!-- End / form-item -->
+  									
+                    <input value="<?php echo $web['cid'];?>" name="cid" type="hidden">
+  									<input value="<?php echo $web['curl'];?>" name="curl" type="hidden">
+  									<!-- form-item -->
+  									<div class="form-item" style="margin-top: 10px;">
+                      <input type="submit" value="Send" class="btn btn-primary btn-block">
+  									</div><!-- End / form-item -->
+  									
+  								</div>
+                </form>
 							</div>
 						</div>
 					</div>

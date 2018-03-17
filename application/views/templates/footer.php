@@ -20,9 +20,6 @@ the services they offer.</p>
               <li><i class="ion-ios-arrow-right"></i> <a href="#intro">Home</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#about">About us</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#featured-services">Services</a></li>
-              <?php if(!$this->session->userdata('logged_in')): ?>
-                  <li><i class="ion-ios-arrow-right"></i> <a href="admin">Admin</a></li>
-              <?php endif;?>
             </ul>
             </ul>
           </div>

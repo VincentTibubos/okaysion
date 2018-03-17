@@ -33,6 +33,7 @@ class Customer_model extends CI_Model{
         return $this->db->update('customer_tbl',$data);
     }
     public function add(){
+        date_default_timezone_set("Asia/Manila"); 
         $data =array(
             'cid' => $this->session->userdata('cid'),
             'cuname' => $this->input->post('cuname'),
@@ -44,6 +45,7 @@ class Customer_model extends CI_Model{
         return $this->db->insert('customer_tbl',$data);
     }
     public function update(){
+        date_default_timezone_set("Asia/Manila"); 
         $data =array(
             'cuname' => $this->input->post('cuname'),
             'cumodified' => date('Y-m-d'),
@@ -52,4 +54,12 @@ class Customer_model extends CI_Model{
         $this->db->where('cuid',$this->input->post('cuid'));
         return $this->db->update('customer_tbl',$data);
     }
+    public function countnum(){
+        //$this->db->where('cid',$this->session->userdata('cid'));
+        //$c=$this->db->count_all('cmessage_tbl');
+        $this->db->where('custatus',1);
+        $this->db->where('cid',$this->session->userdata('cid'));
+        $query=$this->db->get('customer_tbl');
+        return count($query->result_array());
+    } 
 }

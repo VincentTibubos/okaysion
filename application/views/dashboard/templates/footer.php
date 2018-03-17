@@ -4,7 +4,9 @@
               <div class="row">
                 <div class="col-sm-6">
                   <p>OKAYsion &copy; 2018</p>
-                  <?php if($this->session->userdata('type')=='Company'){
+                  <?php 
+        date_default_timezone_set("Asia/Manila"); 
+                  if($this->session->userdata('type')=='Company'){
                     $thiday=strtotime($this->session->userdata('ccreated').'+ 30 days');
                     $numdays= ($thiday-time());
                     $numdays=round($numdays/(60*60*24));
@@ -62,6 +64,8 @@
       
     </div>
   </div>
+  
+  <?php if($this->session->userdata('type')=='Company'){?>
   <!-- Modal -->
   <div class="modal fade" id="editaccm" role="dialog">
     <div class="modal-dialog  modal-lg">
@@ -72,7 +76,7 @@
           <h4 class="modal-title">Edit Account</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <form method="post" action="<?php echo base_url();?>company/update" id="formcom">
+        <form method="post" action="<?php echo base_url();?>company/update">
           <div class="modal-body">
 
                     <div class="form-group"  id="aacemail" >
@@ -149,7 +153,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Edit Website</h4>
+          <h4 class="modal-title">Edit Information and Website</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <form method="post" action="<?php echo base_url();?>company/updateweb" id="formeditweb">
@@ -182,6 +186,17 @@
                       </div>
                         <small class="help-block text-danger"></small>
                     </div>
+
+                    <div class="form-group"  id="aaccontact" >
+                      <label class="form-control-label">Contact</label>
+                      <input required type="text" value="" name="ccontact" class="form-control changeWeb text-secondary">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group"  id="aacaddress" >
+                      <label class="form-control-label">Address</label>
+                      <input required type="text" value="" name="caddress" class="form-control changeWeb text-secondary">
+                      <small class="help-block text-danger"></small>
+                    </div>
                     <input id="ewcid" type="hidden" name="cid" value="<?php echo $this->session->userdata('cid');?>">
           </div>
           <div class="modal-footer">
@@ -195,10 +210,46 @@
       
     </div>
   </div>
-  
+
+  <!-- Modal -->
+  <div class="modal fade" id="editpaymentm" role="dialog">
+    <div class="modal-dialog  modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Payment Option</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form method="post" action="<?php echo base_url();?>company/updatepayment" id="formeditpay">
+          <div class="modal-body">
+                    <div class="form-group" id="aactemplate">       
+                      <label class="form-control-label">Payment</label>
+                      <div class='input-group'>
+                        <select class="form-control text-secondary" name="cpayment">
+                              <option value='1'>Monthly</option>       
+                              <option value='2'>Quaterly</option>       
+                              <option value='2'>Semi Annually</option>       
+                              <option value='2'>Annually</option>       
+                        </select>
+                      </div>
+                        <small class="help-block text-danger"></small>
+                    </div>
+                    <input id="epaycid" type="hidden" name="cid" value="<?php echo $this->session->userdata('cid');?>">
+          </div>
+          <div class="modal-footer">
+            <div class="form-group">     
+                <input type="button" id="aupPaybtn" value="Update" class="btn btn-success" disabled="">
+            </div>
+          </div>
+
+        </form>
+      </div>
+      
+    </div>
+  </div>
 <script type="text/javascript">
   $(document).ready(function(){
-
         add=$('#aaddbtn');
         up=$('#aupbtn');
         editpass=$('#aupPassbtn');
@@ -211,6 +262,8 @@
         cnpass=$(this).find('#aacnpass');
         ccpass=$(this).find('#aaccpass');
         cwelcome=$(this).find('#aacwelcome');
+        ccontact=$(this).find('#aaccontact');
+        caddress=$(this).find('#aacaddress');
         cabout=$(this).find('#aacabout');
         curl=$(this).find('#aacurl');
         ctemplate=$(this).find('#aactemplate');
@@ -222,6 +275,9 @@
           vcemail=cemail.find('input').val();
         }
         $('#editacc').click(function(){
+
+                    cemail.find('small').html('');
+                    cname.find('small').html('');
            $.ajax({
                   url: '<?php echo base_url();?>dashboard/company',
                   type: "POST",
@@ -232,6 +288,8 @@
                   success: function(data){
                     cname.find('input').val(data['cname']);
                     cemail.find('input').val(data['cemail']);
+          vcname=cname.find('input').val();
+          vcemail=cemail.find('input').val();
                   },
                   error: function(xhr, textStatus, errorThrown){
                          alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
@@ -240,6 +298,11 @@
           });
         });
         $('#editweb').click(function(){
+                      cwelcome.find('small').html('');
+                      ccontact.find('small').html('');
+                      caddress.find('small').html('');
+                      cabout.find('small').html('');
+                      curl.find('small').html('');
            $.ajax({
                   url: '<?php echo base_url();?>dashboard/company',
                   type: "POST",
@@ -250,9 +313,13 @@
                   success: function(data){
                     data['curl']=data['curl'].substring(0,data['curl'].lastIndexOf(".com"));
                     vcwelcome=data['cwelcome'];
+                    vcaddress=data['caddress'];
+                    vccontact=data['ccontact'];
                     vcurl=data['curl'];
                     vcabout=data['cabout'];
                     cwelcome.find('input').val(data['cwelcome']);
+                    caddress.find('input').val(data['caddress']);
+                    ccontact.find('input').val(data['ccontact']);
                     cabout.find('textarea').val(data['cabout']);
                     curl.find('input').val(data['curl']);
                     ctemplate.find('select').val(data['ctemplate']);
@@ -318,9 +385,13 @@
         });
         editweb.on('click',function(e){
           cwel=cwelcome.find('input').val();
+          ccon=ccontact.find('input').val();
+          cadd=caddress.find('input').val();
           cab=cabout.find('textarea').val();
           cur=curl.find('input').val();
                       cwelcome.find('small').html('');
+                      ccontact.find('small').html('');
+                      caddress.find('small').html('');
                       cabout.find('small').html('');
                       curl.find('small').html('');
           e.preventDefault();
@@ -330,18 +401,22 @@
                   data: {
                     cid: '<?php echo $this->session->userdata("cid");?>',
                     cwelcome: cwel,
+                    caddress: cadd,
+                    ccontact: ccon,
                     cabout: cab,
                     curl: cur
                   },
                   dataType: 'json',
                   success: function(data){
-                    if(data['cwelcome']==''&&data['cabout']==''&&vcurl==cur){
+                    if(data['cwelcome']==''&&data['caddress']==''&&data['ccontact']==''&&data['cabout']==''&&vcurl==cur){
 
                         formeditweb.submit();
                         return true;
                     }
-                     else if(data['cwelcome']!=''||data['cabout']!=''||data['curl']!=''){
+                     else if(data['cwelcome']!=''||data['cabout']!=''||data['curl']!=''||data['ccontact']!=''||data['caddress']!=''){
                         cwelcome.find('small').html(data['cwelcome']);
+                        ccontact.find('small').html(data['ccontact']);
+                        caddress.find('small').html(data['caddress']);
                         cabout.find('small').html(data['cabout']);
                         curl.find('small').html(data['curl']);
                         return false;
@@ -396,7 +471,13 @@
           });
         });
   });
-  setInterval(checkIsLoggedIn, 1000);
+$('#editpass').click(function(){
+
+                      cpass.find('small').html('');
+                      cnpass.find('small').html('');
+                      ccpass.find('small').html('');
+});
+  //setInterval(checkIsLoggedIn, 1000);
   function checkIsLoggedIn(){
     $.ajax({
                   url: '<?php echo base_url();?>IsLoggedIn',
@@ -431,7 +512,8 @@
       location.reload();
       //window.location.replace("<?php echo base_url();?>");
     }*/
-</script>
+    </script>
+<?php }?>
     <!-- Javascript files-->
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>
@@ -448,6 +530,16 @@
       function redirout(){
               window.location="<?php echo base_url()?>logout";
       }
+      $('document').ready(function(){
+
+        hideto=$('.btn-hideto');
+          $('.printbtn').click(function(){
+            hideto.hide();
+            window.print();
+            hideto.show();
+
+          });
+      });
     </script>
 
   </body>
