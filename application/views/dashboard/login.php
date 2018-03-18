@@ -49,8 +49,9 @@
           <div class="row">
 
             <!-- Form Panel-->
-            <div class="col-lg-6">
-			</div>
+            <div class="col-lg-3">
+			      </div>
+
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
@@ -87,6 +88,8 @@
                   <small>Doesn't have an account? </small><a href="<?php echo base_url();?>register" class="signup">Register</a>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-3">
             </div>
           </div>
         </div>

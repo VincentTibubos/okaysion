@@ -41,7 +41,6 @@
      </div>
   </header><!-- #header -->
 
-
     <div class="page login-page">
       <div class="container  d-flex align-items-center ">
         <div class="form-holder"style="margin-top:50px;">
@@ -51,6 +50,13 @@
             <!-- Form Panel    -->
 
             <div class="col-md-6">
+              <div class="form d-flex align-items-center">
+                <div class="content">
+                  <h2 style="color:white;"><span class="fa fa-dollar" style="font-size:35px;color:white;width:45px;"></span>Economize Your Resources</h2></br></br></br>
+                  <h2 style="color:white;"><span class="fa fa-desktop" style="font-size:30px;color:white;width:45px;"></span>Advertise Your Company</h2></br></br></br>
+                  <h2 style="color:white;"><span class="fa fa-glass" style="font-size:30px;color:white;width:45px;"></span>Focus on Your Business</h2></br></br></br>
+                </div>
+              </div>
 			     </div>
             <div class="col-md-6 bg-white" id="reg1">
               <div class="form d-flex align-items-center">
@@ -145,6 +151,12 @@
         </p>
       </div>
     </div>-->
+    <!-- Register Description-->
+
+
+
+
+
     <div class="modal fade" id="modalAgree" role="dialog">
       <div class="modal-dialog modal-lg">
 
