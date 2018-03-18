@@ -26,7 +26,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
-  		 
+
 <!--==========================
     Header
   ============================-->
@@ -39,26 +39,26 @@
       </div>
 
      </div>
-  </header><!-- #header -->    
-  
-  
+  </header><!-- #header -->
+
+
     <div class="page login-page">
       <div class="container  d-flex align-items-center ">
         <div class="form-holder"style="margin-top:50px;">
 
           <div class="row">
-            
+
             <!-- Form Panel    -->
-			
+
             <div class="col-md-6">
 			     </div>
             <div class="col-md-6 bg-white" id="reg1">
               <div class="form d-flex align-items-center">
-                <div class="content">     
+                <div class="content">
 
                  <?php echo form_open_multipart('register')?>
                         <div id="form1">
-                          <h2 class='form-group text-secondary'>Company Account:</h2>
+                          <h2 class='form-group text-secondary'>Join OKAYsion</h2>
                           <div class="form-group" id='compname'>
                             <input id="rcname" type="text" name="cname" required class="input-material">
                             <label for="rcname" class="label-material">Company Name</label>
@@ -85,7 +85,7 @@
                           </div>-->
                           <div class="form-group terms-conditions" id='compag'>
                             <input id="license" type="checkbox" class="checkbox-template">
-                            <label for="license"><a data-toggle="modal" href="" data-target="#modalAgree">Agree to terms and policy</a></label>
+                            <label for="license"><a data-toggle="modal" href="" data-target="#modalAgree">I Agree to terms and policy</a></label>
                           </div>
                           <div class="form-group">
                             <input id="button1" type="submit" value="Register" class="btn btn-primary input-material">
@@ -132,7 +132,7 @@
                           <input id="register" type="submit" value="Register" class="btn btn-primary">
                         </div>-->
                   </form>
-                  <small>Already have an account?</small><a href="<?php echo base_url();?>login" class="signup">Log in</a>
+                  <small>Already have an account?     </small><a href="<?php echo base_url();?>login" class="signup">Log in</a>
                 </div>
               </div>
             </div>
@@ -196,7 +196,7 @@
         </div>
       </div>
     </div>
-	
+
     <!-- Javascript files-->
     <script src="<?php echo base_url();?>assets/lib/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url();?>assets/dashboard/vendor/popper.js/umd/popper.min.js"> </script>
