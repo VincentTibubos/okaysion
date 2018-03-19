@@ -9,6 +9,7 @@ class Company extends CI_Controller {
         else
             redirect();
     }
+
     public function register(){
         if($this->session->userdata('logged_in')){
             redirect();
@@ -115,6 +116,9 @@ class Company extends CI_Controller {
             //cname validation
             if($this->input->post('cpass')==''){
                 $data['cpass']='Password field is required';
+            }
+            else if(strlen($this->input->post('cpass'))<6){
+                $data['cpass']='Minimum of 6 characters';
             }
             if($this->input->post('ccpass')==''){
                 $data['ccpass']='Confirm Password field is required';

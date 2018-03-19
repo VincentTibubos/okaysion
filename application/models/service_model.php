@@ -33,10 +33,12 @@ class Service_model extends CI_Model{
         return $this->db->update('service_tbl',$data);
     }
     public function add(){
+        $file= base64_encode(file_get_contents(addslashes($_FILES['image']['tmp_name'])));
         date_default_timezone_set("Asia/Manila"); 
         $data =array(
             'cid' => $this->session->userdata('cid'),
             'sname' => $this->input->post('sname'),
+            'simage' => $file,
             'svenue' => $this->input->post('svenue'),
             'sprice' => $this->input->post('sprice'),
             'screated' => date('Y-m-d'),

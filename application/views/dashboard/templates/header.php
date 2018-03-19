@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/custom.css">
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/print.css">
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/dataTables.bootstrap4.min.css">
+
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?php echo base_url();?>/assets/img/8czrGpnqi.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -90,6 +92,8 @@
 </style>
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>
+    <script src="<?php echo base_url();?>/assets/js/jquery.dataTables.min.js"> </script>
+    <script src="<?php echo base_url();?>/assets/js/dataTables.bootstrap4.min.js"> </script>
   </head>
   <body>
     <div class="page">
