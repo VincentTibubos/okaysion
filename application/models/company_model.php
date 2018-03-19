@@ -84,6 +84,18 @@ class Company_model extends CI_Model{
         }
         return $query;
     }
+
+    public function viewser($cid=FALSE,$sid=FALSE){
+        if($sid===FALSE){
+            $query = $this->db->get_where('service_tbl',array('cid'=>$cid,'sstatus'=>1));
+            //print_r($query->result_array());
+            //exit();
+            return $query->result_array();
+        }
+
+        $query = $this->db->get_where('service_tbl',array('sid'=>$sid,'cid'=>$cid,'sstatus'=>1));
+        return $query->row_array();
+    }
     public function delete($cid){
         $data =array(
             'cstatus' => 0

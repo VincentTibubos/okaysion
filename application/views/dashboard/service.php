@@ -84,7 +84,7 @@
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">                       
-                        <table class="table table-striped table-hover">
+                        <table class="table table-striped table-hover" id="service_tbl">
                           <thead>
                             <tr>
                               <th>#</th>
@@ -194,11 +194,16 @@
           <h4 class="modal-title">Add Service</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <form method="post" action="<?php echo base_url();?>service/add">
+        <form method="post" action="<?php echo base_url();?>service/add" enctype="multipart/form-data">
           <div class="modal-body">
                     <div class="form-group"  id="serviceName" >
                       <label class="form-control-label">Service Name</label>
                       <input required type="text" value="" name="sname" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group"  id="serviceImage" >
+                      <label class="form-control-label">Service Image</label>
+                      <input required type="file" value="" name="image" class="form-control">
                       <small class="help-block text-danger"></small>
                     </div>
                     <div class="form-group"  id="serviceDescription" >
@@ -219,7 +224,7 @@
           </div>
           <div class="modal-footer">
             <div class="form-group">     
-                <input type="submit" value="Add" class="btn btn-success">
+                <input type="submit" value="Add" class="btn btn-success" id="add-service">
             </div>
           </div>
 
@@ -228,8 +233,32 @@
       
     </div>
   </div>
+
+    <script src="<?php echo base_url();?>assets/js/jquery-1.12.4.js"> </script>
+    <script src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"> </script>
+    <script src="<?php echo base_url();?>assets/js/dataTables.bootstrap.min.js"></script>
+    
   <script type="text/javascript">
     $(document).ready(function(){
+      //$('#sevice_tbl').DataTable();
+      asimg=$('#serviceImage');
+      errimage=asimg.find('small');
+      $('#add-service').click(function(e){
+        var aimage=asimg.find('input').val();
+        var ext=aimage.split('.').pop().toLowerCase();
+        if(aimage==''){
+          errimage.html('Please select an image');
+          e.preventDefault();
+          return false;
+        }
+        else if(ext!='jpg'&&ext!='gif'&&ext!='jpeg'&&ext!='png'){
+          errimage.html('Invalid Image File');
+          asimg.find('input').val('');
+          alert('invalid');
+          e.preventDefault();
+          return false;
+        }
+      });
       sname=$('#sname');
       sid=$('#sid');
       sdescription=$('#sdescription');

@@ -139,11 +139,13 @@
                                           </select>
 
                                         </div>
+                                        <input type="" name="confirmation">
                                       </div>
                                     </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" id='aEve'>Add</button>
+          
         </div>
       </div>
       
@@ -203,13 +205,16 @@
                                             }
                                             ?>
                                           </select>
-
                                         </div>
                                       </div>
                                     </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" id='uEve'>Update</button>
+          <form action="<?php echo base_url()?>calendar/cancel" method="post">
+            <input type="hidden" value="" id="sidform" name="eid">
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
         </div>
       </div>
       
@@ -327,12 +332,14 @@
     <script>
       $(document).ready(function(){
                     sform=$(this).offsetParent().find('#sform');
+                    sidform=$(this).offsetParent().find('#sidform');
                     cuform=$(this).offsetParent().find('#cuform');
                     dform=$(this).offsetParent().find('#dform');
                     tform=$(this).offsetParent().find('#tform');
                     edform=$(this).offsetParent().find('#edform');
         $('.content').click(function(){
             eid=$(this).find('.id_num').html();
+            sidform.val(eid);
             if(eid!=''){
                 $.ajax({
                   url: '<?php echo base_url();?>calendar',
