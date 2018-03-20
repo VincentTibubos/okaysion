@@ -21,12 +21,22 @@
 	<link href="<?php echo base_url();?>assets/template1/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>assets/template1/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>assets/template1/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+<<<<<<< HEAD
+	
+	
+
+=======
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
   </head>
 
   <body>
 
     <!-- Navigation -->
+<<<<<<< HEAD
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+=======
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
       <div class="container">
         <a class="navbar-brand" href="#"><?php echo $web['cname'];?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +58,8 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
+<<<<<<< HEAD
+=======
             <?php if(!$this->session->userdata($web['cid'].'logged_in')){?>
             <li class="nav-item" >
               <a class="nav-link" href="" data-toggle="modal" data-target="#register">Register</a>
@@ -60,11 +72,239 @@
               <a class="nav-link" data-toggle="modal" data-target="#logout" href="">Logout</a>
             </li>
             <?php }?>
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
           </ul>
         </div>
       </div>
     </nav>
 
+<<<<<<< HEAD
+
+
+     
+ <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro">
+    <div class="intro-container">
+      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active">
+		  <img src="<?php echo base_url();?>assets/template1/img/intro-carousel/big4.jpg" class="img-fluid" alt="">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                
+                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="carousel-item">
+		  <img src="<?php echo base_url();?>assets/template1/img/intro-carousel/big5.jpg" class="img-fluid" alt="">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+        <div class="carousel-item">
+		<img src="<?php echo base_url();?>assets/template1/img/intro-carousel/big3.jpg" class="img-fluid" alt="">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+		  
+		   <div class="carousel-item">
+		   <img src="<?php echo base_url();?>assets/template1/img/intro-carousel/big6.jpg" class="img-fluid" alt="">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <a href="#featured-services" class="btn-get-started scrollto">Book Now!</a>
+              </div>
+            </div>
+          </div>
+		  
+        <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- #intro -->
+
+    
+	<!--SERVICES-->
+	<section id="portfolio"  class="section-bg" >
+      <div class="container">
+
+        <header class="section-header">
+          <h3 class="section-title center">Services</h3>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">Weddings</li>
+              <li data-filter=".filter-card">Birthdays</li>
+              <li data-filter=".filter-web">Christening</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page1_img5.jpg" class="img-fluid" alt="">
+                <a href="img/page1_img5.jpg" data-lightbox="portfolio" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Bridal Car</a></h4>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page4_img1.jpg" class="img-fluid" alt="">
+                <a href="img/page4_img1.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Baby Shower</a></h4>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/images-10.jpg" class="img-fluid" alt="">
+                <a href="img/images-10.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Prenup Photoshoot</a></h4>
+              
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page1_img1.jpg" class="img-fluid" alt="">
+                <a href="img/page1_img1.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Decorating Services</a></h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page1_img10.jpg" class="img-fluid" alt="">
+                <a href="img/page1_img10.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Maternity Photoshoot</a></h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/shuffle_3.jpg" class="img-fluid" alt="">
+                <a href="img/shuffle_3.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Venue and Catering Services</a></h4>
+               
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page1_img4.jpg" class="img-fluid" alt="">
+                <a href="img/pag1_img4.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+              <div class="portfolio-info">
+                <h4><a href="#">Catering</a></h4>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/shuffle_2.jpg" class="img-fluid" alt="">
+                <a href="img/shuffle_2.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+              <div class="portfolio-info">
+                <h4><a href="#">Children's Party</a></h4>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page1_img6.jpg" class="img-fluid" alt="">
+                <a href="img/page1_img6.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Catering</a></h4>
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+<!--CONTACT-->
+=======
     <!-- Page Content -->
     <div class="container">
 
@@ -97,6 +337,7 @@
       <!-- /.row -->
 
     </div>
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
  <section class="md-section" id="id-5">
 					<div class="container">
 						<div class="row">
@@ -153,7 +394,11 @@
   									<div class="form-item form-item--half">
   										<label class="form__label">Email<span>*</span>
   										</label>
+<<<<<<< HEAD
+  										<input class="form-control" type="email" required name=email placeholder=""/>
+=======
   										<input class="form-control" type="email" required name=email placeholder="" value="<?php echo $this->session->userdata($web['cid'].'cuemail')?>" />
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
   									</div><!-- End / form-item -->
   									
   									
@@ -161,7 +406,11 @@
   									<div class="form-item form-item--half">
   										<label class="form__label">Name<span>*</span>
   										</label>
+<<<<<<< HEAD
+  										<input class="form-control" type="text" name="name" required placeholder=""/>
+=======
   										<input class="form-control" type="text" name="name" required placeholder="" value="<?php echo $this->session->userdata($web['cid'].'cuname')?>" />
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
   									</div><!-- End / form-item -->
   									
   									
@@ -186,6 +435,23 @@
 					</div>
 				</section>
   <!-- Footer -->
+<<<<<<< HEAD
+    <footer class="py-5">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy;2018 Your Company, All Rights Reserved</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="<?php echo base_url();?>assets/template1/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/template1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/wow/wow.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/wow/wow.min.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/waypoints/waypoints.min.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/touchSwipe/jquery.touchSwipe.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+=======
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy;2018 <?php echo $web['cname'];?>, All Rights Reserved</p>
@@ -388,6 +654,7 @@
         });
       });
     </script>
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
 
   </body>
 
