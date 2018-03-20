@@ -33,10 +33,12 @@ class Service_model extends CI_Model{
         return $this->db->update('service_tbl',$data);
     }
     public function add(){
+        $file= base64_encode(file_get_contents(addslashes($_FILES['image']['tmp_name'])));
         date_default_timezone_set("Asia/Manila"); 
         $data =array(
             'cid' => $this->session->userdata('cid'),
             'sname' => $this->input->post('sname'),
+            'simage' => $file,
             'svenue' => $this->input->post('svenue'),
             'sprice' => $this->input->post('sprice'),
             'screated' => date('Y-m-d'),
@@ -49,13 +51,26 @@ class Service_model extends CI_Model{
     }
     public function update(){
         date_default_timezone_set("Asia/Manila"); 
-        $data =array(
-            'sname' => $this->input->post('sname'),
-            'svenue' => $this->input->post('svenue'),
-            'sprice' => $this->input->post('sprice'),
-            'sdescription' => $this->input->post('sdescription'),
-            'smodified' => date('Y-m-d'),
-        );
+        if(!empty($_FILES['image'])){
+            $file= base64_encode(file_get_contents(addslashes($_FILES['image']['tmp_name'])));
+            $data =array(
+                'sname' => $this->input->post('sname'),
+                'svenue' => $this->input->post('svenue'),
+                'simage' => $file,
+                'sprice' => $this->input->post('sprice'),
+                'sdescription' => $this->input->post('sdescription'),
+                'smodified' => date('Y-m-d'),
+            );
+        }
+        else{
+            $data =array(
+                'sname' => $this->input->post('sname'),
+                'svenue' => $this->input->post('svenue'),
+                'sprice' => $this->input->post('sprice'),
+                'sdescription' => $this->input->post('sdescription'),
+                'smodified' => date('Y-m-d'),
+            );
+        }
         $this->db->where('sid',$this->input->post('sid'));
         return $this->db->update('service_tbl',$data);
     }

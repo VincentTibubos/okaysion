@@ -24,12 +24,27 @@
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/custom.css">
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/print.css">
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/dataTables.bootstrap4.min.css">
+
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?php echo base_url();?>/assets/img/8czrGpnqi.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 <style type="text/css">
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
 .okicon{
   margin: 0px 10px;
 }
@@ -90,6 +105,9 @@
 </style>
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>
+    <script src="<?php echo base_url();?>assets/js/jquery-1.12.4.js"> </script>
+    <script src="<?php echo base_url();?>/assets/js/jquery.dataTables.min.js"> </script>
+    <script src="<?php echo base_url();?>/assets/js/dataTables.bootstrap4.min.js"> </script>
   </head>
   <body>
     <div class="page">
@@ -131,7 +149,9 @@
         <nav class="side-navbar">
           <!-- Sidebar Header-->
           <div class="sidebar-header d-flex align-items-center">
-            <div class="avatar"><img src="<?php echo base_url().'assets/img/logo/avatar1.jpg';?>" alt="..." class="rounded-circle" style="height:55px;width:55px;"></div>
+            <div class="avatar">
+              <img  id='comimage' src="<?php echo base_url().'assets/img/logo/avatar1.jpg';?>" alt="..." class="rounded-circle" style="height:55px;width:55px;" >
+            </div>
             <div class="title">
               <h1 class="h4"><?php echo $this->session->userdata('cname');?></h1>
               <p><?php echo $this->session->userdata('type');?></p>
@@ -139,7 +159,7 @@
           </div>
           <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
           <ul class="list-unstyled">
-                    <li id="d_index"><a href="<?php echo base_url();?>dashboard/index"> <i class="icon-home"></i>Home </a></li>
+                    <li id="d_index"><a href="<?php echo base_url();?>dashboard"> <i class="icon-home"></i>Home </a></li>
                     <li id="d_messages"><a href="<?php echo base_url();?>dashboard/messages"> <i class="icon-mail"></i>Messages</a></li>
 
           <?php if($this->session->userdata('type')=='Company'): ?>

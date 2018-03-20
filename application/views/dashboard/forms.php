@@ -20,7 +20,7 @@
           <!-- Breadcrumb-->
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?php echo base_url();?>dashboard/index">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url();?>dashboard/">Home</a></li>
               <li class="breadcrumb-item active">
                 <?php if($this->session->userdata('type')=='Admin'): ?>
                   Forms     
@@ -44,10 +44,28 @@
                       <h3 class="h4">Event Calendar</h3>
                     </div>
                           
-                    <div class="card-body table-responsive" id="divcalendar">                                 
-                      <?php echo $calendar;?>
+                    <div class="card-body table-responsive" id="divcalendar">    
+                    <div id="divcal">                             
+                      <?php echo $calendar;?></div>
+                      <div id="calPrint">
+                        <?php 
+echo "<table class='table table-striped'><thead><tr><td>Date</td><td>Details</td><td>Location</td><td>Customer</td><td>Service</td><td>Confirmed Event</td></tr></thead><tbody>";
+foreach ($calPrint as $print) {
+  if($print['econfirmation']==1){
+
+$conf="confirmed";
+  }
+  else
+$conf="unconfirmed";
+
+  echo "<tr><td>".$print['edate'].' '.$print['etime']."</td><td>".$print['edetails']."</td><td>".$print['elocation']."</td><td>".$print['cuname']."</td><td>".$print['sname']."</td><td>".$conf."</td></tr>";
+}
+echo "</tbody></table>";
+                        ?>
+                      </div>
                       <script type="text/javascript">
                         $(document).ready(function(){
+                          $('#calPrint').hide();
                           /*$('#nextdate').click(function(){
                             var year='<?php echo $caldate['year'];?>';
                             var month=Number('<?php echo $caldate['month'];?>')+1;
@@ -120,6 +138,15 @@
                                             <label>Event Details</label>
                                             <input class="form-control" type="text" value="" id="edform">
                                         </div>
+
+                                        <div class="form-group col-sm-12">
+                                            <label>Event Location</label>
+                                            <input class="form-control" type="text" value="" id="elform">
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <label>Number of guest</label>
+                                            <input class="form-control" type="number" value="" id="ngform">
+                                        </div>
                                         <div class="dropdown col-sm-12">
                                           <label>Select Service</label>
                                           <select class="form-control" name="service" id="sform">
@@ -139,11 +166,17 @@
                                           </select>
 
                                         </div>
+
+                                        <div class="form-group col-sm-12">
+                                            <input class="" id="conform" type="checkbox">
+                                            <label>Confirmation</label>
+                                        </div>
                                       </div>
                                     </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" id='aEve'>Add</button>
+          
         </div>
       </div>
       
@@ -186,6 +219,14 @@
                                             <label>Event Details</label>
                                             <input class="form-control" type="text" value="" id="eedform" required>
                                         </div>
+                                        <div class="form-group col-sm-12">
+                                            <label>Event Location</label>
+                                            <input class="form-control" type="text" value="" id="eelform">
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <label>Number of guest</label>
+                                            <input class="form-control" type="number" value="" id="engform">
+                                        </div>
                                         <div class="dropdown col-sm-12">
                                           <label>Select Service</label>
                                           <select class="form-control" name="service" id="esform">
@@ -203,13 +244,21 @@
                                             }
                                             ?>
                                           </select>
-
                                         </div>
+                                        <div class="form-group col-sm-12">
+                                            <input class="" id="econform" type="checkbox">
+                                            <label>Confirmation</label>
+                                        </div>
+
                                       </div>
                                     </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" id='uEve'>Update</button>
+          <form action="<?php echo base_url()?>calendar/cancel" method="post">
+            <input type="hidden" value="" id="sidform" name="eid">
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
         </div>
       </div>
       
@@ -257,11 +306,20 @@
     $('#aEve').click(function(){
       sid=$(this).offsetParent().find('#sform').val();
       cuid=$(this).offsetParent().find('#cuform').val();
+      confirm=$(this).offsetParent().find('#conform');
       date=$(this).offsetParent().find('#dform').val();
       time=$(this).offsetParent().find('#tform').val();
       details=$(this).offsetParent().find('#edform').val();
+      locations=$(this).offsetParent().find('#elform').val();
+      enumg=$(this).offsetParent().find('#ngform').val();
       eid='';
       if(details!=''&&time!=''&&date!=''){
+        if(confirm.is(':checked')){
+          conf=1;
+        }
+        else{
+          conf=0;
+        }
         $.ajax({
           url: window.location,
           type: "POST",
@@ -272,6 +330,9 @@
             date: date,
             time: time,
             details: details,
+            locations: locations,
+            enumg: enumg,
+            confirmation: conf,
             cid: '<?php echo $this->session->userdata('cid')?>'
           },
           success: function(data){
@@ -289,13 +350,21 @@
     });
     $('#uEve').click(function(){
       sid=$(this).offsetParent().find('#esform').val();
+      confirm=$(this).offsetParent().find('#econform');
       cuid=$(this).offsetParent().find('#ecuform').val();
       date=$(this).offsetParent().find('#edaform').val();
       time=$(this).offsetParent().find('#etform').val();
       details=$(this).offsetParent().find('#eedform').val();
+      locations=$(this).offsetParent().find('#eelform').val();
+      enumg=$(this).offsetParent().find('#engform').val();
       eid=$(this).offsetParent().find('#eeventid').val();
       if(details!=''&&time!=''&&date!=''){
-        alert('update');
+        if(confirm.is(':checked')){
+          conf=1;
+        }
+        else{
+          conf=0;
+        }
         $.ajax({
           url: window.location,
           type: "POST",
@@ -306,6 +375,9 @@
             date: date,
             time: time,
             details: details,
+            locations: locations,
+            enumg: enumg,
+            confirmation: conf,
             cid: '<?php echo $this->session->userdata('cid')?>'
           },
           success: function(data){
@@ -327,12 +399,16 @@
     <script>
       $(document).ready(function(){
                     sform=$(this).offsetParent().find('#sform');
+                    conform=$(this).offsetParent().find('#econform');
+                    sidform=$(this).offsetParent().find('#sidform');
                     cuform=$(this).offsetParent().find('#cuform');
                     dform=$(this).offsetParent().find('#dform');
                     tform=$(this).offsetParent().find('#tform');
                     edform=$(this).offsetParent().find('#edform');
+                    
         $('.content').click(function(){
             eid=$(this).find('.id_num').html();
+            sidform.val(eid);
             if(eid!=''){
                 $.ajax({
                   url: '<?php echo base_url();?>calendar',
@@ -342,11 +418,19 @@
                   },
                   dataType: 'json',
                   success: function(data){
+                    if(data['econfirmation']=='0'){
+                      conform.prop('checked',false);
+                    }
+                    else{
+                      conform.prop('checked',true);
+                    }
                     $(this).offsetParent().find('#esform').val(data['sid']);
                     $(this).offsetParent().find('#ecuform').val(data['cuid']);
                     $(this).offsetParent().find('#edaform').val(data['edate']);
                     $(this).offsetParent().find('#etform').val(data['etime']);
                     $(this).offsetParent().find('#eedform').val(data['edetails']);
+                    $(this).offsetParent().find('#eelform').val(data['elocation']);
+                    $(this).offsetParent().find('#engform').val(data['enumg']);
                     $(this).offsetParent().find('#eeventid').val(data['eid']);
                     return true;
                   },//function(data){

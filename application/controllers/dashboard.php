@@ -133,13 +133,16 @@
 			);
 			if(!empty($_POST)){
 				$data['cudata']=$this->customer_model->viewcus($this->input->post('cuid'));
+				echo json_encode($data['cudata']);
 			}
+			else{
 			$data['customer']=$this->customer_model->viewcus();
 		//	print_r($data);
 		//	exit();
 			$this->load->view('dashboard/templates/header');
 			$this->load->view('dashboard/users',$data);
 			$this->load->view('dashboard/templates/footer');
+		}
 		}
 		public function service(){
 			if($this->session->userdata('type')!='Company'){
@@ -220,7 +223,10 @@
 					$this->input->post('details'),
 					$this->input->post('sid'),
 					$this->input->post('cid'),
-					$this->input->post('cuid')
+					$this->input->post('cuid'),
+					$this->input->post('locations'),
+					$this->input->post('enumg'),
+					$this->input->post('confirmation')
 				);
 
 			}/*
@@ -231,6 +237,7 @@
 				$this->input->post('details'));
 			}*/
 			$data['calendar']=$this->calendar_model->generate($year,$month);
+			$data['calPrint']=$this->calendar_model->view($year,$month);
 			if(!$this->input->is_ajax_request()){		
 					$this->load->view('dashboard/templates/header');
 					$this->load->view('dashboard/forms',$data);

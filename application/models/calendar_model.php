@@ -64,23 +64,36 @@ class Calendar_model extends CI_Model{
 ';// <div class="content"><small>{content}</small></div>
 
     }
+    public function view($year,$month){
+        $this->db->order_by('edate','asc');
+        $this->db->join('service_tbl',"(service_tbl.sid = event_tbl.sid)");
+        $this->db->join('customer_tbl',"(customer_tbl.cuid = event_tbl.cuid)");
+        $query=$this->db->get_where('event_tbl',array('event_tbl.cid'=>$this->session->userdata('cid'),'estatus'=>1))->result_array();
+        return $query;
+    }
     public function get_calendar($year,$month){
-        $query=$this->db->select('eid,edate,edetails,etime')->from('event_tbl')->where('cid',$this->session->userdata('cid'))->where('estatus',1)->like('edate',"$year-$month",'after')->get();
+        $query=$this->db->select('eid,edate,edetails,etime,econfirmation')->from('event_tbl')->where('cid',$this->session->userdata('cid'))->where('estatus',1)->like('edate',"$year-$month",'after')->get();
         $caledata=array();
         foreach($query->result() as $row) {
+            if($row->econfirmation==1){
+                $style=" btn-primary ";
+            }
+            else{
+                $style=" btn-danger ";
+            }
             if(substr($row->edate,8,1)==0){
                 if(empty($caledata[substr($row->edate,9,1)])){
-                    $caledata[substr($row->edate,9,1)]='<a href="" data-toggle="modal" data-target="#editEvent" class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
+                    $caledata[substr($row->edate,9,1)]='<a href="" data-toggle="modal" data-target="#editEvent" class="content btn-sm '.$style.' btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
                 }//<a data-toggle="modal" data-target="#addEvent" class="btn btn-primary">
                 else
-                    $caledata[substr($row->edate,9,1)]=$caledata[substr($row->edate,9,1)].'<a href="" data-toggle="modal" data-target="#editEvent"  class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
+                    $caledata[substr($row->edate,9,1)]=$caledata[substr($row->edate,9,1)].'<a href="" data-toggle="modal" data-target="#editEvent"  class="content btn-sm  '.$style.'  btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
             }
             else{
                 if(empty($caledata[substr($row->edate,8,2)])){
-                    $caledata[substr($row->edate,8,2)]='<a href="" data-toggle="modal" data-target="#editEvent"  class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
+                    $caledata[substr($row->edate,8,2)]='<a href="" data-toggle="modal" data-target="#editEvent"  class="content btn-sm  '.$style.'  btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
                 }
                 else
-                    $caledata[substr($row->edate,8,2)]=$caledata[substr($row->edate,8,2)].'<a href="" data-toggle="modal" data-target="#editEvent" class="content btn-sm btn-primary btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
+                    $caledata[substr($row->edate,8,2)]=$caledata[substr($row->edate,8,2)].'<a href="" data-toggle="modal" data-target="#editEvent" class="content btn-sm  '.$style.'  btn-block"><div class="id_num" hidden>'.$row->eid.'</div><div class="maincontent">'.$row->edetails.' ('.$row->etime.')</div></a>';
             }
         }
         return $caledata;
@@ -92,7 +105,7 @@ class Calendar_model extends CI_Model{
             return $this->calendar->generate($year,$month,$caledata);
            // exit();
     }
-    public function addsched($eid,$edate,$etime,$edetails,$sid,$cid,$cuid){/*
+    public function addsched($eid,$edate,$etime,$edetails,$sid,$cid,$cuid,$location='',$enumg='',$confirmation=''){/*
         if($this->db->select('date')->from('calendar')->where('date',$date)->count_all_results()){
             $this->db->where('date',$date)->update('calendar',array('date'=>$date,'edetails'=>$edetails));
         }
@@ -120,6 +133,9 @@ class Calendar_model extends CI_Model{
                 'sid'=>$sid,
                 'cid'=>$cid,
                 'cuid'=>$cuid,
+                'elocation'=>$location,
+                'enumg'=>$enumg,
+                'econfirmation'=>$confirmation,
                 'ecreated' => date('Y-m-d'),
                 'emodified' => date('Y-m-d'),
                 'estatus'=>1
@@ -133,16 +149,42 @@ class Calendar_model extends CI_Model{
                 'sid'=>$sid,
                 'cid'=>$cid,
                 'cuid'=>$cuid,
+                'enumg'=>$enumg,
+                'elocation'=>$location,
                 'emodified' => date('Y-m-d'),
+                'econfirmation'=>$confirmation,
                 'estatus'=>1
             ));   
         }
+    }
+
+    public function addrequest(){
+        //Array ( [details] => details [location] => location [guest] => 12 [date] => 2018-03-19 [time] => 05:25 [cid] => 90 [sid] => 38 [cuid] => 36 [curl] => mads.com )
+            $this->db->insert('event_tbl',array(
+                'edate'=>$this->input->post('date'),
+                'etime'=>$this->input->post('time'),
+                'edetails'=>$this->input->post('details'),
+                'enumg'=>$this->input->post('guest'),
+                'sid'=>$this->input->post('sid'),
+                'cid'=>$this->input->post('cid'),
+                'cuid'=>$this->input->post('cuid'),
+                'elocation'=>$this->input->post('location'),
+                'ecreated' => date('Y-m-d'),
+                'emodified' => date('Y-m-d'),
+                'estatus'=>1,
+                'econfirmation'=>0
+            )); 
+        
     }
     public function getvalues($eid){
         $query = $this->db->get_where('event_tbl',array('eid'=>$eid));
         return $query->row_array();
     }
-
+    public function cancel($eid){
+            $this->db->where('eid',$eid)->update('event_tbl',array(
+                'estatus'=>0
+            ));  
+    }
     public function countnum(){
         //$this->db->where('cid',$this->session->userdata('cid'));
         //$c=$this->db->count_all('cmessage_tbl');

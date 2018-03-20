@@ -20,7 +20,7 @@
           <!-- Breadcrumb-->
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?php echo base_url();?>dashboard/index">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url();?>dashboard">Home</a></li>
 
               <li class="breadcrumb-item active">
                 <?php if($this->session->userdata('type')=='Admin'): ?>
@@ -138,53 +138,14 @@
           <section class="tables">   
             <div class="container-fluid">
               <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-12">
                   <div class="card">
                     <div class="card-header d-flex align-items-center">
-
-                      <h3 class="h4">Customer</h3>
-                    </div>
-                    <div class="card-body">
-                      <p>Add or Update Customer</p>
-                        <form method="post" action="" id="formcus">
-                          
-                  <?php echo validation_errors(); ?>
-                          <div class="form-group">
-                            <label class="form-control-label">Email</label>
-
-                            <input required type="email" value="<?php echo $cudata['cuemail']; ?>" name="cuemail" class="form-control">
-                            <small class="help-block text-danger"></small>
-                          </div>
-                          <div class="form-group">       
-                            <label class="form-control-label">Customer Name</label>
-                            <input required type="text" value="<?php echo $cudata['cuname'];?>" name="cuname" class="form-control">
-                            <small class="help-block text-danger"></small>
-
-                          </div>
-                          <input type="hidden" name="cuid" value="<?php echo $cudata['cuid'];?>">
-                          <div class="form-group"> 
-
-                            <?php if($cudata['cuid']!==''): ?>      
-                              <input type="submit" value="Update" class="btn btn-success"  onclick="cuupdate();">
-                            <?php endif;?>
-
-                            <?php if($cudata['cuid']===''): ?>  
-                              <input type="submit" value="Add" class="btn btn-success" onclick="cuadd();">
-                            <?php endif;?>
-
-                          </div>
-                        </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-8">
-                  <div class="card">
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Customers</h3>
+                      <h3 class="h4">Customers  <a href='' data-toggle="modal" data-target='#addcustomerm' class="btn btn-primary btn-hideto btn-sm">Add Customer</a></h3>
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">                       
-                        <table class="table table-striped table-hover">
+                        <table class="table table-striped table-hover table-data">
                           <thead>
                             <tr>
                               <th>#</th>
@@ -205,14 +166,12 @@
                               <td>
                               <div class='btn-group btn-hideto'>
                                   <form action='".base_url()."dashboard/customer' method='post'>
-                                    <input type='hidden' value='".$cus['cuid']."' name='cuid'>
-                                    <input type='hidden' value='dashboard/company' name='comp'>
-                                    <input type='submit' value='Edit' class='btn btn-success'>
+                                    <a class='btn btn-primary edit-customer btn-sm' href=''  data-toggle='modal' data-target='#editcusm'>Edit<input type='hidden' value='".$cus['cuid']."' name='cuid'></a>
                                   </form>
                                   <form action='".base_url()."customer/delete' method='post'>
                                     <input type='hidden' value='".$cus['cuid']."' name='cuid'>
                                     <input type='hidden' value='dashboard/company' name='comp'>
-                                    <input type='submit' value='Delete' class='btn btn-danger'>
+                                    <input type='submit' value='Delete' class='btn btn-danger btn-sm'>
                                   </form>
                                 </div>
                               </td>
@@ -246,6 +205,108 @@
       document.getElementById('formcom').action="<?php echo base_url();?>company/update";
     }
 </script>
+
+  <!-- Modal -->
+  <div class="modal fade" id="editcusm" role="dialog">
+    <div class="modal-dialog  modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Customer Details</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form method="post" action="<?php echo base_url();?>customer/update">
+          <div class="modal-body">
+                    <div class="form-group"  id="customerName" >
+                      <label class="form-control-label">Customer Name</label>
+                      <input required type="text" value="" name="cuname" class="form-control" id="cuname">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group"  id="customerEmail" >
+                      <label class="form-control-label">Email</label>
+                      <input required type="email" value="" name="cuemail" class="form-control" id="cuemail">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <input id="cuid" type="hidden" name="cuid" value="">
+          </div>
+          <div class="modal-footer">
+            <div class="form-group">     
+                <input type="submit" id="cuupbtn" value="Update" class="btn btn-success">
+            </div>
+          </div>
+
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="addcustomerm" role="dialog">
+    <div class="modal-dialog  modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Service</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form method="post" action="<?php echo base_url();?>customer/add" enctype="multipart/form-data">
+          <div class="modal-body">
+                    <div class="form-group"  id="acustomerName" >
+                      <label class="form-control-label">Customer Name</label>
+                      <input required type="text" value="" name="cuname" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group"  id="acustomerEmail" >
+                      <label class="form-control-label">Email</label>
+                      <input required type="email" value="" name="cuemail" class="form-control">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <input type="hidden" name="cuid" value="">
+          </div>
+          <div class="modal-footer">
+            <div class="form-group">     
+                <input type="submit" value="Add" class="btn btn-success" id="add-service">
+            </div>
+          </div>
+
+        </form>
+      </div>
+      
+    </div>
+  </div>
+
+    <script src="<?php echo base_url();?>assets/js/jquery-1.12.4.js"> </script>
+    <script src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"> </script>
+    <script src="<?php echo base_url();?>assets/js/dataTables.bootstrap.min.js"></script>
+    
+  <script type="text/javascript">
+    $(document).ready(function(){
+      cuname=$('#cuname');
+      cuemail=$('#cuemail');
+      cuid=$('#cuid');
+      $('.edit-customer').click(function(){
+        $.ajax({
+          url: '<?php echo base_url();?>dashboard/customer',
+          type: "POST",
+          data: {
+            cuid: $(this).find('input').val()
+          },
+          dataType: 'json',
+          success: function(data){
+            cuname.val(data['cuname']);
+            cuemail.val(data['cuemail']);
+            cuid.val(data['cuid']);
+          },
+          error: function(xhr, textStatus, errorThrown){
+                 alert('request failed '+xhr+' '+textStatus+' '+errorThrown);
+                 return false;
+          }
+        });
+      });
+    });
+  </script>
 <script type="text/javascript">
   $(document).ready(function(){
         add=$('#addbtn');

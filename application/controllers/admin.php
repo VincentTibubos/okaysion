@@ -1,7 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * User Management class created by CodexWorld
- */
+
 class Admin extends CI_Controller {
     public function checkadmin(){
         if($this->input->is_ajax_request()){

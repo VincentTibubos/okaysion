@@ -32,6 +32,19 @@ class Customer_model extends CI_Model{
         $this->db->where('cuid',$this->input->post('cuid'));
         return $this->db->update('customer_tbl',$data);
     }
+    public function register(){
+        date_default_timezone_set("Asia/Manila"); 
+        $data =array(
+            'cid' => $this->input->post('cid'),
+            'cuname' => $this->input->post('name'),
+            'cucreated' => date('Y-m-d'),
+            'cumodified' => date('Y-m-d'),
+            'custatus' => 1,
+            'cuemail' => $this->input->post('email'),
+            'cupass' => md5($this->input->post('password'))
+        );
+        return $this->db->insert('customer_tbl',$data);
+    }
     public function add(){
         date_default_timezone_set("Asia/Manila"); 
         $data =array(
@@ -40,7 +53,8 @@ class Customer_model extends CI_Model{
             'cucreated' => date('Y-m-d'),
             'cumodified' => date('Y-m-d'),
             'custatus' => 1,
-            'cuemail' => $this->input->post('cuemail')
+            'cuemail' => $this->input->post('cuemail'),
+            'cupass'=> md5('123456')
         );
         return $this->db->insert('customer_tbl',$data);
     }
@@ -61,5 +75,17 @@ class Customer_model extends CI_Model{
         $this->db->where('cid',$this->session->userdata('cid'));
         $query=$this->db->get('customer_tbl');
         return count($query->result_array());
+    }
+    public function findname($cid,$name){
+        $query=$this->db->get_where('customer_tbl',array('cid'=>$cid,'cuname'=>$name));
+        return $query->result_array();
+    } 
+    public function findemail($cid,$email){
+        $query=$this->db->get_where('customer_tbl',array('cid'=>$cid,'cuemail'=>$email));
+        return $query->row_array();
+    } 
+    public function findpass($cid,$email,$pass){
+        $query=$this->db->get_where('customer_tbl',array('cid'=>$cid,'cuemail'=>$email,'cupass'=>md5($pass)));
+        return $query->result_array();
     } 
 }
