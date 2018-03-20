@@ -64,21 +64,6 @@ header {
       text-align: justify;
 }
 
-hr.type_7 
-{
-
-border: 0;
-display:relative;
-margin-left: auto;
-margin-right: auto;
-height:100px;
-width:100%;
-background-image: url(../img/type_7.png);
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-position: center;
-}
-
 
 .logo {
       line-height: 60px;
@@ -172,6 +157,18 @@ img{
 	width: 100%;
 	height: auto;
 }
+.sb:hover{
+	color:#000;
+}
+.sb{
+	color:white;
+	text-decoration:none!important;
+	
+}
+
+.size{
+	font-size:22px;
+}
 
 h2{
 	font-size: 45px;
@@ -180,9 +177,15 @@ h2{
 }
 
 h3{
+	font-size:80px;
 	text-align:center;	
 	font-family:queen of heaven;
 }
+
+
+
+
+
 
 .marg{
 	margin-bottom:15px;
@@ -206,6 +209,16 @@ input[type=submit] {
     cursor: pointer;
 }
 
+.carousel{
+	z-index:0;
+
+}
+
+.container2{
+	
+    padding: 25px;
+	
+}
 .container {
     padding: 5px;
 	
@@ -235,107 +248,6 @@ input[type=submit] {
 	background-color: black;	
 }
 
-
-/* Full-width input fields */
-.container input[type=text], input[type=password] {
-    width: 100%;
-	display:inline-block;
-    padding: 12px 20px;
-    margin: 4px 0;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-
-}
-
-.center {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-}
-/* Set a style for all buttons */
-button {
-    background-color: #000;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 60%;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-/* Center the image and position the close button */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-}
-
-.container {
-    padding: 16px;
-}
-
-.container2 {
-    padding: 25px;
-}
-
-.container3 {
-    padding: 10px;
-}
-
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 55%; /* Could be more or less, depending on screen size */
-	
-}
-
-/* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: gray;
-    cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-}
 
 footer{
 		width:100%;
@@ -378,6 +290,27 @@ footer{
       .menu-icon {
             display: block;
       }	  
+	  
+	  .sb:hover{
+	color:#000;
+}
+.sb{
+	color:white;
+	text-decoration:none!important;
+	
+}
+
+.size{
+	font-size:15px;
+}
+
+h3{
+	font-size:35px;
+	text-align:center;	
+	font-family:queen of heaven;
+}
+
+
 }
 
 @-webkit-keyframes animatezoom {

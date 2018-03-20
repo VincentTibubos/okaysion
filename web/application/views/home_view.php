@@ -77,26 +77,44 @@
 <div class="container2">
   <h2>Services</h2>  
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators 
+    <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>-->
+    </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="assets/img/c1.jpg" alt="Los Angeles" style="width:100%;">
+	 
+        <img src="assets/img/c1.jpg" alt="Los Angeles" style="width:100%;"> 
+		
+		<div class="carousel-caption">
+         <a class="sb" href=""><h3>Debut</h3></a>
+        <p class="size">Book now!</p>
+      </div>
       </div>
 
       <div class="item">
+	
         <img src="assets/img/c2.jpg" alt="Chicago" style="width:100%;">
+      
+	  <div class="carousel-caption">
+        <a class="sb" href=""><h3>Anniversary</h3></a>
+        <p class="size">Book now!</p>
       </div>
+	  </div>
     
       <div class="item">
-        <img src="assets/img/c3.jpg" alt="New york" style="width:100%;">
+     
+		<img src="assets/img/c3.jpg" alt="New york" style="width:100%;">
+		
+		 <div class="carousel-caption">
+        <a class="sb" href=""><h3>Birthday</h3></a>
+        <p class="size">Book now!</p>
       </div>
+	  </div>
     </div>
 
     <!-- Left and right controls -->
@@ -111,37 +129,9 @@
   </div>
 </div>
 
-	
-
-
-		<div class="content3">
-		<div class="row">
-		<div class="col-md-6">	
-				<div class="card">
-				<h3>Events</h3>
-				<ul class="fl">
-				<li><a href="#">Wedding</a></li>
-				<li><a href="#">Birthday</a></li>
-				<li><a href="#">Baby Shower</a></li>
-				</ul>
-				</div>
-				</div>
-		
-		<div class="col-md-6">
-				<div class="card">
-				<h3>We Provide</h3>
-				<ul class="fl">
-				<li>Chair Covers</li>
-				<li>Tables</li>
-				<li>Chairs</li>
-				</ul>
-				</div>
-		</div>
-		
-		</div>		
-		</div>
 			
-		
+	
+	
 	<div class="content">
 		<div class="row">
 		<p>
