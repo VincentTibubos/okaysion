@@ -27,8 +27,8 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
-		 
-		 
+
+
 <!--==========================
     Header
   ============================-->
@@ -40,17 +40,18 @@
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
      </div>
-  </header><!-- #header -->    
-  
+  </header><!-- #header -->
+
   <!-- LOG IN -->
   <div class="login-page">
       <div class="container d-flex align-items-center">
         <div class="form-holder" style="margin-top:50px;">
           <div class="row">
-          
+
             <!-- Form Panel-->
-            <div class="col-lg-6">
-			</div>
+            <div class="col-lg-3">
+			      </div>
+
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
@@ -59,15 +60,16 @@
                     if($this->session->flashdata('login_failed')): ?>
                     <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('login_failed')."</p>"?>
                    <?php endif;?>
-                  <?php 
+                  <?php
                     if($this->session->flashdata('user_registered')): ?>
                     <?php echo "<p class='alert alert-success'>".$this->session->flashdata('user_registered')."</p>"?>
                    <?php endif;?>
 
-                  <?php 
+                  <?php
                     if($this->session->flashdata('logged_out')): ?>
                     <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('logged_out')."</p>"?>
                    <?php endif;?>
+                  <h2 class='form-group text-secondary'>Log in to OKAYsion</h2>
                   <p id="inv" class="help-block text-danger"></p>
                   <form id="login-form" action="login" method="post">
                     <div class="form-group" id='lemail-group'>
@@ -80,20 +82,22 @@
                       <label for="lpass" class="label-material active">Password </label>
                       <small class="help-block text-danger"></small>
                     </div>
-                    <input id="loginr" type="button" value="Login" class="btn btn-primary">
+                    <input id="loginr" type="button" value="Log in" class="btn btn-primary">
                   </form>
 				  <br>
                   <small>Doesn't have an account? </small><a href="<?php echo base_url();?>register" class="signup">Register</a>
                 </div>
               </div>
             </div>
+            <div class="col-lg-3">
+            </div>
           </div>
         </div>
       </div>
-   
+
        <!-- <p>Design by <a href="https://bootstrapious.com/admin-templates" class="external">Bootstrapious</a>-->
           <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-        
+
     </div>
 
 
@@ -149,7 +153,7 @@
                       $.ajax({
                         url: '<?php echo base_url();?>login',
                         type: 'POST',
-                        data: {      
+                        data: {
                           lpassword: passin.val(),
                           lemail: emailin.val()
                         },
@@ -200,7 +204,7 @@
         //password checker
         /*
         passin.on('ready change blur click keyup paste cut',function(){
-          
+
           if(passin.val()!=''){
 
               passg.find('label').addClass('active');

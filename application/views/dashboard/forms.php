@@ -166,7 +166,6 @@ echo "</tbody></table>";
                                           </select>
 
                                         </div>
-
                                         <div class="form-group col-sm-12">
                                             <input class="" id="conform" type="checkbox">
                                             <label>Confirmation</label>

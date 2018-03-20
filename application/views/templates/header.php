@@ -54,13 +54,13 @@
          <ul class="nav-menu">
           <li class="menu-active"><a href="#intro">Home</a></li>
           <li><a href="#about">About Us</a></li>
-      
+
           <li><a href="#contact">Contact Us</a></li>
 
 
           <?php if(!$this->session->userdata('logged_in')): ?>
             <li><a href="<?php echo base_url();?>register">Register</a></li>
-            <li><a href="<?php echo base_url();?>login">SignIn</a></li>
+            <li><a href="<?php echo base_url();?>login">Sign In</a></li>
           <?php endif;?>
           <?php if($this->session->userdata('logged_in')): ?>
             <li><a href="<?php echo base_url();?>dashboard">Dashboard</a></li>

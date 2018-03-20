@@ -27,7 +27,7 @@
 
 
 <link rel="stylesheet" href="<?=base_url()?>assets/css/flickity.min.css">
-<script src="<?=base_url()?>assets/js/flickity.pkgd.min.js"></script>
+<script src="<?=base_url()?>assets/js/flickity.pkgd.min.js"></script>r
   </head>
 
   <body>
@@ -72,8 +72,6 @@
       </div>
     </nav>
 
-    <!-- Page Content -->
-    <div class="container">
 
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4" style="background: url(data:image;base64,<?php echo $web['ccover']?>) no-repeat; background-size: 100%;">
@@ -109,13 +107,6 @@
               <?php }?>
             </div>
           </div>
-      </div>
-    <?php }?>
-  </div>
-</div>
-      <!-- /.row -->
-
-    </div>
  <section class="md-section" id="id-5">
 					<div class="container">
 						<div class="row">
@@ -180,7 +171,7 @@
   									<div class="form-item form-item--half">
   										<label class="form__label">Name<span>*</span>
   										</label>
-  										<input class="form-control" type="text" name="name" required placeholder="" value="<?php echo $this->session->userdata($web['cid'].'cuname')?>" />
+  										<input class="form-control" type="text" name="name" required placeholder="" value="<?php echo $this->session->userdata($web['cid'].'cuname')?>"
   									</div><!-- End / form-item -->
   									
   									
@@ -205,6 +196,21 @@
 					</div>
 				</section>
   <!-- Footer -->
+    <footer class="py-5">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy;2018 Your Company, All Rights Reserved</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="<?php echo base_url();?>assets/template1/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/template1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/wow/wow.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/wow/wow.min.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/waypoints/waypoints.min.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/touchSwipe/jquery.touchSwipe.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy;2018 <?php echo $web['cname'];?>, All Rights Reserved</p>
@@ -241,7 +247,7 @@
                     <input type="hidden" name="curl" value="<?php echo $web['curl'];?>">
           </div>
           <div class="modal-footer">
-            <div class="form-group">     
+            <div class="form-group">    
                       <small>Doesn't have an acount? <a href="" data-dismiss='modal' data-toggle="modal" data-target="#register">Register</a></small>
                 <input type="button" id="loginbtn" value="Login" class="btn btn-success">
             </div>
@@ -397,10 +403,78 @@
     </div>
   </div>
     <!-- Bootstrap core JavaScript -->
-
     <!-- Bootstrap core JavaScript -->
     <script src="<?php echo base_url();?>assets/template1/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url();?>assets/template1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        Frname=$('#rnameForm');
+        Fremail=$('#remailForm');
+        Frpassword=$('#rpasswordForm');
+        Frcpassword=$('#rCpasswordForm');
+        rForm=$('#registerForm');
+
+        Flemail=$('#lemailForm');
+        Flpassword=$('#lpasswordForm');
+        lForm=$('#loginForm');
+        invalid=$('invalid');
+
+        cid=$('#cid').val();
+
+        $('#loginbtn').click(function(){
+          lemail=Flemail.find('input').val();
+          lpassword=Flpassword.find('input').val();
+          alert(lemail+' '+lpassword);
+          $.ajax({
+            url: "<?php echo base_url()?>/customer/check",
+            type: "POST",
+            data: {
+              lemail: lemail,
+              lpassword: lpassword,
+              cid: cid
+            },
+            dataType: 'json',
+            success: function(data){
+              //Invalid Email or password
+              if(data['lemail']==''&&data['lpass']==''&&data['login']==''){
+                lForm.submit();
+              }
+              else{
+                Flemail.find('small').html(data['lemail']);
+                Flpassword.find('small').html(data['lpass']);
+                invalid.html(data['login']);
+                alert(data['login']);
+              }
+            }
+          });
+        });
+        $('#registerbtn').click(function(){
+
+          rname=Frname.find('input').val();
+          remail=Fremail.find('input').val();
+          rpassword=Frpassword.find('input').val();
+          rcpassword=Frcpassword.find('input').val();
+
+          Frname.find('small').html('');
+          Fremail.find('small').html('');
+          Frpassword.find('small').html('');
+          Frcpassword.find('small').html('');
+          $.ajax({
+            url: "<?php echo base_url()?>/customer/check",
+            type: "POST",
+            data: {
+              name: rname,
+              email: remail,
+              password: rpassword,
+              cpassword: rcpassword,
+              cid: cid
+            },
+            dataType: 'json',
+            success: function(data){
+              if(data['cuname']==''&&data['cuemail']==''&&data['cupass']==''&&data['cucpass']==''){
+                rForm.submit();
+              }
+              else{
 
     <script src="<?php echo base_url();?>/assets/dashboard/js/bootstrap-datetimepicker.js"></script>
     <script src="<?php echo base_url();?>/assets/dashboard/js/locales/bootstrap-datetimepicker.fr.js"></script>
@@ -527,7 +601,6 @@
                 rForm.submit();
               }
               else{
-
                 Frname.find('small').html(data['cuname']);
                 Fremail.find('small').html(data['cuemail']);
                 Frpassword.find('small').html(data['cupass']);
