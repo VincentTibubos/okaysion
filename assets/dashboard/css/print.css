@@ -1,0 +1,66 @@
+
+@media print{
+/*
+body {
+		margin:0;
+		padding:0;
+		line-height: 1.4em; 
+		word-spacing:1px; 
+		letter-spacing:0.2px;
+	}
+
+row{
+	display:none;
+}
+
+card-body{
+	display:none;
+}
+
+form{
+	display:none;
+}
+
+.form-group label{
+	display:none;
+}
+
+.form-group input{
+	display:none;
+}
+
+.card-body p{
+	display:none;
+}
+
+h3{
+	display:none;
+}
+
+.breadcrumb-holder{
+	margin-top:none;
+	display:none;
+}
+ */
+ .page-header{
+	display:none;
+}
+ 
+.col-lg-4{
+	display:none;
+}
+ 
+ 
+.breadcrumb-holder{
+	display:none;
+}
+ 
+form{
+	display:none;
+} 
+
+.main-footer{
+	display:none;
+}
+ 
+}

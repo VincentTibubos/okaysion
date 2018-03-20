@@ -9,21 +9,17 @@
 
           <div class="col-lg-4 col-md-6 footer-info">
             <h3>OKAYsion</h3>
-            <p>OKAYsion is a website generating system for those organizers who
-want to create a website for their company in order to promote
-the services they offer.</p>
+            <p>OKAYsion is a multi-tenant system, which offers
+            organizer's companies a way to advertise themselves
+            by giving them a website to promote themselves</p>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>   
-              <?php if(!$this->session->userdata('logged_in')): ?>
-                  <li><i class="ion-ios-arrow-right"></i> <a href="admin">Admin</a></li>
-              <?php endif;?>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#intro">Home</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#about">About us</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#featured-services">Services</a></li>
             </ul>
             </ul>
           </div>
@@ -47,7 +43,7 @@ the services they offer.</p>
 
           </div>
 
-         
+
         </div>
       </div>
     </div>
@@ -63,7 +59,7 @@ the services they offer.</p>
           Licensing information: https://bootstrapmade.com/license/
           Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
         -->
-       
+
       </div>
     </div>
   </footer><!-- #footer -->
@@ -83,7 +79,7 @@ the services they offer.</p>
         <div class="modal-body">
 
           <!--form register-->
-          
+
             <form action="<?php echo base_url(); ?>register" method="post">
               <div class="form-group">
                 <label for="name">Company Name:</label>
@@ -122,7 +118,7 @@ the services they offer.</p>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <?php 
+            <?php
               if(validation_errors()){
                 ?>
                 <div class="alert alert-danger-dismissible" role="alert">
@@ -132,7 +128,7 @@ the services they offer.</p>
               }
             ?>
           <!--form signin-->
-          
+
             <form action="<?php echo base_url(); ?>signin" method="post">
               <div class="form-group">
                 <label for="email">Email address:</label>
@@ -158,7 +154,7 @@ the services they offer.</p>
   <!-- Modal -->
   <div class="modal fade" id="logoutm" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -173,9 +169,10 @@ the services they offer.</p>
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
         </div>
       </div>
-      
+
     </div>
   </div>
+
   <!-- JavaScript Libraries -->
   <script src="<?php echo base_url();?>assets/lib/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url();?>assets/lib/jquery/jquery-migrate.min.js"></script>
