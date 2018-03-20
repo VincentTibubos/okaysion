@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tenant Website!</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="assets/css/style.css">
-      <script src="assets/js/bootstrap.min.js"></script>
-      <script src="assets/js/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -71,9 +71,6 @@
 				  <p id="services"></p>
             </div>
 
-			
-			
-			
 <div class="container2">
   <h2>Services</h2>  
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -135,9 +132,8 @@
 	<div class="content">
 		<div class="row">
 		<p>
-		<h2 id="contact" class="marg">Contact Us</h2>
+		<h2 id="contact">Contact Us</h2>
 		</p>
-		
 		<div class="col-md-6">
 		<p>If you have a question about anything related to our company or services, please do message us. 
 		We'll do our best to get back to you as soon as possible.</p>

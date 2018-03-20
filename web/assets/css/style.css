@@ -8,13 +8,12 @@ body {
       font-family: "Helvetica Neue",sans-serif;
       font-weight: lighter;
 	  color:black;
-	  background-image: 
-	  	
-	  
+	  /* 
+	  background-image:  
 	  url(../img/.jpg);
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-		background-size:cover;
+		background-size:cover;*/
 }
 
 header {
@@ -25,7 +24,6 @@ header {
       rgba(0, 0, 0, 0.50), 
       rgba(0, 0, 0, 0.50)
 		),
-    /* bottom, image */
 		url(../img/bg.jpg) no-repeat 50% 50%;
       background-size: cover;
 	  
@@ -151,30 +149,38 @@ nav ul li a {
 	color:white;
 	}
 	
-img{
-	display: block;
-	margin-top:0;
-	width: 100%;
-	height: auto;
+h2{
+	font-size: 45px;
+	text-align:center;
+	font-family:queen of heaven;
 }
+	
+/*Carousel Design*/
+
+.container2{
+	
+    padding: 25px;
+	
+}
+
+
+.carousel{
+	z-index:0;
+
+}
+
 .sb:hover{
 	color:#000;
 }
 .sb{
 	color:white;
-	text-decoration:none!important;
-	
+	text-decoration:none!important;	
 }
 
 .size{
 	font-size:22px;
 }
 
-h2{
-	font-size: 45px;
-	text-align:center;
-	font-family:queen of heaven;
-}
 
 h3{
 	font-size:80px;
@@ -182,14 +188,7 @@ h3{
 	font-family:queen of heaven;
 }
 
-
-
-
-
-
-.marg{
-	margin-bottom:15px;
-}
+/*Contact Us*/
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
@@ -209,21 +208,8 @@ input[type=submit] {
     cursor: pointer;
 }
 
-.carousel{
-	z-index:0;
 
-}
-
-.container2{
-	
-    padding: 25px;
-	
-}
-.container {
-    padding: 5px;
-	
-}
-
+/*
 .fl {
 	list-style-image:url(../img/flower.png);
 }
@@ -233,19 +219,10 @@ input[type=submit] {
 	text-decoration:none! important;
 }
 
+*/
+
 .icon{
 	list-style:none !important;
-}
-
-.bttn{
-	margin: 0 auto;
-	display:block;
-	width: auto;
-	border-radius: 10px;
-	border: none; 
-	padding: 20px; 
-	color: white; 
-	background-color: black;	
 }
 
 
@@ -309,19 +286,8 @@ h3{
 	text-align:center;	
 	font-family:queen of heaven;
 }
-
-
 }
 
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-}
-    
-@keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-}
 
 
 
