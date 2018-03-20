@@ -7,6 +7,9 @@
     <title>Tenant Website!</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="assets/css/style.css">
       <script src="assets/js/bootstrap.min.js"></script>
       <script src="assets/js/jquery-3.3.1.min.js"></script>
@@ -30,7 +33,7 @@
                                     <li><a href="#about">About Us</a></li>
                                     <li><a href="#services">Services</a></li>
                                     <li><a href="#contact">Contact Us</a></li>
-                                    <li><a href="#" onclick="document.getElementById('id01').style.display='block'">Register</a></li>
+                                    <li><a href="#">Register</a></li>
                                     <li><a href="signin.html">Sign in</a></li>
                               </ul>
                         </div>
@@ -44,32 +47,6 @@
 				<button class="btn">Get Started</button>
 				</div>				
             </header>
-
-			       <!-- Button trigger modal -->
-<button type="button" class="bttn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
@@ -94,13 +71,52 @@
 				  <p id="services"></p>
             </div>
 
-		<div class="content">
+			
+			
+			
+<div class="container2">
+  <h2>Services</h2>  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="assets/img/c1.jpg" alt="Los Angeles" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="assets/img/c2.jpg" alt="Chicago" style="width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="assets/img/c3.jpg" alt="New york" style="width:100%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+	
+
+
+		<div class="content3">
 		<div class="row">
-		<p>
-		<h2>Services</h2>
-		</p>
-		
-		<div class="col-md-3">	
+		<div class="col-md-6">	
 				<div class="card">
 				<h3>Events</h3>
 				<ul class="fl">
@@ -110,13 +126,8 @@
 				</ul>
 				</div>
 				</div>
-
-				
-				<div class="col-md-3">
-				<img src="assets/img/meh1.jpg">
-				</div>
 		
-		<div class="col-md-3">
+		<div class="col-md-6">
 				<div class="card">
 				<h3>We Provide</h3>
 				<ul class="fl">
@@ -126,12 +137,6 @@
 				</ul>
 				</div>
 		</div>
-		
-		
-			<div class="col-md-3">
-				<img src="assets/img/pro.jpg">
-			</div>
-		
 		
 		</div>		
 		</div>

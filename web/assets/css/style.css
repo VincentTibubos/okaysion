@@ -168,7 +168,7 @@ nav ul li a {
 	
 img{
 	display: block;
-	margin-top:10px;
+	margin-top:0;
 	width: 100%;
 	height: auto;
 }
@@ -180,9 +180,8 @@ h2{
 }
 
 h3{
-	text-align:center;
-	text-decoration:underline;
-	font-style:italic;	
+	text-align:center;	
+	font-family:queen of heaven;
 }
 
 .marg{
@@ -277,6 +276,14 @@ button:hover {
 
 .container {
     padding: 16px;
+}
+
+.container2 {
+    padding: 25px;
+}
+
+.container3 {
+    padding: 10px;
 }
 
 span.psw {
