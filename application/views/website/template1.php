@@ -21,22 +21,18 @@
 	<link href="<?php echo base_url();?>assets/template1/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>assets/template1/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>assets/template1/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-<<<<<<< HEAD
-	
+
 	
 
-=======
->>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
+
   </head>
 
   <body>
 
     <!-- Navigation -->
-<<<<<<< HEAD
+
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-=======
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
->>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
+
       <div class="container">
         <a class="navbar-brand" href="#"><?php echo $web['cname'];?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,9 +53,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
-            </li>
-<<<<<<< HEAD
-=======
+
             <?php if(!$this->session->userdata($web['cid'].'logged_in')){?>
             <li class="nav-item" >
               <a class="nav-link" href="" data-toggle="modal" data-target="#register">Register</a>
@@ -72,13 +66,11 @@
               <a class="nav-link" data-toggle="modal" data-target="#logout" href="">Logout</a>
             </li>
             <?php }?>
->>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
           </ul>
         </div>
       </div>
     </nav>
 
-<<<<<<< HEAD
 
 
      
@@ -304,16 +296,9 @@
     </section>
 
 <!--CONTACT-->
-=======
+
     <!-- Page Content -->
     <div class="container">
-
-      <!-- Jumbotron Header -->
-      <header class="jumbotron my-4">
-        <h1 class="display-3"><?php echo $web['cwelcome'];?></h1>
-        <p class="lead"><?php echo $web['cabout'];?></p>
-        <a href="#" class="btn-get-started scrollto">Get Started</a>
-      </header>
 
      
        <!-- Page Features -->
@@ -337,7 +322,7 @@
       <!-- /.row -->
 
     </div>
->>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
+
  <section class="md-section" id="id-5">
 					<div class="container">
 						<div class="row">
@@ -387,18 +372,18 @@
 									<h2 class="title__title">SEND US A MESSAGE</h2>
 								</div><!-- End / title -->
 								
-                <form action="cmessage/send" method="post" role="form" >
+                	<form action="cmessage/send" method="post" role="form" >
   								<div class="form-wrapper">
   									
   									<!-- form-item -->
   									<div class="form-item form-item--half">
   										<label class="form__label">Email<span>*</span>
   										</label>
-<<<<<<< HEAD
-  										<input class="form-control" type="email" required name=email placeholder=""/>
-=======
+
+  										
+
   										<input class="form-control" type="email" required name=email placeholder="" value="<?php echo $this->session->userdata($web['cid'].'cuemail')?>" />
->>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
+
   									</div><!-- End / form-item -->
   									
   									
@@ -406,11 +391,11 @@
   									<div class="form-item form-item--half">
   										<label class="form__label">Name<span>*</span>
   										</label>
-<<<<<<< HEAD
-  										<input class="form-control" type="text" name="name" required placeholder=""/>
-=======
+
+  										
+
   										<input class="form-control" type="text" name="name" required placeholder="" value="<?php echo $this->session->userdata($web['cid'].'cuname')?>" />
->>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
+
   									</div><!-- End / form-item -->
   									
   									
@@ -435,7 +420,7 @@
 					</div>
 				</section>
   <!-- Footer -->
-<<<<<<< HEAD
+
     <footer class="py-5">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy;2018 Your Company, All Rights Reserved</p>
@@ -451,8 +436,8 @@
 	<script src="<?php echo base_url();?>assets/template1/lib/waypoints/waypoints.min.js"></script>
 	<script src="<?php echo base_url();?>assets/template1/lib/touchSwipe/jquery.touchSwipe.js"></script>
 	<script src="<?php echo base_url();?>assets/template1/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-=======
-    <footer class="py-5 bg-dark">
+
+    <footer class="py-5">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy;2018 <?php echo $web['cname'];?>, All Rights Reserved</p>
       </div>
@@ -654,7 +639,7 @@
         });
       });
     </script>
->>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
+
 
   </body>
 
