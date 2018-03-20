@@ -5,14 +5,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tenant Website!</title>
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="assets/css/style.css">
-      <script src="assets/js/bootstrap.min.js"></script>
-      <script src="assets/js/jquery-3.3.1.min.js"></script>
+	
+	<!-- CSS -->
+    <link href="<?php echo base_url();?>assets/template3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/template3/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- JS -->
+	<script src="<?=base_url()?>https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="<?=base_url()?>https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="<?=base_url()?>assets/template3/js/bootstrap.min.js"></script>
+	<script src="<?=base_url()?>assets/template3/js/bootstrap.min.js"></script>
+	
 </head>
 <body>
 <div class="wrapper">
@@ -77,12 +82,12 @@
 <div class="container2">
   <h2>Services</h2>  
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators 
+    <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>-->
+    </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
