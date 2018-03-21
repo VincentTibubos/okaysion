@@ -156,20 +156,13 @@
           <h4 class="modal-title">Edit Information and Website</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <form method="post" action="<?php echo base_url();?>company/updateweb" id="formeditweb" enctype='multipart/form-data'>
+        <form method="post" action="<?php echo base_url();?>company/updateweb" id="formeditweb">
           <div class="modal-body">
                     <div class="form-group"  id="aacwelcome" >
                       <label class="form-control-label">Welcome message</label>
                       <input required type="text" value="" name="cwelcome" class="form-control changeWeb text-secondary">
                       <small class="help-block text-danger"></small>
                     </div>
-
-                    <div class="form-group"  id="CoverImage" >
-                      <label class="form-control-label">Cover Photo</label>
-                      <input type="file" value="" name="image" class="form-control">
-                      <small class="help-block text-danger"></small>
-                    </div>
-
                     <div class="form-group" id="aacabout">       
                             <label for="aboutc" class="text-secondary">About Company</label>
                             <textarea name="cabout" rows="5" required class="input-material changeWeb text-secondary" style="width: 100%"></textarea>
@@ -272,7 +265,6 @@
         ccontact=$(this).find('#aaccontact');
         caddress=$(this).find('#aacaddress');
         cabout=$(this).find('#aacabout');
-        coverimg=$(this).find('#CoverImage');
         curl=$(this).find('#aacurl');
         ctemplate=$(this).find('#aactemplate');
         if($('#ewcid').val()!=''){
@@ -310,7 +302,6 @@
                       ccontact.find('small').html('');
                       caddress.find('small').html('');
                       cabout.find('small').html('');
-                      coverimg.find('small').html('');
                       curl.find('small').html('');
            $.ajax({
                   url: '<?php echo base_url();?>dashboard/company',
@@ -397,13 +388,11 @@
           ccon=ccontact.find('input').val();
           cadd=caddress.find('input').val();
           cab=cabout.find('textarea').val();
-          cov=coverimg.find('input').val();
           cur=curl.find('input').val();
                       cwelcome.find('small').html('');
                       ccontact.find('small').html('');
                       caddress.find('small').html('');
                       cabout.find('small').html('');
-                      coverimg.find('small').html('');
                       curl.find('small').html('');
           e.preventDefault();
           $.ajax({
@@ -415,7 +404,6 @@
                     caddress: cadd,
                     ccontact: ccon,
                     cabout: cab,
-                    ccover: cov,
                     curl: cur
                   },
                   dataType: 'json',
@@ -529,7 +517,6 @@ $('#editpass').click(function(){
     <!-- Javascript files-->
     <script src="<?php echo base_url();?>/assets/lib/jquery/jquery.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/ajax/jquery.min.js"> </script>
-    <script src="<?php echo base_url();?>/assets/js/jquery.dataTables.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>/assets/dashboard/vendor/jquery.cookie/jquery.cookie.js"> </script>
@@ -543,21 +530,14 @@ $('#editpass').click(function(){
       function redirout(){
               window.location="<?php echo base_url()?>logout";
       }
-        calPrint=$('#calPrint');
-        caldiv=$('#divcal');
       $('document').ready(function(){
-          $('.table-data').each(function(){
-            $(this).DataTable();
-          });
+
         hideto=$('.btn-hideto');
           $('.printbtn').click(function(){
-            caldiv.hide();
-            calPrint.show();
             hideto.hide();
             window.print();
             hideto.show();
-            caldiv.show();
-            calPrint.hide();
+
           });
       });
     </script>

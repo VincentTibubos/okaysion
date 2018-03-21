@@ -40,7 +40,7 @@ class Users extends CI_Controller {
                     //exit();
                 }
                 else{
-                    $data=array('upload_data'=> $this->upload->data());
+                    $data=array('upsload_data'=> $this->upload->data());
                     $clogo=$_FILES['userfile']['name'];
                     //echo $clogo.' uploaded';
                     //exit();
