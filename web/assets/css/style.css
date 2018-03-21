@@ -1,0 +1,294 @@
+html, body {
+    
+      padding: 0;
+      width: 100%;
+	  
+}
+body {
+      font-family: "Helvetica Neue",sans-serif;
+      font-weight: lighter;
+	  color:black;
+	  /* 
+	  background-image:  
+	  url(../img/.jpg);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size:cover;*/
+}
+
+header {
+      width: 100%;
+      height: 100vh;
+      background:   
+	  linear-gradient(
+      rgba(0, 0, 0, 0.50), 
+      rgba(0, 0, 0, 0.50)
+		),
+		url(../img/bg.jpg) no-repeat 50% 50%;
+      background-size: cover;
+	  
+}
+
+.title h1{
+	font-family:queen of heaven;
+	font-size:70px;
+	 margin: 0 auto;
+	 max-width:100%;
+}
+
+.title p{
+	font-size:18px;
+	 margin: 0 auto;
+	 max-width:100%;
+}
+
+.title{
+	font-family:Arial;
+	 margin: 0 auto;
+	color:white;
+	text-align:center;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content {
+	  margin-top:60px;
+      width: 95%;
+      margin: 3em auto;
+      font-size: 20px;
+      line-height: 20px;
+      text-align: justify;
+}
+
+
+.logo {
+      line-height: 60px;
+      position: fixed;
+      float: left;
+      margin: 16px 46px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+      letter-spacing: 2px;
+}
+
+nav {
+	  z-index:1;
+      position: fixed;
+      width: 100%;
+      line-height: 60px;
+	  overflow:hidden;
+}
+
+nav ul {
+	  text-decoration:none !important;
+      line-height: 60px;
+      list-style: none;
+      background: rgba(0, 0, 0, 0);
+      color: #fff;
+      padding: 0;
+      text-align: right;
+      margin: 0;
+      padding-right: 40px;
+      transition: 1s;
+	
+}
+
+nav ul li a {
+	text-decoration:none !important;
+}
+
+nav ul li a:hover{
+	color:#fff;
+}
+
+nav.black ul {
+      background: #000;
+}
+
+nav ul li {
+      display: inline-block;
+      padding: 7px;
+}
+
+nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+}
+
+.menu-icon {
+      line-height: 60px;
+      width: 100%;
+      background: #000;
+      text-align: right;
+      box-sizing: border-box;
+      padding: 15px 24px;
+      cursor: pointer;
+      color: #fff;
+      display: none;
+}
+
+
+.btn{
+	display:inline-block;
+	text-align:center;
+	margin-top:15px;
+	width: 50%;
+	background-color:transparent;
+	color: white;
+	border: 2px solid;
+	border-radius:5px;
+	font-size:20px;
+}
+
+.btn:hover{
+	background-color: transparent;
+	color:white;
+	}
+	
+h2{
+	font-size: 45px;
+	text-align:center;
+	font-family:queen of heaven;
+}
+	
+/*Carousel Design*/
+
+.container2{
+	
+    padding: 25px;
+	
+}
+
+
+.carousel{
+	z-index:0;
+
+}
+
+.sb:hover{
+	color:#000;
+}
+.sb{
+	color:white;
+	text-decoration:none!important;	
+}
+
+.size{
+	font-size:22px;
+}
+
+
+h3{
+	font-size:80px;
+	text-align:center;	
+	font-family:queen of heaven;
+}
+
+/*Contact Us*/
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/*
+.fl {
+	list-style-image:url(../img/flower.png);
+}
+
+.fl li a{
+	color:black;
+	text-decoration:none! important;
+}
+
+*/
+
+.icon{
+	list-style:none !important;
+}
+
+
+footer{
+		width:100%;
+		background-color: #000;
+		color: #FFF;
+		position: absolute;
+		}
+		
+		
+@media(max-width: 786px) {
+
+      .logo {
+            position: fixed;
+            top: 0;
+            margin-top: 16px;
+      }
+
+      nav ul {
+            max-height: 0px;
+            background: #000;
+      }
+
+      nav.black ul {
+            background: #000;
+      }
+
+      .showing {
+            max-height: 28em;
+      }
+
+      nav ul li {
+			margin-top:0;
+			margin-top:0;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 3px;
+            text-align: center;
+      }
+
+      .menu-icon {
+            display: block;
+      }	  
+	  
+	  .sb:hover{
+	color:#000;
+}
+.sb{
+	color:white;
+	text-decoration:none!important;
+	
+}
+
+.size{
+	font-size:15px;
+}
+
+h3{
+	font-size:35px;
+	text-align:center;	
+	font-family:queen of heaven;
+}
+}
+
+
+
+
+
