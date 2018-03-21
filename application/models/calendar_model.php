@@ -64,13 +64,6 @@ class Calendar_model extends CI_Model{
 ';// <div class="content"><small>{content}</small></div>
 
     }
-    public function view($year,$month){
-        $this->db->order_by('edate','asc');
-        $this->db->join('service_tbl',"(service_tbl.sid = event_tbl.sid)");
-        $this->db->join('customer_tbl',"(customer_tbl.cuid = event_tbl.cuid)");
-        $query=$this->db->get_where('event_tbl',array('event_tbl.cid'=>$this->session->userdata('cid'),'estatus'=>1))->result_array();
-        return $query;
-    }
     public function get_calendar($year,$month){
         $query=$this->db->select('eid,edate,edetails,etime,econfirmation')->from('event_tbl')->where('cid',$this->session->userdata('cid'))->where('estatus',1)->like('edate',"$year-$month",'after')->get();
         $caledata=array();
@@ -105,7 +98,7 @@ class Calendar_model extends CI_Model{
             return $this->calendar->generate($year,$month,$caledata);
            // exit();
     }
-    public function addsched($eid,$edate,$etime,$edetails,$sid,$cid,$cuid,$location='',$enumg='',$confirmation=''){/*
+    public function addsched($eid,$edate,$etime,$edetails,$sid,$cid,$cuid){/*
         if($this->db->select('date')->from('calendar')->where('date',$date)->count_all_results()){
             $this->db->where('date',$date)->update('calendar',array('date'=>$date,'edetails'=>$edetails));
         }
@@ -133,9 +126,7 @@ class Calendar_model extends CI_Model{
                 'sid'=>$sid,
                 'cid'=>$cid,
                 'cuid'=>$cuid,
-                'elocation'=>$location,
-                'enumg'=>$enumg,
-                'econfirmation'=>$confirmation,
+                'econfirmation'=>1,
                 'ecreated' => date('Y-m-d'),
                 'emodified' => date('Y-m-d'),
                 'estatus'=>1
@@ -149,10 +140,7 @@ class Calendar_model extends CI_Model{
                 'sid'=>$sid,
                 'cid'=>$cid,
                 'cuid'=>$cuid,
-                'enumg'=>$enumg,
-                'elocation'=>$location,
                 'emodified' => date('Y-m-d'),
-                'econfirmation'=>$confirmation,
                 'estatus'=>1
             ));   
         }
@@ -164,11 +152,9 @@ class Calendar_model extends CI_Model{
                 'edate'=>$this->input->post('date'),
                 'etime'=>$this->input->post('time'),
                 'edetails'=>$this->input->post('details'),
-                'enumg'=>$this->input->post('guest'),
                 'sid'=>$this->input->post('sid'),
                 'cid'=>$this->input->post('cid'),
                 'cuid'=>$this->input->post('cuid'),
-                'elocation'=>$this->input->post('location'),
                 'ecreated' => date('Y-m-d'),
                 'emodified' => date('Y-m-d'),
                 'estatus'=>1,

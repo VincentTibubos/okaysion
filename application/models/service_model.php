@@ -51,26 +51,13 @@ class Service_model extends CI_Model{
     }
     public function update(){
         date_default_timezone_set("Asia/Manila"); 
-        if(!empty($_FILES['image'])){
-            $file= base64_encode(file_get_contents(addslashes($_FILES['image']['tmp_name'])));
-            $data =array(
-                'sname' => $this->input->post('sname'),
-                'svenue' => $this->input->post('svenue'),
-                'simage' => $file,
-                'sprice' => $this->input->post('sprice'),
-                'sdescription' => $this->input->post('sdescription'),
-                'smodified' => date('Y-m-d'),
-            );
-        }
-        else{
-            $data =array(
-                'sname' => $this->input->post('sname'),
-                'svenue' => $this->input->post('svenue'),
-                'sprice' => $this->input->post('sprice'),
-                'sdescription' => $this->input->post('sdescription'),
-                'smodified' => date('Y-m-d'),
-            );
-        }
+        $data =array(
+            'sname' => $this->input->post('sname'),
+            'svenue' => $this->input->post('svenue'),
+            'sprice' => $this->input->post('sprice'),
+            'sdescription' => $this->input->post('sdescription'),
+            'smodified' => date('Y-m-d'),
+        );
         $this->db->where('sid',$this->input->post('sid'));
         return $this->db->update('service_tbl',$data);
     }
