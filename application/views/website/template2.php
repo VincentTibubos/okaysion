@@ -84,13 +84,12 @@
 
     <!-- Page Content -->
     <div class="container" id="home">
+
       <!-- Jumbotron Header -->
-      <header class="jumbotron my-4" style="background: url(data:image;base64,<?php echo $web['ccover']?>) no-repeat; background-size: 100%;">
-        
-          <h1 class="display-3"><?php echo $web['cwelcome']?></h1>
-          <p class="lead"><?php echo $web['cabout']?></p>
-          <a href="#" class="btn-get-started scrollto">Get Started</a>
-        </div>
+      <header class="jumbotron my-4">
+        <h1 class="display-3"><?php echo $web['cwelcome']?></h1>
+        <p class="lead"><?php echo $web['cabout']?></p>
+        <a href="#" class="btn-get-started scrollto">Get Started</a>
       </header>
 
 <div class="carousel-wrapper">
@@ -385,7 +384,7 @@
                       <input type="number"  onkeypress="return event.charCode >= 48&&event.charCode <= 57" value="" name="guest" class="form-control">
                       <small class="help-block text-danger"></small>
                     </div>
-                  <div class="row">
+<div class="row">
                     <div class="form-group col-sm-6">
                         <label for="dtp_input2" class="control-label">Event Date</label>
                         <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
