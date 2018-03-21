@@ -55,8 +55,8 @@
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
-                  <?php echo validation_errors(); ?>
-                  <?php
+                  <?php echo validation_errors();?>
+                  <?php 
                     if($this->session->flashdata('login_failed')): ?>
                     <?php echo "<p class='alert alert-danger'>".$this->session->flashdata('login_failed')."</p>"?>
                    <?php endif;?>

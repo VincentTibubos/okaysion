@@ -19,7 +19,7 @@
           <!-- Breadcrumb-->
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?php echo base_url();?>dashboard/index">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url();?>dashboard">Home</a></li>
 
               <li class="breadcrumb-item active">
                 <?php if($this->session->userdata('type')=='Admin'): ?>
@@ -80,11 +80,11 @@
                 <div class="col-lg-12">
                   <div class="card">
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Services <a href='' data-toggle="modal" data-target='#addservicem' class="btn btn-primary btn-hideto">Add Service</a></h3> 
+                      <h3 class="h4">Services <a href='' data-toggle="modal" data-target='#addservicem' class="btn btn-primary btn-hideto btn-sm">Add Service</a></h3> 
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">                       
-                        <table class="table table-striped table-hover" id="service_tbl">
+                        <table class="table table-striped table-hover table-data" id="service_tbl">
                           <thead>
                             <tr>
                               <th>#</th>
@@ -107,12 +107,12 @@
                               <td>
                               <div class='btn-group btn-hideto'>
                                   <form action='".base_url()."dashboard/service' method='post'>
-                                    <a class='btn btn-primary edit-service' href=''  data-toggle='modal' data-target='#editservicem'>Edit<input type='hidden' value='".$ser['sid']."' name='sid'></a>
+                                    <a class='btn btn-primary edit-service btn-sm' href=''  data-toggle='modal' data-target='#editservicem'>Edit<input type='hidden' value='".$ser['sid']."' name='sid'></a>
                                   </form>
                                   <form action='".base_url()."service/delete' method='post'>
                                     <input type='hidden' value='".$ser['sid']."' name='sid'>
                                     <input type='hidden' value='dashboard/company' name='comp'>
-                                    <input type='submit' value='Delete' class='btn btn-danger'>
+                                    <input type='submit' value='Delete' class='btn btn-danger btn-sm'>
                                   </form>
                                 </div>
                               </td>
@@ -149,11 +149,16 @@
           <h4 class="modal-title">Edit Service</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <form method="post" action="<?php echo base_url();?>service/update">
+        <form method="post" action="<?php echo base_url();?>service/update"  enctype="multipart/form-data">
           <div class="modal-body">
                     <div class="form-group"  id="serviceName" >
                       <label class="form-control-label">Service Name</label>
                       <input required type="text" value="" name="sname" class="form-control" id="sname">
+                      <small class="help-block text-danger"></small>
+                    </div>
+                    <div class="form-group"  id="EServiceImage" >
+                      <label class="form-control-label">Service Image</label>
+                      <input type="file" value="" name="image" class="form-control">
                       <small class="help-block text-danger"></small>
                     </div>
                     <div class="form-group"  id="serviceDescription" >
@@ -240,9 +245,10 @@
     
   <script type="text/javascript">
     $(document).ready(function(){
-      //$('#sevice_tbl').DataTable();
       asimg=$('#serviceImage');
+      esimg=$('#EServiceImage');
       errimage=asimg.find('small');
+      eerrimage=esimg.find('small');
       $('#add-service').click(function(e){
         var aimage=asimg.find('input').val();
         var ext=aimage.split('.').pop().toLowerCase();
@@ -254,8 +260,17 @@
         else if(ext!='jpg'&&ext!='gif'&&ext!='jpeg'&&ext!='png'){
           errimage.html('Invalid Image File');
           asimg.find('input').val('');
-          alert('invalid');
           e.preventDefault();
+          return false;
+        }
+      });
+      $('#serupbtn').click(function(e){
+        var eimage=esimg.find('input').val();
+        var ext=eimage.split('.').pop().toLowerCase();
+        if(eimage!=''&&(ext!='jpg'&&ext!='gif'&&ext!='jpeg'&&ext!='png')){
+          eerrimage.html('Invalid Image File');
+          esimg.find('input').val('');
+                    e.preventDefault();
           return false;
         }
       });

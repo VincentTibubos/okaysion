@@ -172,6 +172,9 @@ class Company extends CI_Controller {
             if($cnpass==''){
                 $data['cnpass']='New Password is required';
             }
+            else if(strlen($cnpass)<6){
+                $data['cnpass']='Maximum of 6 characters';
+            }
             if($ccpass==''){
                 $data['ccpass']='Confirm Password is required';
             }

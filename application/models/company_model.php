@@ -141,14 +141,27 @@ class Company_model extends CI_Model{
         return $this->db->update('company_tbl',$data);
     }
     public function updateweb(){
-        $data =array(
-            'cwelcome'=>$this->input->post('cwelcome'),
-            'ccontact'=>$this->input->post('ccontact'),
-            'caddress'=>$this->input->post('caddress'),
-            'cabout'=>$this->input->post('cabout'),
-            'ctemplate'=>$this->input->post('ctemplate'),
-            'curl'=>$this->input->post('curl').'.com'
-        );
+        if(!empty($_FILES['image'])){
+            $file= base64_encode(file_get_contents(addslashes($_FILES['image']['tmp_name'])));
+            $data =array(
+                'cwelcome'=>$this->input->post('cwelcome'),
+                'ccontact'=>$this->input->post('ccontact'),
+                'caddress'=>$this->input->post('caddress'),
+                'ccover'=>$file,
+                'cabout'=>$this->input->post('cabout'),
+                'ctemplate'=>$this->input->post('ctemplate'),
+                'curl'=>$this->input->post('curl').'.com'
+            );
+        }else{
+            $data =array(
+                'cwelcome'=>$this->input->post('cwelcome'),
+                'ccontact'=>$this->input->post('ccontact'),
+                'caddress'=>$this->input->post('caddress'),
+                'cabout'=>$this->input->post('cabout'),
+                'ctemplate'=>$this->input->post('ctemplate'),
+                'curl'=>$this->input->post('curl').'.com'
+            );
+        }
         $this->db->where('cid',$this->session->userdata('cid'));
         return $this->db->update('company_tbl',$data);
     }
