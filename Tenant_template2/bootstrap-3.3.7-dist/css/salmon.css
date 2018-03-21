@@ -1,0 +1,164 @@
+html,body{
+		margin: 0;
+		padding: 0;
+		width:100%;
+}
+
+body{
+	font-family:Quicksand;
+}
+
+header{
+	width:100%;
+	height:100vh;
+	background: url(../img/new.jpg) no-repeat 50% 50%;
+	background-size: cover;
+}
+
+.content{
+	width:90%;
+	margin: 4em auto;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: justify;
+}
+
+.content h3{
+	text-align:center;
+}
+
+.logo{
+	position: fixed;
+	float: left;
+	margin: 16px 36px;
+	color:#fff;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+nav{
+	position: fixed;
+	width: 100%;
+}
+
+nav ul{
+	list-style: none;
+	background: rgba(0,0,0,0);
+	overflow: hidden;
+	color:#fff;
+	padding: 0;
+	text-align: center;
+	margin:0;
+	transition: 1s;
+}
+
+nav.black ul{
+	background: #FA8072;
+}
+
+nav ul li{
+	display: inline-block;
+	padding: 40px;
+}
+
+nav ul li a{
+	text-decoration: none !important;
+	color: #fff;
+	font-size: 20px;
+}
+
+nav ul li a:hover{
+	text-decoration: none !important;
+	color: #696969;
+}
+
+.menu-icon{
+	width:100%;
+	background: #000;
+	text-align: right;
+	box-sizing: border-box;
+	padding: 15px 24px;
+	cursor: pointer;
+	color: #fff;
+	display: none;
+}
+
+.btn{
+	margin-top:10px;
+	width: 100%;
+	background-color: white;
+	color: #FA8072;
+	border: 2px solid;
+}
+
+.btn:hover{
+	opacity: 1;
+	background-color: #FA8072;
+	color:white;
+	}
+
+.fa {
+  padding:20 px;
+  font-size: 20px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none !important;
+  margin: 5px 2px;
+  color: white;
+}
+
+.fa:hover {
+	color: #696969;
+}
+
+a{
+	text-decoration:none !important;
+	color: white;
+}
+
+a:hover{
+	color:#696969;
+}
+
+
+footer{
+		width:100%;
+		background-color: #FA8072;
+		color: #FFF;
+		position: absolute;
+		}
+
+		
+@media(max-width: 580px){
+	.logo{
+		position: fixed;
+		top: 0;
+		margin-top: 16px;
+	}
+	
+	nav ul{
+		max-height: 0px;
+		background: #000;
+	}
+	
+	nav.black ul{
+		background:#000;
+	}
+	
+	.showing {
+		max-height: 20em
+	}
+	nav ul li{
+		box-sizing: border-box;
+		width:100%;
+		padding: 24px 0;
+		text-align: center;
+	}
+	
+	.menu-icon{
+		display:block;
+	}
+}	
+	
+	
+	

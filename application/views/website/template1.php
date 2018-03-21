@@ -27,7 +27,7 @@
 
 
 <link rel="stylesheet" href="<?=base_url()?>assets/css/flickity.min.css">
-<script src="<?=base_url()?>assets/js/flickity.pkgd.min.js"></script>r
+<script src="<?=base_url()?>assets/js/flickity.pkgd.min.js"></script>
   </head>
 
   <body>
@@ -82,6 +82,7 @@
         </div>
       </header>
 
+
      
     
 <div class="carousel-wrapper">
@@ -107,6 +108,13 @@
               <?php }?>
             </div>
           </div>
+        </div>
+      <?php }?>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
  <section class="md-section" id="id-5">
 					<div class="container">
 						<div class="row">
@@ -156,14 +164,16 @@
 									<h2 class="title__title">SEND US A MESSAGE</h2>
 								</div><!-- End / title -->
 								
-                <form action="cmessage/send" method="post" role="form" >
+                	<form action="cmessage/send" method="post" role="form" >
   								<div class="form-wrapper">
   									
   									<!-- form-item -->
   									<div class="form-item form-item--half">
   										<label class="form__label">Email<span>*</span>
   										</label>
+
   										<input class="form-control" type="email" required name=email placeholder="" value="<?php echo $this->session->userdata($web['cid'].'cuemail')?>" />
+
   									</div><!-- End / form-item -->
   									
   									
@@ -172,6 +182,7 @@
   										<label class="form__label">Name<span>*</span>
   										</label>
   										<input class="form-control" type="text" name="name" required placeholder="" value="<?php echo $this->session->userdata($web['cid'].'cuname')?>"
+
   									</div><!-- End / form-item -->
   									
   									
