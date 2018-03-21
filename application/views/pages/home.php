@@ -1,3 +1,4 @@
+
 <!--==========================
   Intro Section
 ============================-->
@@ -58,21 +59,27 @@
 
           <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
             <div class="icon"><i class="ion-android-create"></i></div>
+
             <h4 class="title"><a>Economize Your Resources</a></h4>
             <p class="description">We create websites, customize your designs and maintain them in an affordable price. We offer agreeable payment options for your convenience.</p>
+
           </div>
 
 
            <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
             <div class="icon"><i class="ion-ios-stopwatch-outline"></i></div>
+
             <h4 class="title"><a>Advertise Your Company</a></h4>
             <p class="description">Update your company's information in your website. Pick a design or tell us your preferences. Either way, your satisfaction is our top priority.</p>
+
           </div>
 
            <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
             <div class="icon"><i class="ion-ios-heart-outline"></i></div>
+
             <h4 class="title"><a>Focus on Your Business</a></h4>
             <p class="description">Manage your events through your website. We have all the tools you need to help you and your customers, plan your events. Happy Planning!</p>
+
           </div>
 
         </div>
@@ -87,6 +94,7 @@
 
       <header class="section-header">
         <h3>About Us</h3>
+
         <p>The website was established in 2018. the developers team
 made an enormous amount of effort in researching in order for the
 idea of creating this website occur. one of the members of the team
@@ -129,7 +137,9 @@ from.</p>
               <div class="icon"><i class="ion-ios-eye-outline"></i></div>
             </div>
             <h2 class="title"><a href="#">Our Vision</a></h2>
+
             <p>OKAysion bridges event entrepreneurs and their customers with just a simple click of a button! Providing free and efficient websites to modernize user interactions.</p>
+
           </div>
         </div>
 

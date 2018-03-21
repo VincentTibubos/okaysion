@@ -104,10 +104,8 @@ jQuery(document).ready(function( $ ) {
       $('#header').addClass('header-scrolled');
     } else {
       $('#header').removeClass('header-scrolled');
-    }
-  });
-
-  // Intro carousel
+    } 
+	// Intro carousel
   var introCarousel = $(".carousel");
   var introCarouselIndicators = $(".carousel-indicators");
   introCarousel.find(".carousel-inner").children(".carousel-item").each(function(index) {
@@ -124,6 +122,8 @@ jQuery(document).ready(function( $ ) {
     allowPageScroll:"vertical"
   });
 
+  });
+  
   // Skills section
   $('#skills').waypoint(function() {
     $('.progress .progress-bar').each(function() {

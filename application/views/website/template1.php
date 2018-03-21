@@ -21,19 +21,22 @@
 	<link href="<?php echo base_url();?>assets/template1/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>assets/template1/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>assets/template1/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+<<<<<<< HEAD
+	
+	
 
-  
-    <link rel="stylesheet" href="<?php echo base_url();?>/assets/dashboard/css/bootstrap-datetimepicker.min.css">
-
-
-<link rel="stylesheet" href="<?=base_url()?>assets/css/flickity.min.css">
-<script src="<?=base_url()?>assets/js/flickity.pkgd.min.js"></script>
+=======
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
   </head>
 
   <body>
 
     <!-- Navigation -->
+<<<<<<< HEAD
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+=======
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
       <div class="container">
         <a class="navbar-brand" href="#"><?php echo $web['cname'];?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,6 +58,8 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
+<<<<<<< HEAD
+=======
             <?php if(!$this->session->userdata($web['cid'].'logged_in')){?>
             <li class="nav-item" >
               <a class="nav-link" href="" data-toggle="modal" data-target="#register">Register</a>
@@ -67,55 +72,272 @@
               <a class="nav-link" data-toggle="modal" data-target="#logout" href="">Logout</a>
             </li>
             <?php }?>
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
           </ul>
         </div>
       </div>
     </nav>
 
+<<<<<<< HEAD
+
+
+     
+ <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro">
+    <div class="intro-container">
+      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active">
+		  <img src="<?php echo base_url();?>assets/template1/img/intro-carousel/big4.jpg" class="img-fluid" alt="">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                
+                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="carousel-item">
+		  <img src="<?php echo base_url();?>assets/template1/img/intro-carousel/big5.jpg" class="img-fluid" alt="">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+        <div class="carousel-item">
+		<img src="<?php echo base_url();?>assets/template1/img/intro-carousel/big3.jpg" class="img-fluid" alt="">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+		  
+		   <div class="carousel-item">
+		   <img src="<?php echo base_url();?>assets/template1/img/intro-carousel/big6.jpg" class="img-fluid" alt="">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <a href="#featured-services" class="btn-get-started scrollto">Book Now!</a>
+              </div>
+            </div>
+          </div>
+		  
+        <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- #intro -->
+
+    
+	<!--SERVICES-->
+	<section id="portfolio"  class="section-bg" >
+      <div class="container">
+
+        <header class="section-header">
+          <h3 class="section-title center">Services</h3>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">Weddings</li>
+              <li data-filter=".filter-card">Birthdays</li>
+              <li data-filter=".filter-web">Christening</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page1_img5.jpg" class="img-fluid" alt="">
+                <a href="img/page1_img5.jpg" data-lightbox="portfolio" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Bridal Car</a></h4>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page4_img1.jpg" class="img-fluid" alt="">
+                <a href="img/page4_img1.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Baby Shower</a></h4>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/images-10.jpg" class="img-fluid" alt="">
+                <a href="img/images-10.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Prenup Photoshoot</a></h4>
+              
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page1_img1.jpg" class="img-fluid" alt="">
+                <a href="img/page1_img1.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Decorating Services</a></h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page1_img10.jpg" class="img-fluid" alt="">
+                <a href="img/page1_img10.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Maternity Photoshoot</a></h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/shuffle_3.jpg" class="img-fluid" alt="">
+                <a href="img/shuffle_3.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Venue and Catering Services</a></h4>
+               
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page1_img4.jpg" class="img-fluid" alt="">
+                <a href="img/pag1_img4.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+              <div class="portfolio-info">
+                <h4><a href="#">Catering</a></h4>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/shuffle_2.jpg" class="img-fluid" alt="">
+                <a href="img/shuffle_2.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+              <div class="portfolio-info">
+                <h4><a href="#">Children's Party</a></h4>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?php echo base_url();?>assets/template1/img/page1_img6.jpg" class="img-fluid" alt="">
+                <a href="img/page1_img6.jpg" class="link-preview" data-lightbox="portfolio" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Catering</a></h4>
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+<!--CONTACT-->
+=======
     <!-- Page Content -->
     <div class="container">
 
       <!-- Jumbotron Header -->
-      <header class="jumbotron my-4" style="background: url(data:image;base64,<?php echo $web['ccover']?>) no-repeat; background-size: 100%;">
-        
-          <h1 class="display-3"><?php echo $web['cwelcome']?></h1>
-          <p class="lead"><?php echo $web['cabout']?></p>
-          <a href="#" class="btn-get-started scrollto">Get Started</a>
-        </div>
+      <header class="jumbotron my-4">
+        <h1 class="display-3"><?php echo $web['cwelcome'];?></h1>
+        <p class="lead"><?php echo $web['cabout'];?></p>
+        <a href="#" class="btn-get-started scrollto">Get Started</a>
       </header>
 
      
-    
-<div class="carousel-wrapper">
-  <div class="carousel" data-flickity>
-    <?php foreach($services as $service){
-      if(strlen($service['sdescription'])>70){
-        $service['sdescription']=substr( $service['sdescription'], 0,70).'...';
-      }
-      ?>
-
-      <div class="carousel-cell" style="margin: 0px 30px;">
-          <div class="card" >
-              <img class="card-img-top" src='data:image;base64,<?php echo $service["simage"];?>' alt='no image' style="height: 200px; width: 300px;"/>
-            <div class="card-body" style="height: 120px; width: 300px;">
-              <h5 class="card-title text-center"><?=$service['sname']?></h5>
-              <p class="card-text text-center"><?php echo $service['sdescription'];?></p>
+       <!-- Page Features -->
+      <div class="row text-center">
+      <?php foreach($services as $service){?>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+              <img class="card-img-top" src='data:image;base64,<?php echo $service["simage"];?>' alt='no image'/>
+            <div class="card-body">
+              <h4 class="card-title"><?=$service['sname']?></h4>
+              <p class="card-text"><?=$service['sdescription']?></p>
             </div>
-            <div class="card-footer text-center" >
-              <?php if($this->session->userdata($web['cid'].'logged_in')){?>
-                <a href="#" class="btn btn-primary btn-service" data-toggle='modal' data-target='#Cservice'>Reserve<input type="hidden" value="<?php echo $service['sid']?>"></a>
-              <?php }else{?>
-                <a href="#" class="btn btn-primary btn-service" data-toggle='modal' data-target='#register'>Reserve<input type="hidden" value="<?php echo $service['sid']?>"></a>
-              <?php }?>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Find Out More!</a>
             </div>
           </div>
+        </div>
+      <?php }?>
+
       </div>
-    <?php }?>
-  </div>
-</div>
       <!-- /.row -->
 
     </div>
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
  <section class="md-section" id="id-5">
 					<div class="container">
 						<div class="row">
@@ -172,7 +394,11 @@
   									<div class="form-item form-item--half">
   										<label class="form__label">Email<span>*</span>
   										</label>
+<<<<<<< HEAD
+  										<input class="form-control" type="email" required name=email placeholder=""/>
+=======
   										<input class="form-control" type="email" required name=email placeholder="" value="<?php echo $this->session->userdata($web['cid'].'cuemail')?>" />
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
   									</div><!-- End / form-item -->
   									
   									
@@ -180,7 +406,11 @@
   									<div class="form-item form-item--half">
   										<label class="form__label">Name<span>*</span>
   										</label>
+<<<<<<< HEAD
+  										<input class="form-control" type="text" name="name" required placeholder=""/>
+=======
   										<input class="form-control" type="text" name="name" required placeholder="" value="<?php echo $this->session->userdata($web['cid'].'cuname')?>" />
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
   									</div><!-- End / form-item -->
   									
   									
@@ -205,6 +435,23 @@
 					</div>
 				</section>
   <!-- Footer -->
+<<<<<<< HEAD
+    <footer class="py-5">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy;2018 Your Company, All Rights Reserved</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="<?php echo base_url();?>assets/template1/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/template1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/wow/wow.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/wow/wow.min.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/waypoints/waypoints.min.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/touchSwipe/jquery.touchSwipe.js"></script>
+	<script src="<?php echo base_url();?>assets/template1/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+=======
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy;2018 <?php echo $web['cname'];?>, All Rights Reserved</p>
@@ -215,7 +462,7 @@
 
 <!-- Modal -->
   <div class="modal fade" id="login" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog  modal-lg">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -225,7 +472,7 @@
         </div>
         <form method="post" action="<?php echo base_url();?>customer/login" id="loginForm">
           <div class="modal-body">
-                  <p id="invalid" class="help-block text-danger"></p>
+            <p id="invalid" class="help-block text-danger"></p>
                     <div class="form-group"  id="lemailForm" >
                       <label class="form-control-label">Email</label>
                       <input required type="email" value="" name="email" class="form-control" id="lemail">
@@ -242,7 +489,6 @@
           </div>
           <div class="modal-footer">
             <div class="form-group">     
-                      <small>Doesn't have an acount? <a href="" data-dismiss='modal' data-toggle="modal" data-target="#register">Register</a></small>
                 <input type="button" id="loginbtn" value="Login" class="btn btn-success">
             </div>
           </div>
@@ -254,7 +500,7 @@
   </div>
 
   <div class="modal fade" id="register" role="dialog">
-    <div class="modal-dialog ">
+    <div class="modal-dialog  modal-lg">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -289,7 +535,6 @@
           </div>
           <div class="modal-footer">
             <div class="form-group">     
-              <small>Already have an acount? <a href="" data-dismiss='modal' data-toggle="modal" data-target="#login">Login</a></small>
                 <input type="button" id="registerbtn" value="Register" class="btn btn-success">
             </div>
           </div>
@@ -326,114 +571,9 @@
       
     </div>
   </div>
-
-
-  <div class="modal fade" id="Cservice" role="dialog">
-    <div class="modal-dialog ">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Service</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <form method="post" action="<?php echo base_url();?>calendar/request" id="regirForm">
-          <div class="modal-body">
-                    <div class="form-group"  id="serName" >
-                      <h5></h5>
-                    </div>
-                    <div class="form-group"  id="serDesc" >
-                      <h6></h6>
-                    </div>
-                    <div class="form-group"  id="serDetails" >
-                      <label class="form-control-label">Details</label>
-                      <input type="text" value="" name="details" class="form-control">
-                      <small class="help-block text-danger"></small>
-                    </div>
-                    <div class="form-group"  id="serLocation" >
-                      <label class="form-control-label">Location</label>
-                      <input type="text" value="" name="location" class="form-control">
-                      <small class="help-block text-danger"></small>
-                    </div>
-                    <div class="form-group"  id="rsswordForm" >
-                      <label class="form-control-label">Number of guest</label>
-                      <input type="number"  onkeypress="return event.charCode >= 48&&event.charCode <= 57" value="" name="guest" class="form-control">
-                      <small class="help-block text-danger"></small>
-                    </div>
-                  <div class="row">
-                    <div class="form-group col-sm-6">
-                        <label for="dtp_input2" class="control-label">Event Date</label>
-                        <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                          <input class="form-control" size="16" type="text" value="<?php echo date('Y-m-d');?>" readonly  id="edaform" name="date" required/>
-                          <span class="input-group-addon"><span class="okicon glyphicon glyphicon-remove fa fa-remove"></span></span>
-                          <span class="input-group-addon"><span class="okicon glyphicon glyphicon-calendar fa fa-calendar"></span></span>
-                        </div>
-                        <input type="hidden" id="dtp_input2" value="" required/>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <label for="dtp_input3" class="col-md-12 control-label">Event Time</label>
-                        <div class="input-group date form_time col-md-12" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
-                            <input class="form-control" required="" size="16" type="text" value="" readonly id="etform" name="time" />
-                            <span class="input-group-addon"><span class="okicon glyphicon glyphicon-remove fa fa-remove"></span></span>
-                            <span class="input-group-addon"><span class="okicon glyphicon glyphicon-time fa fa-clock-o"></span></span>
-                        </div>
-                        <input type="hidden" id="dtp_input3" value="" required />
-                    </div>
-                  </div>
-                    <input id="cd" type="hidden" name="cid" value="<?php echo $web['cid'];?>">
-                    <input id="serId" type="hidden" name="sid" value="">
-                    <input id="cud" type="hidden" name="cuid" value="<?php echo $this->session->userdata($web['cid'].'cuid');?>">
-                    <input id="crl" type="hidden" name="curl" value="<?php echo $web['curl'];?>">
-          </div>
-          <div class="modal-footer">
-            <div class="form-group">     
-                <input type="submit" id="" value="Send Request" class="btn btn-success">
-            </div>
-          </div>
-
-        </form>
-      </div>
-      
-    </div>
-  </div>
-    <!-- Bootstrap core JavaScript -->
-
     <!-- Bootstrap core JavaScript -->
     <script src="<?php echo base_url();?>assets/template1/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url();?>assets/template1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="<?php echo base_url();?>/assets/dashboard/js/bootstrap-datetimepicker.js"></script>
-    <script src="<?php echo base_url();?>/assets/dashboard/js/locales/bootstrap-datetimepicker.fr.js"></script>
-<!--
-<script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>-->
-<script type="text/javascript">
-  $('.form_date').datetimepicker({
-      format: 'yyyy-mm-dd',
-        language:  'en',
-        weekStart: 1,
-        todayBtn:  1,
-    autoclose: 1,
-    todayHighlight: 1,
-    startView: 2,
-    minView: 2,
-    forceParse: 0,
-    startDate: '<?php echo date('Y-m-d');?>'//'<?php echo date('Y-m-d');?>'
-    });
-  $('.form_time').datetimepicker({
-      timeFormat: 'HH:mm',
-        language:  'en',
-        weekStart: 1,
-        todayBtn:  1,
-    autoclose: 1,
-    todayHighlight: 1,
-    startView: 1,
-    minView: 0,
-    maxView: 1,
-    forceParse: 0
-    });
-</script>
-
     <script type="text/javascript">
       $(document).ready(function(){
         Frname=$('#rnameForm');
@@ -445,34 +585,14 @@
         Flemail=$('#lemailForm');
         Flpassword=$('#lpasswordForm');
         lForm=$('#loginForm');
-        invalid=$('#invalid');
+        invalid=$('invalid');
 
         cid=$('#cid').val();
-
-        sname=$('#serName').find('h5');
-        sdesc=$('#serDesc').find('h6');
-        sid=$('#serId');
-
-        $('.btn-service').click(function(){
-          $.ajax({
-            url: "<?php echo base_url()?>dashboard/service",
-            data: {
-              sid: $(this).find('input').val()
-            },
-            type: 'POST',
-            dataType: 'json',
-            success: function(data){
-              sname.html(data['sname']);
-              sdesc.html(data['sdescription']);
-              sid.val(data['sid']);
-            }
-          });
-        });
 
         $('#loginbtn').click(function(){
           lemail=Flemail.find('input').val();
           lpassword=Flpassword.find('input').val();
-          //alert(lemail+' '+lpassword);
+          alert(lemail+' '+lpassword);
           $.ajax({
             url: "<?php echo base_url()?>/customer/check",
             type: "POST",
@@ -484,18 +604,14 @@
             dataType: 'json',
             success: function(data){
               //Invalid Email or password
-                Flemail.find('small').html('');
-                Flpassword.find('small').html('');
-                invalid.html('');
               if(data['lemail']==''&&data['lpass']==''&&data['login']==''){
                 lForm.submit();
               }
-              else if(data['lemail']!=''||data['lpass']!=''){
+              else{
                 Flemail.find('small').html(data['lemail']);
                 Flpassword.find('small').html(data['lpass']);
-              }
-              else{
                 invalid.html(data['login']);
+                alert(data['login']);
               }
             }
           });
@@ -538,6 +654,7 @@
         });
       });
     </script>
+>>>>>>> 0e6a72a667c82726bf309bcaa8fb17f3ac827c8d
 
   </body>
 

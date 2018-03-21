@@ -12,7 +12,7 @@
           <!-- Breadcrumb-->
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?php echo base_url();?>dashboard">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url();?>dashboard/index">Home</a></li>
               <li class="breadcrumb-item active">Messages</li>
             </ul>
           </div>
@@ -49,8 +49,8 @@
                             </div>
                             <input type="hidden" name="amid" value="<?php echo $mdata['amid'];?>" id="amid">
                             <div class="form-group"> 
-                                <input type="button" value="delete" class="btn btn-danger btn-xs" id="delete1msg">
-                                <input type="button" value="close" class="btn btn-danger btn-xs" id="close1msg">
+                                <input type="button" value="delete" class="btn btn-danger" id="delete1msg">
+                                <input type="button" value="close" class="btn btn-danger" id="close1msg">
                             </div>
                           </form>
                       </div>
